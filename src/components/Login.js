@@ -1,14 +1,17 @@
 import React from "react";
 import image from "../assets/Group-5674.png";
+import Navbar from "./Navbar";
 
 function Login() {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-100 to-white-400 ">
-      <div className="flex flex-col mt-14">
+   <>
+   <Navbar/>
+    <div className="flex items-center justify-center h-screen bg-gradient-to-br from-blue-100 to-white-400 overflow-y-hidden">
+      <div className="flex flex-col mt-20 ">
 
         {/* headings and subheadings */}
         <div className="-ml-16 ">
-          <h1 className="text-[2.9rem] tracking-wide leading-snug text-[#638af3]  italic font-[670] ">
+          <h1 className="text-[2.9rem] tracking-wide leading-snug text-[#4875f9]  italic font-[670] ">
             Welcome to our <br /> Community
           </h1>
           <h2 className="text-lg font-[500] text-gray-500 mt-2 mb-6 whitespace-pre-line">
@@ -24,7 +27,7 @@ function Login() {
 
       {/* form */}
       <div className="w-[23%] ml-[17.5rem]">
-        <form className="flex flex-col gap-4 mb-[12rem]">
+        <form className="flex flex-col gap-4 ">
           <div className="flex flex-col">
             <input
               type="text"
@@ -55,6 +58,7 @@ function Login() {
         </form>
       </div>
     </div>
+    </>
   );
 }
 
