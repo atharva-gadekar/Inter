@@ -1,6 +1,6 @@
 import React from "react";
 import image from "../assets/Group-5674.png";
-import Navbar from "./Navbar";
+import Navbar from "../components/Navbar";
 
 function Login() {
   return (
