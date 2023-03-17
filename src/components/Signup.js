@@ -6,7 +6,7 @@ function Signup() {
   return (
     <>
       <Navbar />
-      <div className="block lg:flex items-center justify-center lg:justify-evenly h-screen  bg-gradient-to-br from-blue-100 to-white-400 overflow-y-hidden">
+      <div className="block lg:flex items-center justify-center min-h-screen lg:justify-evenly bg-gradient-to-br from-blue-100 to-white-400 overflow-y-hidden">
         <div className="block lg:flex flex-col mt-20  ">
           {/* headings and subheadings */}
           <div className="ml-0 lg:-ml-16">
@@ -17,6 +17,7 @@ function Signup() {
               A whole new productive journey <br /> starts right here!
             </h2>
           </div>
+
 
           {/* image */}
           <div className="relative">
