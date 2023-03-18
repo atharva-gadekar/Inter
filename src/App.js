@@ -1,10 +1,8 @@
-import Homepage from "./pages/Homepage";
-import Navbarhome from "./components/Navbarhome";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-// import { Routes, Route } from 'react-router-dom';
-import { BrowserRouter, Route, Routes } from "react-router";
-
+import Homepage from './pages/Homepage';
+import Navbarhome from './components/Navbarhome';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import { BrowserRouter,Routes,Route } from 'react-router-dom';
 
 function App() {
   return (
