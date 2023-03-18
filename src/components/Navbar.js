@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
+  const [ismobileopen, setmobileopen] = useState(false);
+  const toggle = () => {
+    setmobileopen(!ismobileopen);
+  };
   return (
     <div>
       <div className="absolute bg-transparent mt-0 hidden lg:block ">
@@ -18,36 +23,35 @@ export default function Navbar() {
             <li className="hover:text-blue-700">
               <a href="#">Help</a>
             </li>
-            {/* <li>Sign In</li>
-                <li>Register</li> */}
+          
           </ul>
           <ul className="hidden lg:flex space-x-12 w-auto mr-96 justify-center items-center ">
             <li>
               <button className="bg-white px-8 py-2 rounded-3xl text-blue-700 font-semibold">
-                <a href="#">Login</a>
+              <Link to='/login'>Login</Link>
               </button>
             </li>
             <li>
               <a className="text-blue-700 font-semibold" href="#">
-                Register
+              <Link to='/signup'>Register</Link>
               </a>
             </li>
           </ul>
         </nav>
       </div>
       <div>
-
-        <div className="block">
+        <div className="block bg-gradient-to-br from-blue-100 to-white-400">
           <button
             type="button"
-            class="mt-4 ml-4 inline-flex lg:hidden items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+            className="mt-4 ml-4 inline-flex lg:hidden items-center justify-center rounded-md p-2 text-gray-400 hover:text-black focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
             aria-controls="mobile-menu"
-            aria-expanded="false"
+            aria-expanded={ismobileopen}
+            onClick={toggle}
           >
-            <span class="sr-only">Open main menu</span>
+            <span className="sr-only">Open main menu</span>
 
             <svg
-              class="block h-6 w-6"
+              className={`block h-6 w-6 ${ismobileopen ? "hidden" : ""}`}
               fill="none"
               viewBox="0 0 24 24"
               stroke-width="1.5"
@@ -62,7 +66,7 @@ export default function Navbar() {
             </svg>
 
             <svg
-              class="hidden h-6 w-6"
+              className={`h-6 w-6 ${ismobileopen ? "" : "hidden"}`}
               fill="none"
               viewBox="0 0 24 24"
               stroke-width="1.5"
@@ -76,11 +80,11 @@ export default function Navbar() {
               />
             </svg>
           </button>
-          <div class="sm:hidden" id="mobile-menu">
+          <div className={`sm:hidden ${ismobileopen ? "" : "hidden"}`} id="mobile-menu">
             <div class="space-y-1 px-2 pt-2 pb-3">
               <a
                 href="#"
-                class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
+                className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
                 aria-current="page"
               >
                 Dashboard
@@ -88,28 +92,27 @@ export default function Navbar() {
 
               <a
                 href="#"
-                class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+                className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
               >
                 Team
               </a>
 
               <a
                 href="#"
-                class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+                className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
               >
                 Projects
               </a>
 
               <a
                 href="#"
-                class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+                className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
               >
                 Calendar
               </a>
             </div>
           </div>
-              </div>
-              
+        </div>
       </div>
     </div>
   );

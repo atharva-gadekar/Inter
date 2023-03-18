@@ -1,6 +1,8 @@
 import React from "react";
 import image from "../assets/Group-5674.png";
-import Navbar from "./Navbar";
+import Navbar from "../components/Navbar";
+import { Link } from "react-router-dom";
+
 
 function Login() {
   return (
@@ -49,12 +51,15 @@ function Login() {
             </div>
             <a href="#" className="text-blue-500 font-medium">Forgot password?</a>
           </div>
+          <Link to='/home'>
           <button
             type="submit"
             className="w-full mt-1 lg:mt-3 px-4 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-lg"
           >
-            SIGN IN
+           SIGN IN
+        
           </button>
+          </Link>
         </form>
       </div>
     </div>
@@ -63,3 +68,4 @@ function Login() {
 }
 
 export default Login;
+
