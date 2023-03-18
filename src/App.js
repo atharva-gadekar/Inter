@@ -1,17 +1,20 @@
 
 import './App.css';
+import Homepage from './components/Homepage';
 import Login from './components/Login';
+import Navbarhome from './components/Navbarhome';
 import Signup from './components/Signup';
-import Navbar from './components/Navbar';
+
+
 
 function App() {
   return (
     <>
-
-     <Signup/>
+<Homepage/>
+   
     </>
   )
 
 }
 
-export default App;
+export default App
