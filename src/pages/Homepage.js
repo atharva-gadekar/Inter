@@ -1,9 +1,9 @@
 import React from 'react';
-import Navbarhome from './Navbarhome';
-
+import Navbarhome from '../components/Navbarhome';
+import '../App.css';
 
 const Homepage = () => {
-  document.body.style.backgroundColor = '#f5f5f5';
+ 
   return (
     <div>
       <Navbarhome />
