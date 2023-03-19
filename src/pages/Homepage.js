@@ -20,15 +20,13 @@ const Homepage = () => {
       <div className="col-start-3 col-end-10 row-start-2 row-end-4">
         <CreatePost />
       </div>
-      <div className="col-start-3 col-end-10 row-start-4 row-end-6">
+      {/* <div className="col-start-3 col-end-10 row-start-4 row-end-6">
         <Post />
-      </div>
-      <div className="col-start-10 col-end-13 row-start-2 row-end-6">
-        <Chat />
-      </div>
-      <div className="col-start-1 col-end-3 row-start-6 row-end-7">
+      </div> */}
+
+      {/* <div className="col-start-1 col-end-3 row-start-6 row-end-7">
         <ProfileSidebar />
-      </div>
+      </div> */}
     </div>
   );
 };
