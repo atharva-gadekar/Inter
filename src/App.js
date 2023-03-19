@@ -6,6 +6,8 @@ import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import CreatePost from './components/CreatePost';
 import Chat from './components/Chat';
+import ProfileSidebar from './components/ProfileSidebar';
+
 
 function App() {
   return (
