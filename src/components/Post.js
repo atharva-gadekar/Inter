@@ -14,7 +14,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export default function Post() {
   return (
     <>
-      <div className="p-12 w-1/3 bg-white ml-auto mr-auto shadow-md pb-16">
+      <div className="p-12 w-[97%] scale-90 rounded-2xl bg-white mx-8 shadow-md pb-6 mt-[6.2rem]">
         <img
           src={postimg}
           className=" mr-auto ml-auto outline outline-white -outline-offset-4"
@@ -66,12 +66,13 @@ export default function Post() {
             <h3>Jonathan Doe</h3>
           </div>
         </div>
-      </div>
-      <div className=" mr-auto ml-auto text-center -mt-5">
+        <div className=" mr-auto ml-auto text-center mt-8 ">
         <button className="bg-slate-700 text-white p-2 pl-4 pr-4 text-sm font-medium">
           Continue Reading
         </button>
       </div>
+      </div>
+     
     </>
   );
 }
