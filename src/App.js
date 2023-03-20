@@ -12,7 +12,7 @@ import ProfileSidebar from './components/ProfileSidebar';
 function App() {
   return (
     
-<Homepage/>
+<Chat/>
   //   <BrowserRouter>
   //   <Routes>
   //       <Route path="/home" element={<Homepage />} />
