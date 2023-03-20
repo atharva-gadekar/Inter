@@ -2,6 +2,7 @@ import React from "react";
 import image from "../assets/Group-5674.png";
 import ImgUpload from "../components/ImgUpload";
 import Navbar from "../components/Navbar";
+import { Link } from "react-router-dom";
 
 function Signup() {
   return (
@@ -91,12 +92,14 @@ function Signup() {
 							className="w-full px-4 py-3 bg-[#dfe6f9] border border-gray-300 rounded-lg"
 						/>
 					</div>
+					<Link to='/login'>
 					<button
 						type="submit"
 						className="w-full mt-3 px-4 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-lg "
 					>
 						REGISTER
 					</button>
+					</Link>
 					<p className="text-left -mt-1 text-gray-500">
 						Already have an account?{" "}
 						<a href="#" className="text-blue-500">

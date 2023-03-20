@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const [ismobileopen, setmobileopen] = useState(false);
@@ -28,12 +28,12 @@ export default function Navbar() {
           <ul className="hidden lg:flex space-x-12 w-auto mr-96 justify-center items-center ">
             <li>
               <button className="bg-white px-8 py-2 rounded-3xl text-blue-700 font-semibold">
-              {/* <Link to='/login'>Login</Link> */}
+              <Link to='/login'>Login</Link>
               </button>
             </li>
             <li>
               <a className="text-blue-700 font-semibold" href="#">
-              {/* <Link to='/signup'>Register</Link> */}
+              <Link to='/'>Register</Link>
               </a>
             </li>
           </ul>

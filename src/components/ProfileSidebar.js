@@ -4,7 +4,7 @@ import profile from "../assets/Frame 6 1.png"
 export default function ProfileSidebar() {
   return (
     <div>
-          <div className='bg-white p-1 w-[112%] rounded-3xl mx-5 mt-3'>
+          <div className='bg-white p-1 w-[112%] rounded-3xl mx-5 mt-6'>
               <img src={profile_bg} alt="" className='rounded-2xl mt-4 px-4'/>
               <img src={profile} className="-mt-12 mr-auto ml-auto rounded-2xl h-20 w-20"></img>
               <h1 className='text-center font-bold text-2xl mt-4'>Nick Rybak</h1>

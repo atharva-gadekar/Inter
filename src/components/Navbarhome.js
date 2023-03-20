@@ -7,12 +7,12 @@ const Navbarhome = () => {
       <div className="flex items-center flex-shrink-0 text-gray-800">
         <div className="flex items-center">
           <img src={logo} alt="Logo" className="h-8 w-8 mr-2 rounded-md" />
-          <h1 className="font-semibold text-base tracking-tight">Nick Ryback</h1>
+          <h1 className="font-semibold text-base tracking-tight">Aditya Sharma</h1>
         </div>
       </div>
       <div className="flex items-center justify-center flex-grow ">
         <div className="text-[#0a66c2]">
-          <h1 className="font-bold ml-9 text-3xl tracking-tight">Linkedin</h1>
+          <h1 className="font-bold ml-9 text-3xl tracking-tight">Inter</h1>
         </div>
       </div>
      

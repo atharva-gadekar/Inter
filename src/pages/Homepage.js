@@ -4,7 +4,7 @@ import Sidebar from '../components/Sidebar';
 import ProfileSidebar from '../components/ProfileSidebar';
 import CreatePost from '../components/CreatePost';
 import Post from '../components/Post';
-import Chat from '../components/Chat';
+import Connect from '../components/Connect';
 import '../App.css';
 
 const Homepage = () => {
@@ -24,9 +24,9 @@ const Homepage = () => {
           <Post />
         </div>
         <div className="w-1/6">
-          {/* <div className="sticky top-0 h-screen">
-            <Chat />
-          </div> */}
+          <div className="sticky top-0 h-screen">
+            <Connect />
+          </div>
         </div>
       </div>
     </div>
