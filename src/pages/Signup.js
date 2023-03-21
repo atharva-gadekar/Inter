@@ -3,9 +3,34 @@ import image from "../assets/Group-5674.png";
 import ImgUpload from "../components/ImgUpload";
 import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
+import {useForm} from 'react-hook-form';
+import {yupResolver} from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
+const schema=yup.object().shape({
+	name:yup.string().required(),
+	collegeName:yup.string().required(),
+	year:yup.number().positive().integer().required(),
+branch:yup.string().required(),
+email:yup.string().email().required(),
+interests:yup.string().required(),
+password:yup.string().min(4).max(15).required()
+})
 
 function Signup() {
+const{register,handleSubmit}=useForm({
+	resolver:yupResolver(schema),
+});
+
+const submitForm=(data)=>{
+console.log(obj);
+console.log(data);
+}
+
+var obj = {}
+
   return (
+	
 		<>
 			<Navbar />
 			<div className="block lg:flex items-center justify-center min-h-screen lg:justify-evenly bg-gradient-to-br from-blue-100 to-white-400 overflow-y-hidden">
@@ -32,74 +57,96 @@ function Signup() {
 
 				{/* form begins here */}
 				{/* ml-auto mt-4 lg:mt-0 mr-auto lg:w-[23%] flex justify-center lg:block lg:ml-[17.5rem] lg:mr-0 */}
-				<form className="flex flex-col gap-4 w-[340px] lg:w-[550px] mt-4 lg:mt-[7.25rem] ml-auto mr-auto lg:ml-0 justify-center mb-4 lg:mr-0">
+				<form onSubmit={handleSubmit(submitForm)} className="flex h-20 scale-75 flex-col gap-4 w-[340px] lg:w-[550px] mt-4 lg:mt-[7.25rem] ml-auto mr-auto lg:ml-0 justify-center mb-4 lg:mr-0">
 					<div className="flex lg:w-[auto] gap-4 justify-between">
 						<div className="flex flex-col w-full">
 							<input
+							id ="name"
+							name="name"
 								type="text"
-								placeholder="First Name"
+								placeholder="Name"
 								className="w-full px-4 py-3 bg-[#dfe6f9] border-gray-300 rounded-lg"
+								{...register('name', { required: true })}
 							/>
 						</div>
-						<div className="flex flex-col w-full">
-							<input
-								type="text"
-								placeholder="Last Name"
-								className="w-full px-4 py-3 bg-[#dfe6f9] border-gray-300 rounded-lg"
-							/>
-						</div>
+
 					</div>
 					<div className="flex flex-col">
 						<input
 							type="text"
-							placeholder="Location"
+							id="collegeName"
+							name="collegeName"
+							placeholder="College Name"
 							className="w-full px-4 py-3 bg-[#dfe6f9] border-gray-300 rounded-lg"
+							{...register('collegeName', { required: true })}
+						/>
+					</div>
+					<div className="flex flex-col">
+						<input
+							type="number"
+							id="year"
+name="year"
+							placeholder="Year"
+							className="w-full px-4 py-3 bg-[#dfe6f9] border-gray-300 rounded-lg"
+							{...register('year', { required: true })}
 						/>
 					</div>
 					<div className="flex flex-col">
 						<input
 							type="text"
-							placeholder="Occupation"
+							id="branch"
+							name="branch"
+							placeholder="Branch"
 							className="w-full px-4 py-3 bg-[#dfe6f9] border-gray-300 rounded-lg"
+							{...register('branch', { required: true })}
 						/>
 					</div>
 					<div className="flex flex-col">
-						<input
+						{/* <input
 							type="text"
-							placeholder="Location"
-							className="w-full px-4 py-3 bg-[#dfe6f9] border-gray-300 rounded-lg"
-						/>
-					</div>
-					<div className="flex flex-col">
-						<input
-							type="text"
+							name="picture"
 							placeholder="Upload your profile picture"
 							className="w-full px-4 py-3 bg-[#dfe6f9] border-gray-300 rounded-lg"
-						/>
-						{/* <ImgUpload /> */}
+							{...register('picture', { required: true })}
+						/> */}
+						<ImgUpload obj={obj}/>
 					</div>
 					<div className="flex flex-col">
 						<input
 							type="text"
 							placeholder="Enter your email address"
+							name="email"
 							className="w-full px-4 py-3 bg-[#dfe6f9] border-gray-300 rounded-lg"
+							{...register('email', { required: true })}
+						/>
+					</div>
+					<div className="flex flex-col">
+						<input
+							type="text"
+							id="interests"
+							name="interests"
+							placeholder="Enter your interests"
+							className="w-full px-4 py-3 bg-[#dfe6f9] border-gray-300 rounded-lg"
+							{...register('interests', { required: true })}
 						/>
 					</div>
 					<div className="flex flex-col">
 						<input
 							type="password"
-							placeholder="Enter password"
+							placeholder="Set a password"
+							name="password"
 							className="w-full px-4 py-3 bg-[#dfe6f9] border border-gray-300 rounded-lg"
+							{...register('password', { required: true })}
 						/>
 					</div>
-					<Link to='/login'>
+					{/* <Link to='/login'> */}
 					<button
 						type="submit"
 						className="w-full mt-3 px-4 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-lg "
 					>
 						REGISTER
 					</button>
-					</Link>
+					{/* </Link> */}
 					<p className="text-left -mt-1 text-gray-500">
 						Already have an account?{" "}
 						<a href="#" className="text-blue-500">

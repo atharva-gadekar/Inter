@@ -33,6 +33,8 @@ function Login() {
           <div className="flex flex-col w-96 lg:w-auto">
             <input
               type="text"
+              id="email"
+              name="email"
               placeholder="Enter your email address"
               className="w-full px-4 py-3 bg-[#dfe6f9] border-gray-300 rounded-lg"
             />
@@ -40,6 +42,8 @@ function Login() {
           <div className="flex flex-col">
             <input
               type="password"
+              id="password"
+              name="password"
               placeholder="Enter password"
               className="w-full px-4 py-3 bg-[#dfe6f9] border border-gray-300 rounded-lg"
             />

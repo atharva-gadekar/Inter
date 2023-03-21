@@ -14,7 +14,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export default function Post() {
   return (
     <>
-      <div className="p-12 w-[92%] scale-90 rounded-2xl bg-white mx-8 shadow-md pb-6 mt-[7.2rem]">
+      <div className="p-12 w-[92%] scale-90 rounded-2xl bg-white mx-8 shadow-md pb-2 -mt-3">
         <img
           src={postimg}
           className=" mr-auto ml-auto outline outline-white -outline-offset-4"

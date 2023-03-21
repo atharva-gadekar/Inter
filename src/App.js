@@ -7,10 +7,11 @@ import Sidebar from './components/Sidebar';
 import CreatePost from './components/CreatePost';
 import Chat from './components/Connect';
 import ProfileSidebar from './components/ProfileSidebar';
-
+import ImgUpload from './components/ImgUpload';
 
 function App() {
   return (
+
 
     <BrowserRouter>
     <Routes>

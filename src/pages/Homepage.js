@@ -14,17 +14,18 @@ const Homepage = () => {
       <Navbarhome />
       <div className="flex flex-1">
         <div className="w-1/6">
-          <div className="sticky top-0">
+          <div className="sticky top-4">
             <Sidebar />
             <ProfileSidebar />
           </div>
         </div>
-        <div className="w-2/3">
+        <div className="w-2/3 mt-4">
           <CreatePost />
           <Post />
+          <Post />
         </div>
-        <div className="w-1/6">
-          <div className="sticky top-0 h-screen">
+        <div className="w-1/6 mt-[0.9rem]">
+          <div className="sticky top-4 ">
             <Connect />
           </div>
         </div>

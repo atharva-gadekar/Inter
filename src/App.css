@@ -40,3 +40,7 @@
 body{
   background-color: #f5f5f5;
 }
+
+.ant-upload-wrapper{
+  width: 100%;
+}
