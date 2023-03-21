@@ -3,7 +3,10 @@ import image from "../assets/Group-5674.png";
 import ImgUpload from "../components/ImgUpload";
 import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
-
+import {
+	faGoogle
+  } from "@fortawesome/free-brands-svg-icons";
+  import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function Signup() {
   return (
 		<>
@@ -95,9 +98,17 @@ function Signup() {
 					<Link to='/login'>
 					<button
 						type="submit"
-						className="w-full mt-3 px-4 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-lg "
+						className="w-full mt-3 px-4 py-3 bg-blue-500 text-white font-semibold rounded-lg"
 					>
-						REGISTER
+						Create Account
+					  </button>
+					  
+					  <button
+						type="submit"
+						className="w-full mt-3 px-4 py-3 text-blue-500 border border-gray-300 bg-[#dfe6f9] font-semibold rounded-lg mb-4"
+					  >
+						  <FontAwesomeIcon icon={faGoogle} className="mr-5" />
+						Sign Up with Google
 					</button>
 					</Link>
 					<p className="text-left -mt-1 text-gray-500">

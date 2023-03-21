@@ -13,15 +13,15 @@ import BlogPage from './components/BlogPage';
 function App() {
   return (
 
-  //   <BrowserRouter>
-  //   <Routes>
-  //       <Route path="/home" element={<Homepage />} />
-  //       <Route path="/login" element={<Login />} />
-  //       <Route path="/" element={<Signup />} />
-  //       </Routes>
-  // </BrowserRouter>
+    <BrowserRouter>
+    <Routes>
+        <Route path="/home" element={<Homepage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Signup />} />
+        </Routes>
+  </BrowserRouter>
   
- <BlogPage/>
+ 
     
   );
 }
