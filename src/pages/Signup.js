@@ -22,13 +22,26 @@ const{register,handleSubmit}=useForm({
 	resolver:yupResolver(schema),
 });
 
-const submitForm=(data)=>{
-console.log(obj);
-console.log(data);
-}
-
-var obj = {}
-
+const submitForm = async (data) => {
+	try {
+	  const formData = new FormData();
+	  for (let key in data) {
+			formData.append(key, data[key]);
+		  
+	  }
+	  const response = await fetch("https://inter-api-8q0x.onrender.com/auth/register", {
+		method: "POST",
+		body: formData
+	  });
+	  const result = await response.json();
+	  console.log(result);
+	} 
+	catch (error) {
+	  console.error(error);
+	}
+  };
+  
+  
   return (
 	
 		<>
@@ -57,7 +70,7 @@ var obj = {}
 
 				{/* form begins here */}
 				{/* ml-auto mt-4 lg:mt-0 mr-auto lg:w-[23%] flex justify-center lg:block lg:ml-[17.5rem] lg:mr-0 */}
-				<form onSubmit={handleSubmit(submitForm)} className="flex h-20 scale-75 flex-col gap-4 w-[340px] lg:w-[550px] mt-4 lg:mt-[7.25rem] ml-auto mr-auto lg:ml-0 justify-center mb-4 lg:mr-0">
+				<form onSubmit={handleSubmit(submitForm)} className="flex h-20 scale-95 flex-col gap-4 w-[340px] lg:w-[550px] mt-4 lg:mt-[7.25rem] ml-auto mr-auto lg:ml-0 justify-center mb-4 lg:mr-0">
 					<div className="flex lg:w-[auto] gap-4 justify-between">
 						<div className="flex flex-col w-full">
 							<input
@@ -102,14 +115,15 @@ name="year"
 						/>
 					</div>
 					<div className="flex flex-col">
-						{/* <input
-							type="text"
+						<input
+							type="file"
+							id="picture"
 							name="picture"
 							placeholder="Upload your profile picture"
 							className="w-full px-4 py-3 bg-[#dfe6f9] border-gray-300 rounded-lg"
 							{...register('picture', { required: true })}
-						/> */}
-						<ImgUpload obj={obj}/>
+						/>
+						{/* <ImgUpload /> */}
 					</div>
 					<div className="flex flex-col">
 						<input

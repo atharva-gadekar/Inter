@@ -1,7 +1,7 @@
 import {Button,Upload} from 'antd'
 
 
-export default function App(obj){
+export default function App(){
 	return(
 <div
 style={{
@@ -13,14 +13,13 @@ style={{
 >
 
 	<Upload.Dragger
-	multiple={false}
+	multiple = {false}
 	listType="picture"
  action={"http://localhost:3000/"}
  showUploadList={{showRemoveIcon:true}}
  accept=".png,.jpeg,.doc"
  beforeUpload={(file)=>{
-	// console.log({file});
-	obj={...file};
+	console.log({file});
 	return false;
  }}
 style={{
