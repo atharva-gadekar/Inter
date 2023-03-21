@@ -19,7 +19,7 @@ export default function ProfileSidebar() {
                   <p>Views of your post</p>
                   <p className='text-blue-600'>9767</p>
               </div>
-</div>
+    </div>
               
 
               
