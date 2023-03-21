@@ -6,6 +6,11 @@ import { Link } from "react-router-dom";
 import {useForm} from 'react-hook-form';
 import {yupResolver} from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import {
+	faGoogle
+  } from "@fortawesome/free-brands-svg-icons";
+  import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 
 const schema=yup.object().shape({
 	name:yup.string().required(),
@@ -16,6 +21,8 @@ email:yup.string().email().required(),
 interests:yup.string().required(),
 password:yup.string().min(4).max(15).required()
 })
+
+
 
 function Signup() {
 const{register,handleSubmit}=useForm({
@@ -156,9 +163,17 @@ name="year"
 					{/* <Link to='/login'> */}
 					<button
 						type="submit"
-						className="w-full mt-3 px-4 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-lg "
+						className="w-full mt-3 px-4 py-3 bg-blue-500 text-white font-semibold rounded-lg"
 					>
-						REGISTER
+						Create Account
+					  </button>
+					  
+					  <button
+						type="submit"
+						className="w-full mt-3 px-4 py-3 text-blue-500 border border-gray-300 bg-[#dfe6f9] font-semibold rounded-lg mb-4"
+					  >
+						  <FontAwesomeIcon icon={faGoogle} className="mr-5" />
+						Sign Up with Google
 					</button>
 					{/* </Link> */}
 					<p className="text-left -mt-1 text-gray-500">

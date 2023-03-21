@@ -8,6 +8,9 @@ import CreatePost from './components/CreatePost';
 import Chat from './components/Connect';
 import ProfileSidebar from './components/ProfileSidebar';
 import ImgUpload from './components/ImgUpload';
+import BlogPage from './components/BlogPage';
+
+
 
 function App() {
   return (
