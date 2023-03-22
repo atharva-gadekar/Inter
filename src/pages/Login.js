@@ -23,14 +23,14 @@ function Login() {
         
         {/* image */}
         <div className="relative">
-          <img className="lg:w-[80%] transform -rotate-[20deg] mt-10 mr-auto ml-auto lg:ml-32 lg:mt-[-4rem]" src={image} alt="Login Image"/>
+          <img className="w-[60%] lg:w-[80%] transform -rotate-[20deg] mt-10 mr-auto ml-auto lg:ml-32 lg:mt-[-4rem]" src={image} alt="Login Image"/>
         </div>
       </div>
 
       {/* form */}
-      <div className="ml-auto mt-4 lg:mt-0 mr-auto lg:w-[23%] flex justify-center lg:block lg:ml-[17.5rem] lg:mr-0">
-        <form className="flex flex-col gap-4 mb-4">
-          <div className="flex flex-col w-96 lg:w-auto">
+      <div className="ml-auto lg:mt-0 mr-auto lg:w-[23%] flex justify-center lg:block lg:ml-[17.5rem] lg:mr-0">
+        <form className="flex flex-col gap-4 mb-4 w-[340px] lg:w-[550px]">
+          <div className="flex flex-col">
             <input
               type="text"
               id="email"
