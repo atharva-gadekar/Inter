@@ -68,7 +68,7 @@ const submitForm = async (data) => {
 					{/* image */}
 					<div className="relative">
 						<img
-							className="lg:w-[80%] mt-10 mr-auto ml-auto lg:ml-32 lg:mt-[-4rem] transform -rotate-[20deg]"
+							className="w-[60%] lg:w-[80%] mt-10 mr-auto ml-auto lg:ml-32 lg:mt-[-4rem] transform -rotate-[20deg]"
 							src={image}
 							alt="Login Image"
 						/>
@@ -77,7 +77,7 @@ const submitForm = async (data) => {
 
 				{/* form begins here */}
 				{/* ml-auto mt-4 lg:mt-0 mr-auto lg:w-[23%] flex justify-center lg:block lg:ml-[17.5rem] lg:mr-0 */}
-				<form onSubmit={handleSubmit(submitForm)} className="flex h-20 scale-95 flex-col gap-4 w-[340px] lg:w-[550px] mt-4 lg:mt-[7.25rem] ml-auto mr-auto lg:ml-0 justify-center mb-4 lg:mr-0">
+				<form onSubmit={handleSubmit(submitForm)} className="flex lg:h-20 scale-95 flex-col gap-4 w-[340px] lg:w-[550px] lg:mt-[7.25rem] ml-auto mr-auto lg:ml-0 justify-center mb-4 lg:mr-0">
 					<div className="flex lg:w-[auto] gap-4 justify-between">
 						<div className="flex flex-col w-full">
 							<input
@@ -163,14 +163,14 @@ name="year"
 					{/* <Link to='/login'> */}
 					<button
 						type="submit"
-						className="w-full mt-3 px-4 py-3 bg-blue-500 text-white font-semibold rounded-lg"
+						className="w-full mt-2 px-4 py-3 bg-blue-500 text-white font-semibold rounded-lg"
 					>
 						Create Account
 					  </button>
 					  
 					  <button
 						type="submit"
-						className="w-full mt-3 px-4 py-3 text-blue-500 border border-gray-300 bg-[#dfe6f9] font-semibold rounded-lg mb-4"
+						className="w-full px-4 py-3 text-blue-500 border border-gray-300 bg-[#dfe6f9] font-semibold rounded-lg mb-2"
 					  >
 						  <FontAwesomeIcon icon={faGoogle} className="mr-5" />
 						Sign Up with Google
