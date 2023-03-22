@@ -29,7 +29,7 @@ function Login() {
 
       {/* form */}
       <div className="ml-auto lg:mt-0 mr-auto lg:w-[23%] flex justify-center lg:block lg:ml-[17.5rem] lg:mr-0">
-        <form className="flex flex-col gap-4 mb-4 w-[340px] lg:w-[550px]">
+        <form className="flex flex-col gap-4 mb-4">
           <div className="flex flex-col">
             <input
               type="text"
