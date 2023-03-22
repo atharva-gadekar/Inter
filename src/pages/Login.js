@@ -1,10 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import image from "../assets/Group-5674.png";
 import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
-
+import axios from 'axios';
 
 function Login() {
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  
+    const data = { email : email, password : password};
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+  
+    try {
+      const response = await axios.post('https://inter-api-8q0x.onrender.com/auth/login', JSON.stringify(data), config);
+      console.log(response);
+    } catch (error) {
+      if (error.response.status === 404) {
+        console.log('Resource not found');
+      }
+    }
+  };
+
   return (
    <>
    <Navbar/>
@@ -29,12 +52,13 @@ function Login() {
 
       {/* form */}
       <div className="ml-auto mt-4 lg:mt-0 mr-auto lg:w-[23%] flex justify-center lg:block lg:ml-[17.5rem] lg:mr-0">
-        <form className="flex flex-col gap-4 mb-4">
+        <form className="flex flex-col gap-4 mb-4" onSubmit={handleSubmit}>
           <div className="flex flex-col w-96 lg:w-auto">
             <input
               type="text"
               id="email"
               name="email"
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email address"
               className="w-full px-4 py-3 bg-[#dfe6f9] border-gray-300 rounded-lg"
             />
@@ -44,6 +68,7 @@ function Login() {
               type="password"
               id="password"
               name="password"
+              onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter password"
               className="w-full px-4 py-3 bg-[#dfe6f9] border border-gray-300 rounded-lg"
             />
@@ -55,7 +80,7 @@ function Login() {
             </div>
             <a href="#" className="text-blue-500 font-medium">Forgot password?</a>
           </div>
-          <Link to='/home'>
+          {/* <Link to='/home'> */}
           <button
             type="submit"
             className="w-full mt-1 lg:mt-3 px-4 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-lg"
@@ -63,7 +88,7 @@ function Login() {
            SIGN IN
         
           </button>
-          </Link>
+          {/* </Link> */}
         </form>
       </div>
     </div>
