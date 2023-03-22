@@ -29,6 +29,7 @@ function Login() {
   };
 
   return (
+
     <>
     <Navbar/>
      <div className="block lg:flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-100 to-white-400 overflow-y-hidden">
@@ -95,6 +96,9 @@ function Login() {
      </>
    );
  }
+
+   
+ 
 
 export default Login;
 
