@@ -81,7 +81,7 @@ function Login() {
              </div>
              <a href="#" className="text-blue-500 font-medium">Forgot password?</a>
            </div>
-           <Link to='/home'>
+           {/* <Link to='/home'> */}
            <button
              type="submit"
              className="w-full mt-1 lg:mt-3 px-4 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-lg"
@@ -89,7 +89,7 @@ function Login() {
             SIGN IN
          
            </button>
-           </Link>
+           {/* </Link> */}
          </form>
        </div>
      </div>
