@@ -5,7 +5,7 @@ import { Badge } from 'antd';
 
 const Sidebar = () => {
   return (
-    <div className="bg-white rounded-2xl w-[112%] h-[18rem] flex justify-center items-center mx-5 mt-[0.9rem]  ">
+    <div className="bg-white rounded-2xl w-[112%] h-[18rem] lg:flex justify-center items-center mx-5 mt-[0.9rem] hidden ">
       <ul className="text-[#a0a0a0] -ml-[6rem] mt-8">
         <li className="flex items-center mb-8">
           <FontAwesomeIcon icon={faHome} className="mr-2 text-blue-500" />

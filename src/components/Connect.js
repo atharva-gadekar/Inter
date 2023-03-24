@@ -14,7 +14,7 @@ faHome,
 
 const Connect = () => {
   return (
-    <div className="bg-white rounded-2xl p-6 w-[117%] h-[36rem] -mx-16 ">
+    <div className="bg-white rounded-2xl p-6 w-[117%] h-[36rem] -mx-16 hidden lg:block">
       <h1 className="font-bold text-sm">Friend List</h1>
       <div className="flex pt-6 items-center space-x-4 justify-between">
         <div className="flex items-center space-x-3">

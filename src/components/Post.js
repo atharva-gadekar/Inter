@@ -8,13 +8,19 @@ import {
   faEnvelope,
   faBell,
   faBuilding,
+  faFire,
+  faFireAlt,
+  faHeart,
+  faCommentAlt,
+  faCommenting,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faComment } from "@fortawesome/free-regular-svg-icons";
 
 export default function Post() {
   return (
     <>
-      <div className="p-12 w-[92%] scale-90 rounded-2xl bg-white mx-8 shadow-md pb-2 -mt-3">
+      <div className="p-12 w-[92%] scale-90 rounded-2xl bg-white mr-auto ml-auto lg:mx-8 shadow-md pb-2 -mt-3">
         <img
           src={postimg}
           className=" mr-auto ml-auto outline outline-white -outline-offset-4"
@@ -30,14 +36,14 @@ export default function Post() {
           </div>
 
           <div className="flex justify-center items-center space-x-2">
-            {/* change building icon to comment icon */}
-            <FontAwesomeIcon icon={faBuilding} className="text-pink-700" />
+           
+            <FontAwesomeIcon icon={faCommenting} className="text-pink-700" />
             <p>0</p>
           </div>
 
           <div className="flex justify-center items-center space-x-2">
-            {/* change building icon to fire icon */}
-            <FontAwesomeIcon icon={faBuilding} className="text-pink-700" />
+       
+            <FontAwesomeIcon icon={faHeart} className="text-pink-700" />
             <p>504</p>
           </div>
         </div>
