@@ -9,14 +9,13 @@ import Chat from './components/Connect';
 import ProfileSidebar from './components/ProfileSidebar';
 import ImgUpload from './components/ImgUpload';
 import BlogPage from './components/BlogPage';
-import Post from './components/Post';
-
-
+import Profile from './components/Profile_Settings';
+import Profile_Settings_Sidebar from './components/Profile_Settings_Sidebar';
 
 function App() {
   return (
 
-
+<Profile/>
   //   <BrowserRouter>
   //   <Routes>
   //       <Route path="/home" element={<Homepage />} />
@@ -24,7 +23,6 @@ function App() {
   //       <Route path="/" element={<Signup />} />
   //       </Routes>
   // </BrowserRouter>
-    <BlogPage></BlogPage>
   
  
     

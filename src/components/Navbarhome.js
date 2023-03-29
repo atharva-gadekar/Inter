@@ -1,6 +1,8 @@
 
 import React, { useState } from "react";
 import logo from '../assets/Frame 6 1.png';
+import { faCog } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Navbarhome = () => {
   const [ismobileopen, setmobileopen] = useState(false);
@@ -25,6 +27,8 @@ const Navbarhome = () => {
         <div className="flex items-center w-64">
           <input className="bg-[#f5f5f5] rounded-xl w-full py-2 px-4 mr-2 leading-tight focus:outline-none focus:bg-gray-100" type="text" placeholder="Global search"/>
         </div>
+
+        
     
     </nav>
       
@@ -103,6 +107,9 @@ const Navbarhome = () => {
             </a>
           </div>
         </div> */}
+        <div className="flex items-center mt-1 ml-auto ">
+          <FontAwesomeIcon icon={faCog} size="lg" className="text-blue-700 cursor-pointer lg:hidden " />
+        </div>
         </div>
         </div>
     </>

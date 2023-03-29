@@ -77,7 +77,7 @@ const submitForm = async (data) => {
 
 				{/* form begins here */}
 				{/* ml-auto mt-4 lg:mt-0 mr-auto lg:w-[23%] flex justify-center lg:block lg:ml-[17.5rem] lg:mr-0 */}
-				<form onSubmit={handleSubmit(submitForm)} className="flex lg:h-20 scale-95 flex-col gap-4 w-[340px] lg:w-[550px] lg:mt-[7.25rem] ml-auto mr-auto lg:ml-0 justify-center mb-4 lg:mr-0">
+				<form onSubmit={handleSubmit(submitForm)} className="flex lg:h-20 scale-90 flex-col gap-4 w-[340px] lg:w-[550px] lg:mt-[7.25rem] ml-auto mr-auto lg:ml-0 justify-center mb-4 lg:mr-0" style={{ transform: 'scale(0.78)' }}>
 					<div className="flex lg:w-[auto] gap-4 justify-between">
 						<div className="flex flex-col w-full">
 							<input
@@ -122,15 +122,15 @@ name="year"
 						/>
 					</div>
 					<div className="flex flex-col">
-						<input
-							type="file"
+						{/* <input
+							
 							id="picture"
 							name="picture"
 							placeholder="Upload your profile picture"
 							className="w-full px-4 py-3 bg-[#dfe6f9] border-gray-300 rounded-lg"
 							{...register('picture', { required: true })}
-						/>
-						{/* <ImgUpload /> */}
+						/> */}
+						<ImgUpload {...register('picture', { required: true })}/>
 					</div>
 					<div className="flex flex-col">
 						<input
