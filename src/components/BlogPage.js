@@ -15,7 +15,8 @@ import Navbar from "./Navbar";
 export default function BlogPage() {
   return (
     
-   
+    <>
+      <Navbar/>
     <div className=" lg:w-[70%] mr-auto ml-auto mt-20">
       <img src={post} className="lg:w-[100%] ml-auto mr-auto w-[80%]"></img>
       <div className="flex items-center space-x-4 mt-4 lg:mt-12 lg:mb-6 mb-4 px-24">
@@ -104,6 +105,6 @@ export default function BlogPage() {
         </div>
       </div>
       </div>
-      
+      </>
   );
 }
