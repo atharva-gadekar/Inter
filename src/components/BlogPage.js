@@ -42,7 +42,7 @@ export default function BlogPage() {
             in passion.
           </p>
           <img src={post} alt="" className="pt-12 pb-12 w-[80%] lg:w-auto" />
-          <h2 className="font-extrabold text-slate-800 text-xl mr-12 lg:mr-auto">
+          <h2 className="font-extrabold text-slate-800 text-xl mr-12 lg:mr-auto lg:text-2xl">
             First, We Winnowed Out The Podcasts
           </h2>
           <ul className="p-4 marker:text-blue-600 list-disc text-slate-600 space-y-2">
@@ -61,10 +61,10 @@ export default function BlogPage() {
             Agreed, that's not a very short shortlist.
           </p>
           <img src={post} alt="" className="pt-12 pb-12 w-[80%] lg:w-auto" />
-          <h2 className="font-extrabold text-slate-800 text-xl pr-12 lg:pr-auto">
+          <h2 className="font-extrabold text-slate-800 text-xl lg:text-2xl pr-12 lg:pr-auto">
             So, We Broke It Down Into Five More Reasonably Sized Shortlists:
           </h2>
-          <ul className="p-4 marker:text-blue-600 list-disc text-slate-600 space-y-2 pr-12 lg:pr-auto">
+          <ul className="p-4 marker:text-blue-600 list-disc text-slate-600 space-y-2 pr-12 lg:pr-auto mb-4">
             <li>Podcasts for web designers</li>
             <li>Podcasts for web developers</li>
             <li>Podcasts on the web, the Internet and technology</li>

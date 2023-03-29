@@ -15,7 +15,7 @@ import Profile_Settings_Sidebar from './components/Profile_Settings_Sidebar';
 function App() {
   return (
 
-<Profile/>
+<   BlogPage/>
   //   <BrowserRouter>
   //   <Routes>
   //       <Route path="/home" element={<Homepage />} />
