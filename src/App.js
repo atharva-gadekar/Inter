@@ -9,20 +9,20 @@ import Chat from './components/Connect';
 import ProfileSidebar from './components/ProfileSidebar';
 import ImgUpload from './components/ImgUpload';
 import BlogPage from './components/BlogPage';
-
-
+import Profile from './components/Profile_Settings';
+import Profile_Settings_Sidebar from './components/Profile_Settings_Sidebar';
 
 function App() {
   return (
 
-
-    <BrowserRouter>
-    <Routes>
-        <Route path="/home" element={<Homepage />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/" element={<Signup />} />
-        </Routes>
-  </BrowserRouter>
+<Profile/>
+  //   <BrowserRouter>
+  //   <Routes>
+  //       <Route path="/home" element={<Homepage />} />
+  //       <Route path="/login" element={<Login />} />
+  //       <Route path="/" element={<Signup />} />
+  //       </Routes>
+  // </BrowserRouter>
   
  
     
