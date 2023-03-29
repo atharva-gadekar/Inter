@@ -2,7 +2,7 @@ import Homepage from './pages/Homepage';
 import Navbarhome from './components/Navbarhome';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import { BrowserRouter,Routes,Route } from 'react-router-dom';
+// import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import CreatePost from './components/CreatePost';
 import Chat from './components/Connect';
@@ -15,7 +15,7 @@ import Profile_Settings_Sidebar from './components/Profile_Settings_Sidebar';
 function App() {
   return (
 
-<Profile/>
+<   BlogPage/>
   //   <BrowserRouter>
   //   <Routes>
   //       <Route path="/home" element={<Homepage />} />

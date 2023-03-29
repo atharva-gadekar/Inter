@@ -10,36 +10,40 @@ import {
   faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Navbar from "./Navbar";
 
 export default function BlogPage() {
   return (
-    <div className=" w-[70%] mr-auto ml-auto ">
-      <img src={post} className="w-[100%]"></img>
-      <div className="flex items-center space-x-4 mt-12 mb-6 px-24">
+    
+    <>
+      <Navbar/>
+    <div className=" lg:w-[70%] mr-auto ml-auto mt-20">
+      <img src={post} className="lg:w-[100%] ml-auto mr-auto w-[80%]"></img>
+      <div className="flex items-center space-x-4 mt-4 lg:mt-12 lg:mb-6 mb-4 px-24">
         <img src={blank} alt="" className="h-8 w-8 rounded-full" />
-        <p className="text-sm text-slate-600">
+        <p className="text-xs lg:text-sm text-slate-600">
           By Saishree Kouda, Scarlet Magazine
         </p>
       </div>
-      <div className="flex space-x-12 place-items-start">
-        <div className="flex flex-col space-y-3 p-2">
+      <div className="lg:flex space-x-12 lg:place-items-start ">
+        <div className="flex lg:flex-col lg:space-y-3 pb-4 lg:pt-2 lg:pb-2 justify-center">
           <FontAwesomeIcon icon={faFacebook} className="mr-5 text-blue-600" />
           <FontAwesomeIcon icon={faTwitter} className="mr-5 text-blue-600" />
           <FontAwesomeIcon icon={faInstagram} className="mr-5 text-blue-600" />
           <FontAwesomeIcon icon={faLinkedin} className="mr-5 text-blue-600" />
         </div>
-        <div className="pr-48">
-          <h1 className="font-extrabold text-5xl text-slate-800 leading-[1.25]">
+        <div className="justify-center ml-auto mr-auto">
+          <h2 className="font-extrabold text-2xl lg:text-5xl text-slate-800 lg:leading-[1.25] ">
             Which Podcasts Should Web Developers And Designers Be Listening To?
-          </h1>
-          <p className="text-slate-600 mt-4">
+          </h2>
+          <p className="text-slate-600 mt-4 mr-12 lg:mr-auto">
             What podcasts Scarlet community listened to, aiming to complete a
             shortlist of current podcasts for web designers ond developers. We
             had what can be coded to a very strong response both in number and
             in passion.
           </p>
-          <img src={post} alt="" className="pt-12 pb-12" />
-          <h2 className="font-extrabold text-slate-800 text-2xl">
+          <img src={post} alt="" className="pt-12 pb-12 w-[80%] lg:w-auto" />
+          <h2 className="font-extrabold text-slate-800 text-xl mr-12 lg:mr-auto lg:text-2xl">
             First, We Winnowed Out The Podcasts
           </h2>
           <ul className="p-4 marker:text-blue-600 list-disc text-slate-600 space-y-2">
@@ -47,7 +51,7 @@ export default function BlogPage() {
             <li>On a broader theme (Eg: Hey, Hi, Hello)</li>
             <li>On a broader theme (Eg: Hey, Hi, Hello)</li>
           </ul>
-          <p className="text-slate-600 mt-4">
+          <p className="text-slate-600 mt-4 mr-12 lg:mr-auto">
             When we filtered out those that had produced no new content in the
             last three months or more (although then we did have to make some
             exceptions, as you'll see), and ordered the rest according to how
@@ -57,12 +61,12 @@ export default function BlogPage() {
             {" "}
             Agreed, that's not a very short shortlist.
           </p>
-          <img src={post} alt="" className="pt-12 pb-12" />
-          <h2 className="font-extrabold text-slate-800 text-2xl">
+          <img src={post} alt="" className="pt-12 pb-12 w-[80%] lg:w-auto" />
+          <h2 className="font-extrabold text-slate-800 text-xl lg:text-2xl pr-12 lg:pr-auto">
             So, We Broke It Down Into Five More Reasonably Sized Shortlists:
           </h2>
-          <ul className="p-4 marker:text-blue-600 list-disc text-slate-600 space-y-2">
-            <li> Podcasts for web designers</li>
+          <ul className="p-4 marker:text-blue-600 list-disc text-slate-600 space-y-2 pr-12 lg:pr-auto mb-4">
+            <li>Podcasts for web designers</li>
             <li>Podcasts for web developers</li>
             <li>Podcasts on the web, the Internet and technology</li>
             <li>Business podcasts for web professionals</li>
@@ -72,15 +76,19 @@ export default function BlogPage() {
             </li>
                   </ul>
                   {/* comment section */}
-                  <hr></hr> 
+                  <hr className="mr-12 lg:mr-auto"></hr> 
                   <div className="flex p-1  pt-5 space-x-12 mb-20">
                       <img src={blank} alt="" className="rounded-full h-8 w-8" />
-                      <p className="text-slate-400 text-sm"> Write a Comment...</p>
-
+          
+            <input
+               type="text"   
+               placeholder="Write a comment..."
+               className="text-slate-400 text-sm !outline-none bg-transparent "
+             />
                   </div>
-                  <hr className=""></hr>
+                  <hr className="mr-12 lg:mr-auto"></hr>
 
-                  <div className="flex p-1  pt-5 space-x-12 ">
+                  <div className="flex p-1  pt-5 space-x-12 mr-12 lg:mr-auto">
                       <img src={blank} alt="" className="rounded-full h-8 w-8" />
                      
                       <div>
@@ -96,6 +104,7 @@ export default function BlogPage() {
                     
         </div>
       </div>
-    </div>
+      </div>
+      </>
   );
 }
