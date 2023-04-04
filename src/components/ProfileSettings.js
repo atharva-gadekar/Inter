@@ -3,7 +3,7 @@ import imagee from "../assets/jr-korpa-wAXD_Its-48-unsplash.jpg";
 import profile from "../assets/pexels-pixabay-220453.jpg";
 import { FaEdit } from "react-icons/fa";
 import Navbarhome from "./Navbarhome";
-import ProfileSidebar from "./Profile_Settings_Sidebar";
+
 
 const Profile_Settings = () => {
   return (
