@@ -27,13 +27,13 @@ export default function BlogPage() {
       </div>
       <div className="lg:flex space-x-12 lg:place-items-start ">
         <div className="flex lg:flex-col lg:space-y-3 pb-4 lg:pt-2 lg:pb-2 justify-center">
-          <FontAwesomeIcon icon={faFacebook} className="mr-5 text-blue-600" />
-          <FontAwesomeIcon icon={faTwitter} className="mr-5 text-blue-600" />
-          <FontAwesomeIcon icon={faInstagram} className="mr-5 text-blue-600" />
-          <FontAwesomeIcon icon={faLinkedin} className="mr-5 text-blue-600" />
+          <FontAwesomeIcon icon={faFacebook} className="mr-5 text-blue-600 text-lg lg:text-base" />
+          <FontAwesomeIcon icon={faTwitter} className="mr-5 text-blue-600 text-lg lg:text-base" />
+          <FontAwesomeIcon icon={faInstagram} className="mr-5 text-blue-600 text-lg lg:text-base" />
+          <FontAwesomeIcon icon={faLinkedin} className="mr-5 text-blue-600 text-lg lg:text-basegit" />
         </div>
         <div className="justify-center ml-auto mr-auto">
-          <h2 className="font-extrabold text-2xl lg:text-5xl text-slate-800 lg:leading-[1.25] ">
+          <h2 className="font-extrabold text-2xl lg:text-5xl text-slate-800 lg:leading-[1.25] mr-12 lg:mr-auto">
             Which Podcasts Should Web Developers And Designers Be Listening To?
           </h2>
           <p className="text-slate-600 mt-4 mr-12 lg:mr-auto">

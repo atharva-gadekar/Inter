@@ -9,13 +9,14 @@ import Chat from './components/Connect';
 import ProfileSidebar from './components/ProfileSidebar';
 import ImgUpload from './components/ImgUpload';
 import BlogPage from './components/BlogPage';
-import Profile from './components/Profile_Settings';
+import Profile from './components/ProfileSettings';
 import Profile_Settings_Sidebar from './components/Profile_Settings_Sidebar';
+import Profile_Settings from './components/ProfileSettings';
 
 function App() {
   return (
 
-<   BlogPage/>
+< Profile_Settings/>
   //   <BrowserRouter>
   //   <Routes>
   //       <Route path="/home" element={<Homepage />} />
