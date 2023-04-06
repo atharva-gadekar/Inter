@@ -8,10 +8,14 @@ function Login() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
   
-    const data = { email : email, password : password};
+    const data = { 
+      email : email, 
+      password : password
+    };
     const config = {
       headers: {
         'Content-Type': 'application/json'
@@ -21,7 +25,8 @@ function Login() {
     try {
       const response = await axios.post('https://inter-api-8q0x.onrender.com/auth/login', JSON.stringify(data), config);
       console.log(response);
-    } catch (error) {
+    }
+     catch (error) {
       if (error.response.status === 404) {
         console.log('Resource not found');
       }
@@ -81,7 +86,7 @@ function Login() {
              </div>
              <a href="#" className="text-blue-500 font-medium">Forgot password?</a>
            </div>
-           {/* <Link to='/home'> */}
+           <Link to='/home'>
            <button
              type="submit"
              className="w-full mt-1 lg:mt-3 px-4 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-lg"
@@ -89,7 +94,7 @@ function Login() {
             SIGN IN
          
            </button>
-           {/* </Link> */}
+           </Link>
          </form>
        </div>
      </div>

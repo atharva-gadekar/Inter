@@ -10,20 +10,20 @@ import ProfileSidebar from './components/ProfileSidebar';
 import ImgUpload from './components/ImgUpload';
 import BlogPage from './components/BlogPage';
 import Profile from './components/ProfileSettings';
-import Profile_Settings_Sidebar from './components/Profile_Settings_Sidebar';
 import Profile_Settings from './components/ProfileSettings';
+import { BrowserRouter,Route,Routes } from 'react-router-dom';
 
 function App() {
   return (
 
-< Profile_Settings/>
-  //   <BrowserRouter>
-  //   <Routes>
-  //       <Route path="/home" element={<Homepage />} />
-  //       <Route path="/login" element={<Login />} />
-  //       <Route path="/" element={<Signup />} />
-  //       </Routes>
-  // </BrowserRouter>
+
+    <BrowserRouter>
+    <Routes>
+        <Route path="/home" element={<Homepage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Signup />} />
+        </Routes>
+  </BrowserRouter>
   
  
     
