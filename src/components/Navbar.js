@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const [ismobileopen, setmobileopen] = useState(false);
@@ -8,11 +8,11 @@ export default function Navbar() {
   };
   return (
     <div>
-      <div className="absolute bg-transparent mt-0 hidden lg:block ">
+      <div className=" bg-transparent mt-0 hidden lg:block ">
         <nav className="bar mt-0  px-6 py-4 flex space-x-80 w-auto font-medium text-gray-600">
           <ul className="hidden lg:flex space-x-12 w-auto ml-96 justify-center items-center ">
             <li className="hover:text-blue-700">
-              <a href="#">Home</a>
+              <a href="/home">Home</a>
             </li>
             <li className="hover:text-blue-700">
               <a href="#">About</a>
@@ -28,12 +28,12 @@ export default function Navbar() {
           <ul className="hidden lg:flex space-x-12 w-auto mr-96 justify-center items-center ">
             <li>
               <button className="bg-white px-8 py-2 rounded-3xl text-blue-700 font-semibold">
-              {/* <Link to='/login'>Login</Link> */}
+              <Link to='/login'>Login</Link>
               </button>
             </li>
             <li>
               <a className="text-blue-700 font-semibold" href="#">
-              {/* <Link to='/'>Register</Link> */}
+              <Link to='/'>Register</Link>
               </a>
             </li>
           </ul>
@@ -81,7 +81,7 @@ export default function Navbar() {
             </svg>
           </button>
           <div className={`sm:hidden ${ismobileopen ? "" : "hidden"}`} id="mobile-menu">
-            <div class="space-y-1 px-2 pt-2 pb-3">
+            <div className="space-y-1 px-2 pt-2 pb-3">
               <a
                 href="#"
                 className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"

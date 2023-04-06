@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import logo from '../assets/Frame 6 1.png';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+import { Link } from "react-router-dom";
 const Navbarhome = () => {
   const [ismobileopen, setmobileopen] = useState(false);
   const toggle = () => {
@@ -15,7 +15,8 @@ const Navbarhome = () => {
       <div className="flex items-center flex-shrink-0 text-gray-800">
         <div className="flex items-center">
           <img src={logo} alt="Logo" className="h-8 w-8 mr-2 rounded-md" />
-          <h1 className="font-semibold text-base tracking-tight">Aditya Sharma</h1>
+            <h1 className="font-semibold text-base tracking-tight" >
+            <Link to='/ProfileSettings'>Aditya Sharma</Link></h1>
         </div>
       </div>
       <div className="flex items-center justify-center flex-grow ">
@@ -76,7 +77,7 @@ const Navbarhome = () => {
           </svg> */}
         {/* </button> */}
         {/* <div className={`sm:hidden ${ismobileopen ? "" : "hidden"}`} id="mobile-menu">
-          <div class="space-y-1 px-2 pt-2 pb-3">
+          <div className="space-y-1 px-2 pt-2 pb-3">
             <a
               href="#"
               className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
