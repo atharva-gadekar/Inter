@@ -12,6 +12,8 @@ import BlogPage from './components/BlogPage';
 import Profile from './components/ProfileSettings';
 import ProfileSettings from './components/ProfileSettings';
 
+
+
 function App() {
   return (
 
@@ -26,7 +28,7 @@ function App() {
         </Routes>
   </BrowserRouter>
 
-    
+   
   
  
     
