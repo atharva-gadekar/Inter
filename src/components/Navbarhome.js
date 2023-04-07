@@ -25,6 +25,7 @@ const Navbarhome = () => {
           }
 
           const data = await response.json();
+          console.log(data);
           setUserName(data.user.name);
         }
       } 

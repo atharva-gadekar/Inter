@@ -1,6 +1,7 @@
 import React from "react";
 import postimg from "../assets/post.png";
 import profile from "../assets/profile.png";
+import { Link } from "react-router-dom";
 import {
   faHome,
   faUserFriends,
@@ -74,7 +75,8 @@ export default function Post() {
         </div>
         <div className=" mr-auto ml-auto text-center mt-8 ">
         <button className="bg-slate-700 text-white p-2 pl-4 pr-4 text-sm font-medium">
-          Continue Reading
+           <Link to='/BlogPage'>Continue Reading</Link>
+            
         </button>
       </div>
       </div>
