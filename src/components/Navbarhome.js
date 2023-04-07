@@ -35,7 +35,7 @@ const Navbarhome = () => {
       
     
       <div>
-      <div className="lg:hidden flex justify-left lg:block bg-gradient-to-br from-blue-100 to-white-400 p-4 ">
+      <div className="lg:hidden flex justify-left bg-gradient-to-br from-blue-100 to-white-400 p-4 ">
         {/* <button
           type="button"
           className="mt-4 ml-4 inline-flex lg:hidden items-center rounded-md p-2 text-gray-400 hover:text-black focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white "

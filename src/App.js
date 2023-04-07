@@ -13,7 +13,6 @@ import Profile from './components/ProfileSettings';
 import ProfileSettings from './components/ProfileSettings';
 
 
-
 function App() {
   return (
 
