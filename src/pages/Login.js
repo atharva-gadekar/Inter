@@ -3,33 +3,43 @@ import image from "../assets/Group-5674.png";
 import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { message } from 'antd';
+import { Spin } from 'antd';
 
 function Login() {
 
+ 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading,setLoading] = useState(false);
+  const navigate = useNavigate();
   
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+    setLoading(true);
     const data = { 
       email : email, 
       password : password
     };
-    const config = {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    };
   
     try {
-      const response = await axios.post('https://inter-api-8q0x.onrender.com/auth/login', JSON.stringify(data), config);
+      
+      const response = await axios.post('https://inter-api-8q0x.onrender.com/auth/login', data);
       console.log(response);
-    }
-     catch (error) {
-      if (error.response.status === 404) {
-        console.log('Resource not found');
+      const token = response.data.jwt_token;
+      const userId=response.data.id;
+      if (token) {
+        localStorage.setItem('token', token);
+        localStorage.setItem('userId',userId );
+        message.success('Login successful!');
+        navigate('/home');
+        setLoading(false);
       }
+    } catch (error) {
+      setLoading(false);
+      console.error(error);
+      message.error('Login failed. Please check your email and password!');
     }
   };
 
@@ -86,15 +96,19 @@ function Login() {
              </div>
              <a href="#" className="text-blue-500 font-medium">Forgot password?</a>
            </div>
-           <Link to='/home'>
+           {/* <Link to='/home'> */}
            <button
              type="submit"
              className="w-full mt-1 lg:mt-3 px-4 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-lg"
            >
+            
+            
             SIGN IN
          
            </button>
-           </Link>
+           {!loading && <Spin className="opacity-0"/>}
+           {loading && <Spin/>}
+           {/* </Link> */}
          </form>
        </div>
      </div>
