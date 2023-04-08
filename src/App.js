@@ -11,8 +11,9 @@ import ImgUpload from './components/ImgUpload';
 import BlogPage from './components/BlogPage';
 import Profile from './components/ProfileSettings';
 import ProfileSettings from './components/ProfileSettings';
-
-
+import Connections from './components/Connections';
+import UserProfile from './components/UserProfile';
+import ConnectionsPage from './pages/ConnectionsPage';
 function App() {
   return (
 
@@ -26,8 +27,11 @@ function App() {
         
         </Routes>
   </BrowserRouter>
-
+    
    
+    
+
+  //  <Connections />
   
  
     

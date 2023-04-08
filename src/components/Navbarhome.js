@@ -65,7 +65,7 @@ const Navbarhome = () => {
 
 
       <div>
-        <div className="lg:hidden flex justify-left lg:block bg-gradient-to-br from-blue-100 to-white-400 p-4 ">
+        <div className="lg:hidden flex justify-left bg-gradient-to-br from-blue-100 to-white-400 p-4 ">
           <h1 className="font-bold text-xl text-blue-700 pl-6">Connexa</h1>
           <div className="flex items-center mt-1 ml-auto ">
             <FontAwesomeIcon icon={faCog} size="lg" className="text-blue-700 cursor-pointer lg:hidden " />

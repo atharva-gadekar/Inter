@@ -6,7 +6,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { message } from 'antd';
 import { Spin } from 'antd';
-
+import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 function Login() {
 
  

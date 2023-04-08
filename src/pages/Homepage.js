@@ -9,6 +9,7 @@ import Connect from '../components/Connect';
 import '../App.css';
 import { Link } from "react-router-dom";
 import NavigationHome from '../components/NavigationHome';
+import Connections from '../components/Connections';
 
 const Homepage = () => {
  
@@ -27,6 +28,7 @@ const Homepage = () => {
           <CreatePost />
           <Post />
           <Post />
+          
         </div>
         <div className="lg:w-1/6 mt-[0.9rem]">
           <div className="sticky top-4 ">
