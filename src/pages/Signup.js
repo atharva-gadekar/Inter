@@ -33,8 +33,7 @@ const submitForm = async (data) => {
 	try {
 	  const formData = new FormData();
 	  for (let key in data) {
-			formData.append(key, data[key]);
-		  
+			formData.append(key, data[key]); 
 	  }
 	  const response = await fetch("https://inter-api-8q0x.onrender.com/auth/register", {
 		method: "POST",
