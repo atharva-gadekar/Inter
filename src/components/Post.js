@@ -29,14 +29,14 @@ export default function Post() {
       try {
         if (token) {
           axios({
-            method: "get",
-            url: `https://inter-api-8q0x.onrender.com/blog`,
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }).then((response) => {
-            setBlogs(response.data.blogs);
-          });
+						method: "get",
+						url: `http://localhost:3001/blog`,
+						headers: {
+							Authorization: `Bearer ${token}`,
+						},
+					}).then((response) => {
+						setBlogs(response.data.blogs);
+					});
         }
       } catch (error) {
         console.error(error);
@@ -48,7 +48,7 @@ export default function Post() {
 
 
   const getReadingTime = (content) => {
-    const wordsPerMinute = 20; // Average reading speed
+    const wordsPerMinute = 250; // Average reading speed
     const words = content.trim().split(/\s+/).length;
     const minutes = Math.ceil(words / wordsPerMinute);
     return `${minutes} `;
@@ -61,7 +61,7 @@ export default function Post() {
           className="p-12 w-[92%] scale-90 rounded-2xl bg-white mr-auto ml-auto lg:mx-8 shadow-md pb-2 -mt-3"
         >
           <img
-            src={postimg}
+            src={blog.bannerUrl}
             className=" mr-auto ml-auto outline outline-white -outline-offset-4"
           ></img>
 
@@ -106,7 +106,7 @@ export default function Post() {
 
             <div className="flex justify-center items-center space-x-3">
               <img src={profile} alt="" className="rounded-full h-8 w-8"></img>
-              <h3>Jonathan Doe</h3>
+              <h3>{blog.owner.name}</h3>
             </div>
           </div>
           <div className=" mr-auto ml-auto text-center mt-8 ">

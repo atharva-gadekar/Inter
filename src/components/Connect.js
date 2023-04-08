@@ -62,7 +62,7 @@ const Connect = () => {
         <div className="flex pt-6 items-center space-x-4 justify-between">
           <div className="flex items-center space-x-3">
             <img
-              src={follower.profilePic}
+              src={follower.url}
               alt=""
               className="h-12 w-12 rounded-full"
             />
