@@ -27,8 +27,6 @@ const Homepage = () => {
         <div className="lg:w-2/3 lg:mt-4 ">
           <CreatePost />
           <Post />
-          <Post />
-          
         </div>
         <div className="lg:w-1/6 mt-[0.9rem]">
           <div className="sticky top-4 ">

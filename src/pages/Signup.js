@@ -16,10 +16,10 @@ const schema=yup.object().shape({
 	name:yup.string().required(),
 	collegeName:yup.string().required(),
 	year:yup.number().positive().integer().required(),
-branch:yup.string().required(),
-email:yup.string().email().required(),
-interests:yup.string().required(),
-password:yup.string().min(4).max(15).required()
+	branch:yup.string().required(),
+	email:yup.string().email().required(),
+	interests:yup.string().required(),
+	password:yup.string().min(4).max(15).required()
 })
 
 
@@ -31,15 +31,16 @@ const{register,handleSubmit}=useForm({
 
 const submitForm = async (data) => {
 	try {
+	console.log(data);
+	data = {...data, pfp: data.pfp[0]}
 	  const formData = new FormData();
-	  for (let key in data) {
+		for (let key in data) {
 			formData.append(key, data[key]);
-		  
-	  }
+		}
 	  const response = await fetch("https://inter-api-8q0x.onrender.com/auth/register", {
-		method: "POST",
-		body: formData
-	  });
+			method: "POST",
+			body: formData,
+		});
 	  const result = await response.json();
 	  console.log(result);
 	} 
@@ -48,12 +49,11 @@ const submitForm = async (data) => {
 	}
   };
   
-  
   return (
 	
-		<>
+		<div className="bg-gradient-to-br from-blue-100 to-white-400">
 			<Navbar />
-			<div className="block lg:flex items-center justify-center min-h-screen lg:justify-evenly bg-gradient-to-br from-blue-100 to-white-400 overflow-y-hidden">
+			<div className="block lg:flex items-center justify-center min-h-[80vh] lg:justify-evenly overflow-y-hidden">
 				<div className="block lg:flex flex-col mt-20  ">
 					{/* headings and subheadings */}
 					<div className="ml-0 lg:-ml-16">
@@ -122,15 +122,16 @@ name="year"
 						/>
 					</div>
 					<div className="flex flex-col">
-						{/* <input
+						<input
 							
 							id="picture"
-							name="picture"
+							name="pfp"
+							type="file"
 							placeholder="Upload your profile picture"
 							className="w-full px-4 py-3 bg-[#dfe6f9] border-gray-300 rounded-lg"
-							{...register('picture', { required: true })}
-						/> */}
-						<ImgUpload {...register('picture', { required: true })}/>
+							{...register('pfp', { required: true })}
+						/>
+						{/* <ImgUpload {...register('picture', { required: true })}/> */}
 					</div>
 					<div className="flex flex-col">
 						<input
@@ -184,7 +185,7 @@ name="year"
 					</p>
 				</form>
 			</div>
-		</>
+		</div>
 	);
 }
 

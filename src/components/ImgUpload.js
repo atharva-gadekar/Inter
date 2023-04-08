@@ -2,7 +2,7 @@ import { Button, Upload } from 'antd';
 import { CloudUploadOutlined } from '@ant-design/icons';
 import '../App.css';
 
-export default function App() {
+export default function App(setFile) {
   return (
     <div
       className="upload-component"
@@ -21,6 +21,7 @@ export default function App() {
         showUploadList={{ showRemoveIcon: true }}
         accept=".png,.jpeg"
         beforeUpload={(file) => {
+          setFile(file);
           console.log({ file });
           return false;
         }}
