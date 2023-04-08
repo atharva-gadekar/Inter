@@ -48,3 +48,6 @@ body{
 .upload-component{
   background-color:  #dfe6f9;
 }
+.navbarfix{
+  background-color: transparent!important;
+}

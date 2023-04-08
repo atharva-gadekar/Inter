@@ -51,6 +51,7 @@ const submitForm = async (data) => {
   return (
 	
 		<>
+
 			<Navbar />
 			<div className="block lg:flex items-center justify-center min-h-screen lg:justify-evenly bg-gradient-to-br from-blue-100 to-white-400 overflow-y-hidden">
 				<div className="block lg:flex flex-col mt-20  ">
@@ -183,6 +184,7 @@ name="year"
 					</p>
 				</form>
 			</div>
+			
 		</>
 	);
 }
