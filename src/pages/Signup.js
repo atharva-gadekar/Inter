@@ -37,7 +37,7 @@ const submitForm = async (data) => {
 		for (let key in data) {
 			formData.append(key, data[key]);
 		}
-	  const response = await fetch("http://localhost:3001/auth/register", {
+	  const response = await fetch("https://inter-api-8q0x.onrender.com/auth/register", {
 			method: "POST",
 			body: formData,
 		});

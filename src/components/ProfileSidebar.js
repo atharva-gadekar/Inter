@@ -63,14 +63,14 @@ export default function ProfileSidebar() {
     fetchUserName();
   }, []);
 
-  useEffect(()=>{
-    console.log("Works", user);
-    console.log(user.user.name);
-  },[user])
+//   useEffect(()=>{
+//     console.log("Works", user);
+//     console.log(user.user.name);
+//   },[user])
 
   return (
 		<div>
-			<div className="bg-white p-1 w-[112%] rounded-3xl mx-5 mt-6 hidden lg:block">
+			<div className="bg-white p-1 w-[112%] rounded-3xl mx-5 mt-6 mb-2 hidden lg:block">
 				<img src={profile_bg} alt="" className="rounded-2xl mt-4 px-4" />
 				{!user.user && (
 					<img
@@ -96,7 +96,7 @@ export default function ProfileSidebar() {
 				<p className="text-center text-slate-500 mt-0 mb-20 text-base px-12">
 					{user.user && user.user.branch}
 				</p>
-				<div className="px-1 mt-6">
+				<div className="px-1 ">
 					<div className="flex justify-between px-4 mb-3 text-sm">
 						<p>Who viewed your profile</p>
 						<p className="text-blue-600">205</p>
