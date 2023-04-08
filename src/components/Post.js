@@ -30,7 +30,7 @@ export default function Post() {
         if (token) {
           axios({
 						method: "get",
-						url: `http://localhost:3001/blog`,
+						url: `https://inter-api-8q0x.onrender.com/blog`,
 						headers: {
 							Authorization: `Bearer ${token}`,
 						},
