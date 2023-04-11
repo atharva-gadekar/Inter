@@ -5,7 +5,8 @@ import Signup from './pages/Signup';
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import CreatePost from './components/CreatePost';
-import Chat from './components/Connect';
+import Chat from './components/Chat';
+import Connect from './components/Connect'
 import ProfileSidebar from './components/ProfileSidebar';
 import ImgUpload from './components/ImgUpload';
 import BlogPage from './components/BlogPage';
@@ -14,6 +15,9 @@ import ProfileSettings from './components/ProfileSettings';
 import Connections from './components/Connections';
 import UserProfile from './components/UserProfile';
 import ConnectionsPage from './pages/ConnectionsPage';
+import LeftChat from './components/LeftChat';
+import ChatPage from './pages/ChatPage';
+import ChatFinal from './pages/ChatFinal';
 function App() {
   return (
 
@@ -31,7 +35,7 @@ function App() {
    
     
 
-  //  <Connections />
+   
   
  
     
