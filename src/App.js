@@ -29,7 +29,6 @@ function App() {
         <Route path="/profile" element={<ProfileSettings />} />
         <Route path="/blog/:id" element={<BlogPage />} />
         <Route path="/chat" element={<ChatFinal />} />
-        
         </Routes>
   </BrowserRouter>
     
