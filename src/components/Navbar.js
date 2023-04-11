@@ -10,22 +10,7 @@ export default function Navbar() {
     <div>
       <div className=" bg-transparent mt-0 hidden lg:block ">
         <nav className="bar mt-0  px-6 py-4 flex space-x-80 w-auto font-medium text-gray-600">
-          <ul className="hidden lg:flex space-x-12 w-auto ml-96 justify-center items-center ">
-            <li className="hover:text-blue-700">
-              <a href="/home">Home</a>
-            </li>
-            <li className="hover:text-blue-700">
-              <a href="#">About</a>
-            </li>
-            <li className="hover:text-blue-700">
-              <a href="#">Top</a>
-            </li>
-            <li className="hover:text-blue-700">
-              <a href="#">Help</a>
-            </li>
-          
-          </ul>
-          <ul className="hidden lg:flex space-x-12 w-auto mr-96 justify-center items-center ">
+          <ul className="hidden ml-auto lg:flex space-x-12 w-auto mr-96 justify-center items-center ">
             <li>
               <button className="bg-white px-8 py-2 rounded-3xl text-blue-700 font-semibold">
               <Link to='/login'>Login</Link>
