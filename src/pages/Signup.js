@@ -70,7 +70,7 @@ function Signup() {
       const result = await response.json();
       console.log(result);
     
-      // message.success('User account created!');
+      message.success('User account created!');
     } catch (error) {
       console.error(error);
     }
