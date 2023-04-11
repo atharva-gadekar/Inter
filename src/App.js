@@ -26,8 +26,9 @@ function App() {
         <Route path="/home" element={<Homepage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Signup />} />
-        <Route path="/ProfileSettings" element={<ProfileSettings />} />
-        <Route path="/BlogPage" element={<BlogPage />} />
+        <Route path="/profile" element={<ProfileSettings />} />
+        <Route path="/blogs" element={<BlogPage />} />
+        <Route path="/chat" element={<ChatFinal />} />
         
         </Routes>
   </BrowserRouter>
