@@ -11,7 +11,7 @@ import ImgUpload from './components/ImgUpload';
 import BlogPage from './components/BlogPage';
 import Profile from './components/ProfileSettings';
 import ProfileSettings from './components/ProfileSettings';
-
+import Test from './components/Test';
 
 
 function App() {
@@ -23,8 +23,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Signup />} />
         <Route path="/ProfileSettings" element={<ProfileSettings />} />
-        <Route path="/BlogPage" element={<BlogPage />} />
-        
+        <Route path="/blog/:id" element={<BlogPage />} />
+        <Route path='/create' element={<Test />} />
         </Routes>
   </BrowserRouter>
 
