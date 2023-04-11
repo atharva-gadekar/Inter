@@ -8,9 +8,10 @@ import {
   faBell,
   faCog,
   faBuilding,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { Badge } from "antd";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 
 const Sidebar = () => {
@@ -30,11 +31,11 @@ const Sidebar = () => {
           >
             <FontAwesomeIcon icon={faUserFriends} />
           </Badge>
-          <span className="font-medium ml-3">Network</span>
+          <span className="font-medium ml-3"><Link to='/connections'>Network</Link></span>
         </li>
         <li className="flex items-center mb-6">
           <FontAwesomeIcon icon={faEnvelope} className="mr-2" />
-          <span className="font-medium  ml-3">Messaging</span>
+          <span className="font-medium  ml-3"><Link to='/chat'>Messaging</Link></span>
         </li>
         <li className="flex items-center mb-6">
           <Badge
@@ -48,9 +49,9 @@ const Sidebar = () => {
           <span className="font-medium  ml-4">Notifications</span>
         </li>
         <li className="flex items-center mb-6">
-          <FontAwesomeIcon icon={faCog} />
+          <FontAwesomeIcon icon={faUser} />
          
-          <span className="font-medium  ml-5"><Link to='/ProfileSettings'>Settings</Link></span>
+          <span className="font-medium  ml-5"><Link to='/profile'>Settings</Link></span>
           
         </li>
       </ul>
