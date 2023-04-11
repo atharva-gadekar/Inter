@@ -18,6 +18,7 @@ import ConnectionsPage from './pages/ConnectionsPage';
 import LeftChat from './components/LeftChat';
 import ChatPage from './pages/ChatPage';
 import ChatFinal from './pages/ChatFinal';
+import ProfileFinal from './pages/ProfileFinal';
 import Hi from './pages/Hi';
 function App() {
   return (
@@ -41,7 +42,7 @@ function App() {
         <Route path="/home" element={<Homepage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Signup />} />
-        <Route path="/profile" element={<ProfileSettings />} />
+        <Route path="/profile" element={<ProfileFinal />} />
         <Route path="/blog/:id" element={<BlogPage />} />
         <Route path="/chat" element={<ChatFinal />} />
         <Route path="/connections" element={<ConnectionsPage />} />

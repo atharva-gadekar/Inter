@@ -51,7 +51,7 @@ const Sidebar = () => {
         <li className="flex items-center mb-6">
           <FontAwesomeIcon icon={faUser} />
          
-          <span className="font-medium  ml-5"><Link to='/ProfileSettings'>Settings</Link></span>
+          <span className="font-medium  ml-5"><Link to='/profile'>Settings</Link></span>
           
         </li>
       </ul>
