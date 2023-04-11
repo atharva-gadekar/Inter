@@ -89,7 +89,7 @@ function Login() {
 								name="password"
 								onChange={(e) => setPassword(e.target.value)}
 								placeholder="Enter password"
-								className="w-full px-4 py-3 bg-[#dfe6f9] border border-gray-300 rounded-lg"
+								className="w-full px-4 py-3 bg-[#dfe6f9] border-gray-300 rounded-lg"
 							/>
 						</div>
 						<div className="flex justify-between items-center">

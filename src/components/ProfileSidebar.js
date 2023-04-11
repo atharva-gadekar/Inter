@@ -42,18 +42,6 @@ export default function ProfileSidebar() {
            
 					});
 
-          // const response = await fetch(`https://inter-api-8q0x.onrender.com/user/${userId}`, {
-          //   headers: {
-          //     Authorization: `Bearer ${token}`
-          //   }
-          // });
-
-          // if (!response.ok) {
-          //   throw new Error("Error fetching user details");
-          // }
-
-          // const data = await response.json();
-          // setUser(data);
         }
       } catch (error) {
         console.error(error);
@@ -63,10 +51,6 @@ export default function ProfileSidebar() {
     fetchUserName();
   }, []);
 
-//   useEffect(()=>{
-//     console.log("Works", user);
-//     console.log(user.user.name);
-//   },[user])
 
   return (
 		<div>

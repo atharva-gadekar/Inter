@@ -14,18 +14,6 @@ import axios from 'axios';
 
 const Connect = () => {
   const [followers, setFollowers] = useState([]);
-
-  // useEffect(() => {
-  //   const fetchFollowers = async () => {
-  //     const response = await fetch("https://inter-api-8q0x.onrender.com/user/6417816aa37e2da21e5b7b86/followers");
-  //     const data = await response.json();
-  //     setFollowers(data.followers);
-  //     console.log(data.followers);
-      
-  //   };
-  //   fetchFollowers();
-  // }, []);
-
   const token = localStorage.getItem('token');
 
   useEffect(() => {
@@ -42,7 +30,7 @@ const Connect = () => {
 						},
 					}).then((response) => {
 					setFollowers(response.data.followers);
-           console.log(response.data.followers);
+          console.log(response.data.followers);
 					});
 
           

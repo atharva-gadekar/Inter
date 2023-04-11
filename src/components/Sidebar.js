@@ -10,6 +10,8 @@ import {
   faBuilding,
 } from "@fortawesome/free-solid-svg-icons";
 import { Badge } from "antd";
+import { Link } from "react-router-dom";
+
 
 const Sidebar = () => {
   return (
@@ -47,7 +49,9 @@ const Sidebar = () => {
         </li>
         <li className="flex items-center mb-6">
           <FontAwesomeIcon icon={faCog} />
-          <span className="font-medium  ml-5">Settings</span>
+         
+          <span className="font-medium  ml-5"><Link to='/ProfileSettings'>Settings</Link></span>
+          
         </li>
       </ul>
     </div>
