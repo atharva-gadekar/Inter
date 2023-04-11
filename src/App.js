@@ -12,7 +12,7 @@ import ImgUpload from './components/ImgUpload';
 import BlogPage from './components/BlogPage';
 import Profile from './components/ProfileSettings';
 import ProfileSettings from './components/ProfileSettings';
-import Connections from './components/Connections';
+import Test from './components/Test';import Connections from './components/Connections';
 import UserProfile from './components/UserProfile';
 import ConnectionsPage from './pages/ConnectionsPage';
 import LeftChat from './components/LeftChat';
@@ -35,7 +35,18 @@ function App() {
         
   //       </Routes>
   // </BrowserRouter>
-    <Hi/>
+    
+    <BrowserRouter>
+    <Routes>
+        <Route path="/home" element={<Homepage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Signup />} />
+        <Route path="/profile" element={<ProfileSettings />} />
+        <Route path="/blog/:id" element={<BlogPage />} />
+        <Route path="/chat" element={<ChatFinal />} />
+        <Route path="/connections" element={<ConnectionsPage />} />
+        </Routes>
+  </BrowserRouter>
     
    
     
