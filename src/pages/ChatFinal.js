@@ -10,33 +10,31 @@ import '../App.css';
 import { Link } from "react-router-dom";
 import NavigationHome from '../components/NavigationHome';
 import Connections from '../components/Connections';
+import ChatPage from './ChatPage';
 
-const Homepage = () => {
- 
+
+export default function ChatFinal() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbarhome />
       
-      <div className="flex flex-1">
-        <div className="lg:w-1/6">
+      <div className="flex justify-between">
+        <div className="lg:w-[15%]">
           <div className="sticky top-4">
             <Sidebar />
             <ProfileSidebar/>
           </div>
         </div>
-        <div className="lg:w-2/3 lg:mt-4 ">
-          <CreatePost />
-          <Post />
+        <div className="lg:mt-4 w-[80%] pr-6">
+          <ChatPage/>
         </div>
-        <div className="lg:w-1/6 mt-[0.9rem]">
+        {/* <div className="lg:w-1/6 mt-[0.9rem]">
           <div className="sticky top-4 ">
             <Connect />
           </div>
-        </div>
+        </div> */}
       </div>
       <NavigationHome />
     </div>
-  );
-};
-
-export default Homepage;
+  )
+}
