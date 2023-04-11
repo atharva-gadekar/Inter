@@ -2,13 +2,21 @@ import React from "react";
 import imagee from "../assets/jr-korpa-wAXD_Its-48-unsplash.jpg";
 import profile from "../assets/pexels-pixabay-220453.jpg";
 import { FaEdit } from "react-icons/fa";
+import {
+  faFacebook,
+  faTwitter,
+  faInstagram,
+  faLinkedin,
+} from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGear, faPen} from '@fortawesome/free-solid-svg-icons';
 import Navbarhome from "./Navbarhome";
 
 
 const Profile_Settings = () => {
   return (
     <>
-      <Navbarhome />
+      {/* <Navbarhome /> */}
       <div className="flex flex-row">
         <div className="  ml-3 mr-3 lg:mx-auto bg-white lg:h-[42rem] w-[98%] lg:w-[97.6%] rounded-2xl overflow-hidden ">
           <img className="w-full h-48 lg:h-64 object-cover" src={imagee} alt="Cover" />
@@ -16,16 +24,27 @@ const Profile_Settings = () => {
           <div className="relative ml-11 ">
             <div className="-mt-11 ">
               <div className="flex mt-2 flex-col text-left">
-                <div className="h-36 w-36 lg:h-44 lg:w-44 rounded-full overflow-hidden bg-white border-4 -mt-12">
+                <div className="flex justify-between items-end pr-8">
+                <div className="h-36 w-36 lg:h-44 lg:w-44 rounded-full overflow-hidden bg-white border-4 -mt-12 ">
+                  
                   <img
                     className="h-full w-full object-cover"
                     src={profile}
                     alt="Profile"
-                  />
+                    />
+                   
+                  
                   <div className="flex justify-center">
                     <FaEdit className="text-black  text-xl cursor-pointer hover:text-gray-800" />
                   </div>
+                  </div>
+                  <div className="flex space-x-4">
+                  <FontAwesomeIcon icon={faPen} className="mr-5 h-6 w-6 text-blue-600 text-lg lg:text-base" />
+                  <FontAwesomeIcon icon={faGear} className="mr-5 h-6 w-6 text-blue-600 text-lg lg:text-base" />
+                  </div>
+                  
                 </div>
+                
                 <div className="lg:flex justify-between">
                   <div className="flex">
                     <div>
@@ -84,7 +103,7 @@ const Profile_Settings = () => {
         </div>
       </div>
 
-      <div className=" mt-5 ml-3 mr-3 lg:mx-auto bg-white lg:h-[42rem] lg:w-[97.6%] py-6 px-8 rounded-2xl mb-5 ">
+      <div className=" mt-5 ml-3 mr-3 lg:mx-auto bg-white lg:w-[97.6%] py-6 px-8 rounded-2xl mb-5 ">
         <div className="ml-2 lg:text-left mt-3 mb-6">
           <h3 className="text-3xl font-bold text-black ">About</h3>
           <div className="mt-6 text-black text-[1.2rem]">
