@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome,
@@ -13,33 +13,22 @@ import {
 import { Badge } from "antd";
 import { Link } from "react-router-dom";
 
-
 const Sidebar = () => {
-  const [activeField, setActiveField] = useState("home");
-
-  const handleClick = (fieldName) => {
-    setActiveField(fieldName);
+  const isActiveLink = (link) => {
+    return window.location.pathname === link ? "text-blue-500" : "";
   };
 
   return (
     <div className="bg-white rounded-2xl w-[112%] h-[18rem] lg:flex justify-center items-center mx-5 mt-[0.9rem] hidden ">
-      <ul className="text-[#a0a0a0] -ml-[6rem] mt-7">
-        <li
-          className={`flex items-center mb-6 ${
-            activeField === "home" ? "text-blue-500" : ""
-          }`}
-          onClick={() => handleClick("home")}
-        >
+      <ul className="text-[#a0a0a0]  mt-7">
+        <li className={`flex items-center mb-6 ${isActiveLink("/home")}`}>
           <FontAwesomeIcon icon={faHome} className="mr-2" />
-          <span className="font-medium ml-3">
+          <span className={`font-medium ml-3 ${isActiveLink("/home")}`}>
             <Link to="/home">Home</Link>
           </span>
         </li>
         <li
-          className={`flex items-center mb-6 ${
-            activeField === "network" ? "text-blue-500" : ""
-          }`}
-          onClick={() => handleClick("network")}
+          className={`flex items-center mb-6 ${isActiveLink("/connections")}`}
         >
           <Badge
             count={1}
@@ -49,26 +38,18 @@ const Sidebar = () => {
           >
             <FontAwesomeIcon icon={faUserFriends} />
           </Badge>
-          <span className="font-medium ml-3">
+          <span className={`font-medium ml-3 ${isActiveLink("/connections")}`}>
             <Link to="/connections">Network</Link>
           </span>
         </li>
-        <li
-          className={`flex items-center mb-6 ${
-            activeField === "messaging" ? "text-blue-500" : ""
-          }`}
-          onClick={() => handleClick("messaging")}
-        >
+        <li className={`flex items-center mb-6 ${isActiveLink("/chat")}`}>
           <FontAwesomeIcon icon={faEnvelope} className="mr-2" />
-          <span className="font-medium ml-3">
+          <span className={`font-medium ml-3 ${isActiveLink("/chat")}`}>
             <Link to="/chat">Messaging</Link>
           </span>
         </li>
         <li
-          className={`flex items-center mb-6 ${
-            activeField === "notifications" ? "text-blue-500" : ""
-          }`}
-          onClick={() => handleClick("notifications")}
+          className={`flex items-center mb-6 ${isActiveLink("/notifications")}`}
         >
           <Badge
             count={5}
@@ -78,16 +59,15 @@ const Sidebar = () => {
           >
             <FontAwesomeIcon icon={faBell} />
           </Badge>
-          <span className="font-medium ml-4">Notifications</span>
+          <span
+            className={`font-medium ml-4 ${isActiveLink("/notifications")}`}
+          >
+            <Link to="/notifications">Notifications</Link>
+          </span>
         </li>
-        <li
-          className={`flex items-center mb-6 ${
-            activeField === "settings" ? "text-blue-500" : ""
-          }`}
-          onClick={() => handleClick("settings")}
-        >
+        <li className={`flex items-center mb-6 ${isActiveLink("/profile")}`}>
           <FontAwesomeIcon icon={faUser} />
-          <span className="font-medium ml-5">
+          <span className={`font-medium ml-5 ${isActiveLink("/profile")}`}>
             <Link to="/profile">Settings</Link>
           </span>
         </li>
