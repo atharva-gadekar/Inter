@@ -1,7 +1,7 @@
 import React from 'react'
 import Chat
-    from '../components/Chat';
-    import LeftChat from '../components/LeftChat';
+    from './Chat';
+    import LeftChat from './LeftChat';
 export default function ChatPage() {
   return (
     <div className="mb-6">

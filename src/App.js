@@ -10,17 +10,16 @@ import Connect from './components/Connect'
 import ProfileSidebar from './components/ProfileSidebar';
 import ImgUpload from './components/ImgUpload';
 import BlogPage from './components/BlogPage';
-import Profile from './components/ProfileSettings';
 import ProfileSettings from './components/ProfileSettings';
 import Test from './components/Test';import Connections from './components/Connections';
 import UserProfile from './components/UserProfile';
 import ConnectionsPage from './pages/ConnectionsPage';
 import LeftChat from './components/LeftChat';
-import ChatPage from './pages/ChatPage';
+import ChatPage from './components/ChatPage';
 import ChatFinal from './pages/ChatFinal';
-import ProfileFinal from './pages/ProfileFinal';
 import Blog from './components/Blog';
-import Hi from './pages/Hi';
+import ProfileFinal from './pages/ProfileFinal';
+
 function App() {
   return (
 
@@ -30,7 +29,7 @@ function App() {
         <Route path="/home" element={<Homepage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Signup />} />
-        <Route path="/profile" element={<Hi />} />
+        <Route path="/profile" element={<ProfileFinal />} />
         <Route path="/blog/:id" element={<BlogPage />} />
         <Route path="/chat" element={<ChatFinal />} />
         <Route path="/connections" element={<ConnectionsPage />} />
