@@ -18,7 +18,7 @@ const Profile_Settings = () => {
     <>
       {/* <Navbarhome /> */}
       <div className="flex flex-row">
-        <div className="  ml-3 mr-3 lg:mx-auto bg-white lg:h-[42rem] w-[98%] lg:w-[97.6%] rounded-2xl overflow-hidden ">
+        <div className="  ml-3 mr-3 lg:mx-auto bg-white lg:h-[42rem] lg:w-[97.6%] rounded-2xl overflow-hidden ">
           <img className="w-full h-48 lg:h-64 object-cover" src={imagee} alt="Cover" />
 
           <div className="relative ml-11 ">
@@ -118,7 +118,7 @@ const Profile_Settings = () => {
               only 20-something to do so in India.
             </p>
             <br />
-            <p>
+            <p className="opacity-0">
               {" "}
               He leads multiple teams and helps several clients make big bets
               and build businesses, leveraging his command over data and
@@ -129,37 +129,7 @@ const Profile_Settings = () => {
               ensured clients are better placed to make big bets," he says.
             </p>
             <br />
-            <p>
-              The seeds to success, for Sharma—an IIT-Kharagpur chemical
-              engineer, who also completed an MBA-equivalent from
-              IIM-Ahmedabad—were sown early. He spent his childhood in six
-              cities in India, thanks to his banker father's transferable job.
-              "Being constantly on the move made me ready to face change," he
-              says. Sharma began by working across financial services, real
-              estate, infrastructure and education until over time, he saw
-              greater scope to specialise in banking and data and analytics.
-            </p>
-
-            <br />
-            <p>
-              "He [Sharma] has shown enormously high levels of maturity and is
-              keen to take on responsibility," says Renny Thomas, who heads
-              McKinsey's financial services practice in India. At a time of
-              exponential growth of new data, Sharma says he hopes to continue
-              to build McKinsey's regional capabilities in this space. That is
-              true data talk.
-            </p>
-            <br />
-            <p>
-              The seeds to success, for Sharma—an IIT-Kharagpur chemical
-              engineer, who also completed an MBA-equivalent from
-              IIM-Ahmedabad—were sown early. He spent his childhood in six
-              cities in India, thanks to his banker father's transferable job.
-              "Being constantly on the move made me ready to face change," he
-              says. Sharma began by working across financial services, real
-              estate, infrastructure and education until over time, he saw
-              greater scope to specialise in banking and data and analytics.
-            </p>
+            
           </div>
         </div>
       </div>
