@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import imagee from "../assets/jr-korpa-wAXD_Its-48-unsplash.jpg";
 import profile from "../assets/pexels-pixabay-220453.jpg";
 import { FaEdit } from "react-icons/fa";
@@ -12,8 +12,42 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGear, faPen} from '@fortawesome/free-solid-svg-icons';
 import Navbarhome from "./Navbarhome";
 
-
 const Profile_Settings = () => {
+
+  const [userName, setUserName] = useState('');
+  const token = localStorage.getItem('token');
+const[url,setUrl]=useState('');
+  useEffect(() => {
+    const fetchUserName = async () => {
+      try {
+        if (token) {
+          const userId = localStorage.getItem('userId');
+          const response = await fetch(`https://inter-api-8q0x.onrender.com/user/${userId}`, {
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          });
+
+          if (!response.ok) {
+            throw new Error("Error fetching user details");
+          }
+
+          const data = await response.json();
+          console.log(data);
+          setUserName(data.user.name);
+          setUrl(data.url);
+        }
+      } 
+      
+      catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchUserName();
+  }, []);
+
+
   return (
     <>
       {/* <Navbarhome /> */}
@@ -28,8 +62,8 @@ const Profile_Settings = () => {
                 <div className="h-36 w-36 lg:h-44 lg:w-44 rounded-full overflow-hidden bg-white border-4 -mt-12 ">
                   
                   <img
-                    className="h-full w-full object-cover"
-                    src={profile}
+                    className="h-full w-full object-contain"
+                    src={url}
                     alt="Profile"
                     />
                    
@@ -49,7 +83,7 @@ const Profile_Settings = () => {
                   <div className="flex">
                     <div>
                       <h1 className="mt-4 text-black text-2xl font-bold  ">
-                        Shanay Smith
+                        {userName}
                       </h1>
                       <h2 className="mt-2 text-gray-600 text-xl font-medium tracking-wide">
                         Operations Manager &amp; Executive Assistant

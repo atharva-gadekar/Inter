@@ -11,7 +11,7 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { Badge } from "antd";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 const Sidebar = () => {
@@ -20,6 +20,7 @@ const Sidebar = () => {
       <ul className="text-[#a0a0a0] -ml-[6rem] mt-7">
         <li className="flex items-center mb-6">
           <FontAwesomeIcon icon={faHome} className="mr-2 text-blue-500" />
+          
           <span className="font-medium text-blue-500  ml-3">Home</span>
         </li>
         <li className="flex items-center mb-6">

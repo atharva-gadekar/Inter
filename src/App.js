@@ -19,6 +19,7 @@ import LeftChat from './components/LeftChat';
 import ChatPage from './pages/ChatPage';
 import ChatFinal from './pages/ChatFinal';
 import ProfileFinal from './pages/ProfileFinal';
+import Blog from './components/Blog';
 import Hi from './pages/Hi';
 function App() {
   return (
