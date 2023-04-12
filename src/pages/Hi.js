@@ -1,3 +1,5 @@
+// profile page
+
 import React from 'react';
 import Navbarhome from '../components/Navbarhome';
 

@@ -63,7 +63,7 @@ const[url,setUrl]=useState('');
                   
                   <img
                     className="h-full w-full object-contain"
-                    src={url}
+                    src={profile}
                     alt="Profile"
                     />
                    
