@@ -162,7 +162,10 @@ const Profile_Settings = () => {
 
       <div className=" mt-5 ml-3 mr-3 lg:mx-auto bg-white lg:w-[97.6%] py-6 px-8 rounded-2xl mb-5 h-[40%]">
         <div className="ml-2 lg:text-left mt-3 mb-6">
-          <h3 className="text-3xl font-bold text-black ">About</h3>
+          <div className="flex justify-between"><h3 className="text-3xl font-bold text-black ">About</h3>
+          <FontAwesomeIcon icon={faPen} className="mr-5 h-6 w-6 text-blue-600 text-lg lg:text-base" />
+          </div>
+          
           <div className="mt-6 text-black text-[1.2rem]">
             <p>{user.user.about}</p>
           </div>

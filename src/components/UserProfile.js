@@ -73,7 +73,7 @@ export default function UserProfile() {
         </div> */}
         <div className=" flex justify-center items-center space-x-3">
           <button className="px-4 py-2 text-blue-600 font-normal ">
-            Accept
+            Connect
           </button>
           <button className="px-4 py-2 text-slate-500 font-normal">
             Ignore
