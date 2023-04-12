@@ -15,6 +15,9 @@ import Connections from '../components/Connections';
 import imagee from "../assets/jr-korpa-wAXD_Its-48-unsplash.jpg";
 import profile from "../assets/pexels-pixabay-220453.jpg";
 import { FaEdit } from "react-icons/fa";
+
+
+
 import Profile_Settings from '../components/ProfileSettings';
 export default function Hi() {
     return (
@@ -24,13 +27,13 @@ export default function Hi() {
       <Navbarhome />
       
       <div className="flex flex-1 space-x-14">
-        <div className="">
-          <div className="sticky top-4">
-            <Sidebar />
-            <ProfileSidebar/>
-          </div>
-        </div>
-        <div className="lg:mt-4 ">
+      <div className="lg:w-[14%]">
+					<div className="sticky top-4">
+						<Sidebar />
+						<ProfileSidebar />
+					</div>
+				</div>
+        <div className="lg:w-[82%] mt-3  ">
           <Profile_Settings/>
         </div>
         
