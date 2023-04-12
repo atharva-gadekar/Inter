@@ -1,3 +1,5 @@
+// profile page
+
 import React from 'react';
 import Navbarhome from '../components/Navbarhome';
 
@@ -14,7 +16,7 @@ import imagee from "../assets/jr-korpa-wAXD_Its-48-unsplash.jpg";
 import profile from "../assets/pexels-pixabay-220453.jpg";
 import { FaEdit } from "react-icons/fa";
 import Profile_Settings from '../components/ProfileSettings';
-export default function ProfileFinal() {
+export default function Hi() {
     return (
       <>
     
