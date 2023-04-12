@@ -24,19 +24,6 @@ import Hi from './pages/Hi';
 function App() {
   return (
 
-  //   <BrowserRouter>
-  //   <Routes>
-  //       <Route path="/home" element={<Homepage />} />
-  //       <Route path="/login" element={<Login />} />
-  //       <Route path="/" element={<Signup />} />
-  //       <Route path="/profile" element={<ProfileSettings />} />
-  //       <Route path="/blogs" element={<BlogPage />} />
-  //       <Route path="/chat" element={<ChatFinal />} />
-    //       <Route path="/connections" element={<ConnectionsPage />} />
-    
-        
-  //       </Routes>
-  // </BrowserRouter>
     
     <BrowserRouter>
     <Routes>

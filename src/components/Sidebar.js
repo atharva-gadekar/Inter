@@ -21,7 +21,7 @@ const Sidebar = () => {
         <li className="flex items-center mb-6">
           <FontAwesomeIcon icon={faHome} className="mr-2 text-blue-500" />
           
-          <span className="font-medium text-blue-500  ml-3">Home</span>
+          <span className="font-medium text-blue-500  ml-3"><Link to='/home'>Home</Link></span>
         </li>
         <li className="flex items-center mb-6">
           <Badge

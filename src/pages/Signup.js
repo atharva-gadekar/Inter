@@ -11,9 +11,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FiUpload, FiX } from "react-icons/fi";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { message } from "antd";
-import { Select } from "antd";
-
+import '../App.css'
+import { Select } from 'antd';
 const { Option } = Select;
+
+
 const schema = yup.object().shape({
 	name: yup.string().required(),
 	collegeName: yup.string().required(),
@@ -25,12 +27,14 @@ const schema = yup.object().shape({
 function Signup() {
 	const [tags, setTags] = useState([]);
 
-	const test = () => {
-		alert("yo");
-	};
-	function handleTagChange(newTags) {
-		setTags(newTags);
+	function handleTagChange(value) {
+	  setTags(value.slice(-3)); 
 	}
+  
+	function handleTagClose(tag) {
+	  setTags(tags.filter(t => t !== tag));
+	}
+  
 
 	const [showPassword, setShowPassword] = useState(false);
 
@@ -112,7 +116,7 @@ function Signup() {
 								name="name"
 								type="text"
 								placeholder="Name"
-								className="w-full px-4 py-3 bg-[#dfe6f9] border-gray-300 rounded-lg"
+								className="w-full px-4 py-3 border bg-[#dfe6f9] border-gray-300 rounded-lg"
 								{...register("name", { required: true })}
 							/>
 						</div>
@@ -123,7 +127,7 @@ function Signup() {
 							id="collegeName"
 							name="collegeName"
 							placeholder="College Name"
-							className="w-full px-4 py-3 bg-[#dfe6f9] border-gray-300 rounded-lg"
+							className="w-full px-4 py-3 border bg-[#dfe6f9] border-gray-300 rounded-lg"
 							{...register("collegeName", { required: true })}
 						/>
 					</div>
@@ -133,14 +137,14 @@ function Signup() {
 							id="branch"
 							name="branch"
 							placeholder="Branch"
-							className="w-full px-4 py-3 bg-[#dfe6f9] border-gray-300 rounded-lg"
+							className="w-full px-4 border py-3 bg-[#dfe6f9] border-gray-300 rounded-lg"
 							{...register("branch", { required: true })}
 						/>
 					</div>
 
 					<div className="w-full mx-auto">
 						<div className="flex flex-col items-center py-2">
-							<label className="flex flex-col items-center w-full px-4 py-6 bg-[#dfe6f9] text-blue rounded-lg tracking-wide uppercase cursor-pointer hover:bg-blue">
+							<label className="flex border flex-col items-center w-full px-4 py-6 bg-[#dfe6f9] text-blue rounded-lg tracking-wide uppercase cursor-pointer hover:bg-blue">
 								<FiUpload className="w-8 h-8 text-gray-500" />
 								<p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
 									<span class="font-semibold">Click to upload</span>
@@ -150,7 +154,7 @@ function Signup() {
 								</p>
 								<input
 									type="file"
-									className="hidden"
+									className="hidden border"
 									name="pfp"
 									{...register("pfp", { required: false })}
 									onChange={handleFileChange}
@@ -158,7 +162,7 @@ function Signup() {
 								/>
 							</label>
 							{selectedFile && (
-								<div className="mt-4 flex items-center justify-between w-full px-4 py-2 bg-[#dfe6f9] rounded-md">
+								<div className="mt-4 flex items-center justify-between border w-full px-4 py-2 bg-[#dfe6f9] rounded-md">
 									<p className="text-sm text-gray-500 truncate">
 										{selectedFile.name}
 									</p>
@@ -173,48 +177,57 @@ function Signup() {
 						</div>
 					</div>
 
-					{/* <div className="flex flex-col">
-						<label class="block">
-							<span class="sr-only">Choose profile photo</span>
-							<input
-								type="file"
-								className="block w-full text-sm text-slate-500
-      file:mr-4 file:py-2 file:px-4
-      file:rounded-full file:border-0
-      file:text-sm file:font-semibold
-      file:bg-violet-50 file:text-violet-700
-      hover:file:bg-violet-100
-    "
-								name="pfp"
-								{...register("pfp", { required: false })}
-								onChange={handleFileChange}
-								accept="image/*"
-							/>
-						</label>
-					</div> */}
-
 					<div className="flex flex-col">
-						<Select
-							mode="tags"
-							placeholder="Enter your interests"
-							onChange={handleTagChange}
-							value={tags}
-							style={{ width: "100%" }}
-						>
-							<Option key="Web Development">Web Development</Option>
-							<Option key="App Development">App Development</Option>
-							<Option key="AI ML">AI ML</Option>
-							<Option key="Design">Design</Option>
-						</Select>
-					</div>
+      <Select
+        mode="tags"
+        value={tags}
+        onChange={handleTagChange}
+        tokenSeparators={[',']}
+		
+        showArrow={false}
+        dropdownStyle={{ display: 'none' }} 
+        className="w-full px-4 text-[1.1rem] font-[500] text-[#9ca3af]  border py-[0.70rem] bg-[#dfe6f9] border-gray-300 rounded-lg"
+		placeholder="Enter your interests"
+      >
+        {tags.map(tag => (
+          <Option key={tag} value={tag}>
+            {tag}
+            <span
+              style={{ marginLeft: '5px', color: '#dfe6f9]', cursor: 'pointer' }}
+              onClick={() => handleTagClose(tag)}
+            >
+           
+            </span>
+          </Option>
+        ))}
+      </Select>
+    </div>
+
+
+
+
+
+
+
+
 
 					<div className="flex flex-col">
 						<input
 							type="text"
 							placeholder="Enter your email address"
 							name="email"
-							className="w-full px-4 py-3 bg-[#dfe6f9] border-gray-300 rounded-lg"
+							className="w-full px-4 py-3 bg-[#dfe6f9] border border-gray-300 rounded-lg"
 							{...register("email", { required: true })}
+						/>
+					</div>
+
+					<div className="flex flex-col">
+						<input
+							type="text"
+							placeholder="Enter short info about yourself"
+							name="title"
+							className="w-full px-4 py-3 bg-[#dfe6f9] border border-gray-300 rounded-lg"
+							{...register("title", { required: true })}
 						/>
 					</div>
 
