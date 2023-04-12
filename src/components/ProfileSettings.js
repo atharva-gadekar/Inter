@@ -11,9 +11,63 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGear, faPen} from '@fortawesome/free-solid-svg-icons';
 import Navbarhome from "./Navbarhome";
+import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { useState } from "react";
+import axios from "axios";
 
 
 const Profile_Settings = () => {
+  const [user, setUser] = useState({
+		user: {
+			_id: "",
+			name: "",
+			email: "@gmail.com",
+			password: "",
+			picture: "",
+			collegeName: "",
+			year: 2,
+			branch: "",
+			interests: [],
+			following: [],
+			followers: [],
+			posts: [],
+			createdAt: "",
+			__v: 2,
+		},
+		url: "",});
+
+  const token = localStorage.getItem('token');
+
+  useEffect(() => {
+    const fetchUserName = async () => {
+      try {
+        if (token) {
+          const userId = localStorage.getItem('userId');
+
+          axios({
+						method: "get",
+						url: `https://inter-api-8q0x.onrender.com/user/${userId}`,
+						headers: {
+							Authorization: `Bearer ${token}`,
+						},
+					}).then((response) => {
+						setUser(response.data);
+           
+					});
+
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchUserName();
+  }, []);
+
+  
+
+
   return (
     <>
       {/* <Navbarhome /> */}
@@ -28,8 +82,8 @@ const Profile_Settings = () => {
                 <div className="h-36 w-36 lg:h-44 lg:w-44 rounded-full overflow-hidden bg-white border-4 -mt-12 ">
                   
                   <img
-                    className="h-full w-full object-contain"
-                    src={profile}
+                    className="h-full w-full object-cover"
+                    src={user.url}
                     alt="Profile"
                     />
                    
@@ -40,7 +94,8 @@ const Profile_Settings = () => {
                   </div>
                   <div className="flex space-x-4">
                   <FontAwesomeIcon icon={faPen} className="mr-5 h-6 w-6 text-blue-600 text-lg lg:text-base" />
-                  <FontAwesomeIcon icon={faGear} className="mr-5 h-6 w-6 text-blue-600 text-lg lg:text-base" />
+                  <Link to="/"> <FontAwesomeIcon icon={faGear} className="mr-5 h-6 w-6 text-blue-600 text-lg lg:text-base" /></Link>
+                 
                   </div>
                   
                 </div>
@@ -49,13 +104,13 @@ const Profile_Settings = () => {
                   <div className="flex">
                     <div>
                       <h1 className="mt-4 text-black text-2xl font-bold  ">
-                        Shanay Smith
+                      {user.user.name}
                       </h1>
                       <h2 className="mt-2 text-gray-600 text-xl font-medium tracking-wide">
-                        Operations Manager &amp; Executive Assistant
+                       {user.user.branch}
                       </h2>
                       <h3 className="mt-2 text-gray-600 text-xl font-medium tracking-wide">
-                        Toronto, Ontario, Canada • Contact info
+                      {user.user.title}
                       </h3>
                       <h3 className="mt-2 text-gray-600 text-xl font-medium tracking-wide">
                         <span className="text-black text-[1rem] font-medium mr-2">
@@ -72,21 +127,19 @@ const Profile_Settings = () => {
                         Education
                       </h1>
                       <h2 className="mt-2 text-gray-600 text-xl font-medium tracking-wide">
-                       University of Toronto
+                      {user.user.collegeName}
                       </h2>
                      
-                    <div className="mt-6 flex flex-row flex-wrap mr-11">
-                      
-                      <span className="bg-gray-200 text-gray-700 px-3 py-3 rounded-xl text-sm mr-2 mb-2">
-                        #University of Toronto
-                      </span>
-                      <span className="bg-gray-200 text-gray-700 px-3 py-3 rounded-xl text-sm mr-2 mb-2">
-                        #Operations
-                      </span>
-                      <span className="bg-gray-200 text-gray-700 px-3 py-3 rounded-xl text-sm mr-2 mb-2">
-                        #Management
-                      </span>
-                    </div>
+                   <div className="mt-6 flex flex-row flex-wrap mr-11">
+  {user.user.interests.map((interest, index) => (
+    <span
+      key={index}
+      className="bg-gray-200 text-gray-700 px-3 py-3 rounded-xl text-sm mr-2 mb-2"
+    >
+      #{interest}
+    </span>
+  ))}
+</div>
                   </div>
                 </div>
               </div>
@@ -147,16 +200,7 @@ const Profile_Settings = () => {
               true data talk.
             </p>
             <br />
-            <p>
-              The seeds to success, for Sharma—an IIT-Kharagpur chemical
-              engineer, who also completed an MBA-equivalent from
-              IIM-Ahmedabad—were sown early. He spent his childhood in six
-              cities in India, thanks to his banker father's transferable job.
-              "Being constantly on the move made me ready to face change," he
-              says. Sharma began by working across financial services, real
-              estate, infrastructure and education until over time, he saw
-              greater scope to specialise in banking and data and analytics.
-            </p>
+           
           </div>
         </div>
       </div>
