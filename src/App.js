@@ -42,7 +42,7 @@ function App() {
         <Route path="/home" element={<Homepage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Signup />} />
-        <Route path="/profile" element={<ProfileFinal />} />
+        <Route path="/profile" element={<Hi />} />
         <Route path="/blog/:id" element={<BlogPage />} />
         <Route path="/chat" element={<ChatFinal />} />
         <Route path="/connections" element={<ConnectionsPage />} />
