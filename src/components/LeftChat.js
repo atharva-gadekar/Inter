@@ -1,7 +1,8 @@
 import React from "react";
 import {
+  faSearch,
   faCog,
-  faMessagePlus,
+  faPenToSquare,
   faMessage,
   faFilter,
 } from "@fortawesome/free-solid-svg-icons";
@@ -14,9 +15,9 @@ export default function LeftChat() {
         <h1 className="px-8 font-bold py-8 text-xl">Messaging</h1>
 
         <FontAwesomeIcon
-          icon={faMessage}
+          icon={faPenToSquare}
           size="lg"
-          className="text-slate-500 bg-transparent cursor-pointer pr-8"
+          className="text-slate-500 bg-transparent cursor-pointer pr-8 stroke-0"
         />
       </div>
 
@@ -28,7 +29,7 @@ export default function LeftChat() {
             placeholder="Search Messaging"
           />
           <FontAwesomeIcon
-            icon={faFilter}
+            icon={faSearch}
             size="lg"
             className="text-slate-500 bg-transparent cursor-pointer h-4 w-4 pr-4"
           />

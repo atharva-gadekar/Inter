@@ -8,11 +8,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import profile from "../assets/Rectangle 47.png";
-import { faPaperPlane } from "@fortawesome/free-regular-svg-icons";
+import {  faPaperPlane } from "@fortawesome/free-regular-svg-icons";
 export default function Chat() {
     return (
 
-    <div className="bg-white rounded-r-3xl border-l w-full">
+    <div className="bg-white rounded-r-3xl border-l w-full min-h-screen">
       <div className="heading pt-4">
         <div className=" items-center pt-3 space-x-4 flex pb-3">
           <div>
@@ -114,22 +114,23 @@ export default function Chat() {
               </div>
              
             </div>
-            <div className=" mt-auto bottom-0 sticky">
-            <hr className="mt-6"/>
-            <div class="py-3">
-              <label htmlFor="" className="relative text-slate-400 py-5 px-3 ml-4 w-[80%] mb-6">
+            
+            
+          <div class="pb-3 bottom-0 sticky bg-white">
+          <hr className=""/>
+              <label htmlFor="" className="relative text-slate-400 py-5 px-3 pl-4 w-[80%] mb-6 bg-white">
               <input
                type="text"   
                placeholder="Write your message here..."
-               className="text-slate-400 !outline-none bg-transparent pt-5 px-3 ml-4 mr-4 w-[80%]"
+               className="text-slate-400 !outline-none bg-transparent pt-5 px-3 mt-3 pl-4 mr-4 mb-6 w-[80%] bg-white"
                   />
                   <FontAwesomeIcon
             icon={faPaperPlane}
             size="lg"
-            className="text-slate-500 bg-transparent cursor-pointer h-4 w-4 pr-4 "
+            className="text-slate-500 bg-transparent cursor-pointer h-6 w-6 "
           />
                     </label>
-            </div>
+            
             </div>
           
                
