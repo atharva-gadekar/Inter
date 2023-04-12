@@ -116,12 +116,12 @@ export default function Chat() {
             </div>
             <div className=" mt-auto bottom-0 sticky">
             <hr className="mt-6"/>
-            <div class="py-3">
-              <label htmlFor="" className="relative text-slate-400 py-5 px-3 ml-4 w-[80%] mb-6">
+            <div class="py-3 bg-white">
+              <label htmlFor="" className="relative text-slate-400 py-5 px-3 ml-4 w-[80%] mb-6 bg-white">
               <input
                type="text"   
                placeholder="Write your message here..."
-               className="text-slate-400 !outline-none bg-transparent pt-5 px-3 ml-4 mr-4 w-[80%]"
+               className="text-slate-400 !outline-none bg-transparent pt-5 px-3 ml-4 mr-4 mb-6 w-[80%] bg-white"
                   />
                   <FontAwesomeIcon
             icon={faPaperPlane}
