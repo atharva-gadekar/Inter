@@ -4,7 +4,7 @@ import {
 	faVideo,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Modal, Input, Select, Upload, Button } from "antd";
 import BlogPage from "./BlogPage";
 
@@ -41,8 +41,7 @@ const CreatePost = (props) => {
 	};
 	
 	const handleSubmit = () => {
-		setData({ ...data, tags, banner: props.banner });
-		console.log(tags);
+		setData({ ...data, tags: [...tags], banner: props.banner });
 		props.setBlog({
 			...props.blog,
 			...data
@@ -51,6 +50,10 @@ const CreatePost = (props) => {
 		console.log(props.blog);
 		setShow(true);
 	};
+
+	useEffect(() => {
+		console.log(props.blog);
+	}, [props.blog]);
 
 
 	const uploadButton = (

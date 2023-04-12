@@ -16,10 +16,13 @@ import Navbarhome from "./Navbarhome";
 export default function BlogPage(props) {
   const editorRef = useRef(null);
 	const [content, setContent] = useState("");
+	const id = localStorage.getItem("userId");
 	const log = () => {
 		if (editorRef.current) {
-			console.log(editorRef.current.getContent());
+			// console.log(editorRef.current.getContent());
 			setContent(editorRef.current.getContent());
+			props.setBlog({...props.blog, content, owner: id})
+			console.log(props.blog);
 		}
 	};
 
