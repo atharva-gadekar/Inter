@@ -12,7 +12,7 @@ import {  faPaperPlane } from "@fortawesome/free-regular-svg-icons";
 export default function Chat() {
     return (
 
-    <div className="bg-white rounded-r-3xl border-l w-full min-h-screen">
+    <div className="bg-white rounded-r-3xl border-l w-full">
       <div className="heading pt-4">
         <div className=" items-center pt-3 space-x-4 flex pb-3">
           <div>
@@ -116,7 +116,7 @@ export default function Chat() {
             </div>
             
             
-          <div class="pb-3 bottom-0 sticky bg-white">
+          <div class=" bottom-0 sticky bg-white">
           <hr className=""/>
               <label htmlFor="" className="relative text-slate-400 py-5 px-3 pl-4 w-[80%] mb-6 bg-white">
               <input

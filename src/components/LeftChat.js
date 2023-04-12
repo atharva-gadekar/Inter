@@ -11,7 +11,7 @@ import profile from "../assets/Rectangle 47.png";
 export default function LeftChat() {
   return (
     <div className="bg-white rounded-l-3xl h-full w-[40%]">
-      <div className=" flex justify-between items-center">
+      <div className=" flex justify-between items-center sticky">
         <h1 className="px-8 font-bold py-8 text-xl">Messaging</h1>
 
         <FontAwesomeIcon
@@ -37,8 +37,9 @@ export default function LeftChat() {
           </div>
           
           {/* <hr className="mt-6"></hr> */}
-          <div className="mt-6"></div>
-      <div className="message">
+      <div className="mt-6"></div>
+      <div className="parent pb-2 h-[32rem] overflow-y-scroll ">
+          <div className="message">
         <div className="hover:bg-blue-200 items-center pt-3  space-x-6 flex pb-3 ">
           <div>
             <img src={profile} className="rounded-2xl h-12 w-12 ml-8"></img>
@@ -55,7 +56,6 @@ export default function LeftChat() {
         </div>
         {/* <hr></hr> */}
           </div>
-
           <div className="message">
         <div className="hover:bg-blue-200 items-center pt-3 space-x-6 flex pb-3">
           <div>
@@ -73,7 +73,6 @@ export default function LeftChat() {
         </div>
         {/* <hr></hr> */}
           </div>
-
           <div className="message">
         <div className="hover:bg-blue-200 items-center pt-3 space-x-6 flex pb-3">
           <div>
@@ -91,25 +90,6 @@ export default function LeftChat() {
         </div>
         {/* <hr></hr> */}
           </div>
-          
-          <div className="message">
-        <div className="hover:bg-blue-200 items-center pt-3 space-x-6 flex pb-3">
-          <div>
-            <img src={profile} className="rounded-2xl h-12 w-12 ml-8"></img>
-          </div>
-          <div className="block ">
-            <div className="flex flex-row justify-between items-center mr-4  ">
-              <h1 className="text-sm font-medium ">Nick Rybak</h1>
-              <p className="text-xs font-medium text-slate-500  mr-4">16 Jan</p>
-            </div>
-            <p className="text-xs text-slate-400 mr-4 ">
-              Hello guys, this is my Connexa Messaging page
-            </p>
-          </div>
-        </div>
-        {/* <hr></hr> */}
-          </div>
-
           <div className="message">
         <div className="hover:bg-blue-200 items-center pt-3 space-x-6 flex pb-3">
           <div>
@@ -195,6 +175,25 @@ export default function LeftChat() {
         </div>
         {/* <hr></hr> */}
           </div>
+          <div className="message">
+        <div className="hover:bg-blue-200 items-center pt-3 space-x-6 flex pb-3">
+          <div>
+            <img src={profile} className="rounded-2xl h-12 w-12 ml-8"></img>
+          </div>
+          <div className="block ">
+            <div className="flex flex-row justify-between items-center mr-4  ">
+              <h1 className="text-sm font-medium ">Nick Rybak</h1>
+              <p className="text-xs font-medium text-slate-500  mr-4">16 Jan</p>
+            </div>
+            <p className="text-xs text-slate-400 mr-4 ">
+              Hello guys, this is my Connexa Messaging page
+            </p>
+          </div>
+        </div>
+        {/* <hr></hr> */}
+          </div>
+      </div>
+      
       </div>
       
   );
