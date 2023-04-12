@@ -159,7 +159,7 @@ const Profile_Settings = () => {
       <div className=" mt-5 ml-3 mr-3 lg:mx-auto bg-white lg:w-[97.6%] py-6 px-8 rounded-2xl mb-5 ">
         <div className="ml-2 lg:text-left mt-3 mb-6">
           <div className="flex justify-between"><h3 className="text-3xl font-bold text-black ">About</h3>
-          <FontAwesomeIcon icon={faPen} className="mr-5 h-6 w-6 text-blue-600 text-lg lg:text-base" />
+      
           </div>
           
           <div className="mt-6 text-black text-[1.2rem]">
@@ -171,7 +171,7 @@ const Profile_Settings = () => {
               only 20-something to do so in India.
             </p>
             <br />
-            <p className="opacity-0">
+            <p className="">
               {" "}
               He leads multiple teams and helps several clients make big bets
               and build businesses, leveraging his command over data and
