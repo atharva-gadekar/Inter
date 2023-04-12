@@ -80,7 +80,7 @@ function Signup() {
 		<div className="bg-gradient-to-br from-blue-100 to-white-400">
 			<Navbar />
 
-			<div className="block lg:flex items-center justify-center min-h-[80vh] lg:justify-evenly overflow-y-hidden">
+			<div className="block lg:flex items-center justify-center lg:justify-evenly overflow-y-hidden -mt-32">
 				<div className="block lg:flex flex-col mt-20  ">
 					{/* headings and subheadings */}
 					<div className="ml-0 lg:-ml-16">
@@ -100,13 +100,14 @@ function Signup() {
 							alt="Login Image"
 						/>
 					</div>
+					
 				</div>
 
 				{/* form begins here */}
 
 				<form
 					onSubmit={handleSubmit(submitForm)}
-					className="flex lg:h-20 scale-90 flex-col gap-4 w-[340px] lg:w-[550px] lg:mt-[7.25rem] ml-auto mr-auto lg:ml-0 justify-center mb-4 lg:mr-0"
+					className="flex  scale-90 flex-col gap-4 w-[23%] lg:w-[550px] lg:mt-[7.25rem] ml-auto mr-auto lg:ml-0 justify-center mb-4 lg:mr-0"
 					style={{ transform: "scale(0.78)" }}
 				>
 					<div className="flex lg:w-[auto] gap-4 justify-between">

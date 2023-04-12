@@ -82,7 +82,8 @@ function Login() {
 								className="w-full px-4 py-3 bg-[#dfe6f9] border-gray-300 rounded-lg"
 							/>
 						</div>
-						<div className="flex flex-col">
+					  <div className="flex flex-col">
+						  
 							<input
 								type="password"
 								id="password"
