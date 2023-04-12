@@ -83,7 +83,7 @@ const Profile_Settings = () => {
                   
                   <img
                     className="h-full w-full object-cover"
-                    src={profile}
+                    src={user.url}
                     alt="Profile"
                     />
                    
@@ -156,12 +156,9 @@ const Profile_Settings = () => {
         </div>
       </div>
 
-      <div className=" mt-5 ml-3 mr-3 lg:mx-auto bg-white lg:w-[97.6%] py-6 px-8 rounded-2xl mb-5 ">
+      <div className=" mt-5 ml-3 mr-3 lg:mx-auto bg-white  py-6 px-8 rounded-2xl mb-5 ">
         <div className="ml-2 lg:text-left mt-3 mb-6">
-          <div className="flex justify-between"><h3 className="text-3xl font-bold text-black ">About</h3>
-          <FontAwesomeIcon icon={faPen} className="mr-5 h-6 w-6 text-blue-600 text-lg lg:text-base" />
-          </div>
-          
+          <h3 className="text-3xl font-bold text-black ">About</h3>
           <div className="mt-6 text-black text-[1.2rem]">
             <p>
               Aditya Sharma, unlike most others on Forbes India's 30 Under 30
@@ -203,7 +200,16 @@ const Profile_Settings = () => {
               true data talk.
             </p>
             <br />
-           
+            <p>
+              The seeds to success, for Sharma—an IIT-Kharagpur chemical
+              engineer, who also completed an MBA-equivalent from
+              IIM-Ahmedabad—were sown early. He spent his childhood in six
+              cities in India, thanks to his banker father's transferable job.
+              "Being constantly on the move made me ready to face change," he
+              says. Sharma began by working across financial services, real
+              estate, infrastructure and education until over time, he saw
+              greater scope to specialise in banking and data and analytics.
+            </p>
           </div>
         </div>
       </div>
