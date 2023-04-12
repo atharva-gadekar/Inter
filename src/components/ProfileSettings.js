@@ -28,7 +28,7 @@ const Profile_Settings = () => {
                 <div className="h-36 w-36 lg:h-44 lg:w-44 rounded-full overflow-hidden bg-white border-4 -mt-12 ">
                   
                   <img
-                    className="h-full w-full object-contain"
+                    className="h-full w-full object-cover"
                     src={profile}
                     alt="Profile"
                     />
