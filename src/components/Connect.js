@@ -13,7 +13,7 @@ faHome,
 import axios from 'axios';
 
 const Connect = () => {
-  const [followers, setFollowers] = useState([]);
+  const [following, setFollowing] = useState([]);
   const token = localStorage.getItem('token');
 
   useEffect(() => {
@@ -24,13 +24,13 @@ const Connect = () => {
 
           axios({
 						method: "get",
-						url: `https://inter-api-8q0x.onrender.com/user/${userId}/followers`,
+						url: `https://inter-api-8q0x.onrender.com/user/${userId}/following`,
 						headers: {
 							Authorization: `Bearer ${token}`,
 						},
 					}).then((response) => {
-					setFollowers(response.data.followers);
-          console.log(response.data.followers);
+					setFollowing(response.data.following);
+          console.log(response.data.following);
 					});
 
           
@@ -46,16 +46,16 @@ const Connect = () => {
   return (
     <div className="bg-white rounded-2xl p-6 w-[117%] h-[36rem] -mx-16 hidden lg:block">
       <h1 className="font-bold text-sm">Friend List</h1>
-      {followers.map((follower) => (
+      {following.map((following) => (
         <div className="flex pt-6 items-center space-x-4 justify-between">
           <div className="flex items-center space-x-3">
             <img
-              src={follower.url}
+              src={following.url}
               alt=""
               className="h-12 w-12 rounded-full"
             />
             <div className="block">
-              <h1 className="font-bold text-sm">{follower.name}</h1>
+              <h1 className="font-bold text-sm">{following.name}</h1>
               <p className="text-xs text-slate-400">india</p>
             </div>
           </div>

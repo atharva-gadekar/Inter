@@ -18,9 +18,12 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment } from "@fortawesome/free-regular-svg-icons";
 import axios from "axios";
+import moment from "moment";
 
 export default function Post() {
   const [blogs, setBlogs] = useState([]);
+  const [likes, setLikes] = useState({});
+
 
   const token = localStorage.getItem("token");
 
@@ -29,14 +32,14 @@ export default function Post() {
       try {
         if (token) {
           axios({
-						method: "get",
-						url: `https://inter-api-8q0x.onrender.com/blog`,
-						headers: {
-							Authorization: `Bearer ${token}`,
-						},
-					}).then((response) => {
-						setBlogs(response.data.blogs);
-					});
+            method: "get",
+            url: `https://inter-api-8q0x.onrender.com/blog`,
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }).then((response) => {
+            setBlogs(response.data.blogs);
+          });
         }
       } catch (error) {
         console.error(error);
@@ -46,19 +49,34 @@ export default function Post() {
     fetchBlogs();
   }, []);
 
-
   const getReadingTime = (content) => {
     const wordsPerMinute = 250; // Average reading speed
     const words = content.trim().split(/\s+/).length;
     const minutes = Math.ceil(words / wordsPerMinute);
     return `${minutes} `;
   };
+
+  const handleLike = async (id) => {
+    try {
+      const likeData = { likes: { [id]: true } };
+      const response = await axios.patch(`https://inter-api-8q0x.onrender.com/blog/${id}/like`, likeData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setLikes((prevState) => ({ ...prevState, [id]: response.data.likes[id] }));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  
+
   return (
     <>
       {blogs.map((blog) => (
         <div
           key={blog._id}
-          className="p-12 w-[92%] scale-90 rounded-2xl bg-white mr-auto ml-auto lg:mx-8 shadow-md pb-2 -mt-3"
+          className="p-12 w-[92%] scale-90 rounded-2xl bg-white mr-auto ml-auto lg:mx-8 shadow-md pb-2 "
         >
           <img
             src={blog.bannerUrl}
@@ -70,7 +88,7 @@ export default function Post() {
           </h1>
 
           <div className="subheading flex justify-center items-center space-x-5 text-xs pt-2 mb-4 text-slate-500">
-            <p>{blog.date}</p>
+            <p>{moment(blog.date).format("MMMM DD, YYYY")}</p>
             <div className="flex justify-center items-center space-x-2">
               <p className="text-lg text-pink-900">-</p>
               <p>{getReadingTime(blog.content)} min read</p>
@@ -78,17 +96,17 @@ export default function Post() {
 
             <div className="flex justify-center items-center space-x-2">
               <FontAwesomeIcon icon={faCommenting} className="text-pink-700" />
-              <p>3</p>
+              <p>{blog.comments.length}</p>
             </div>
 
             <div className="flex justify-center items-center space-x-2">
-              <FontAwesomeIcon icon={faHeart} className="text-pink-700" />
-              <p>3</p>
-            </div>
+      <FontAwesomeIcon icon={faHeart} className="text-pink-700" />
+      <p>{likes[blog._id] || blog.likes && Object.keys(blog.likes).length}</p>
+    </div>
           </div>
 
           <p className="text-left mr-auto ml-auto text-slate-500 text-base">
-            {blog.content}
+            {blog.brief}
           </p>
 
           <div className="footer mr-auto ml-auto flex justify-between items-center text-sm text-slate-800 mt-8">
