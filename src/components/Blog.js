@@ -13,15 +13,11 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Navbarhome from "./Navbarhome";
 
-export default function BlogPage() {
-	const editorRef = useRef(null);
-	const [content, setContent] = useState("");
-	const log = () => {
-		if (editorRef.current) {
-			console.log(editorRef.current.getContent());
-			setContent(editorRef.current.getContent());
-		}
-	};
+export default function Blog() {
+	
+
+
+
 	return (
 		<>
 			<Navbarhome />

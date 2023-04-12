@@ -11,7 +11,7 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { Badge } from "antd";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 const Sidebar = () => {

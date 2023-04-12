@@ -13,7 +13,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Navbarhome from "./Navbarhome";
 
-export default function BlogPage() {
+export default function BlogPage(props) {
   const editorRef = useRef(null);
 	const [content, setContent] = useState("");
 	const log = () => {
@@ -22,19 +22,33 @@ export default function BlogPage() {
 			setContent(editorRef.current.getContent());
 		}
 	};
+
+	const [imgData, setImgData] = useState(null);
+
+	const onChangePicture = () => {
+		if (props.blog.banner) {
+			const reader = new FileReader();
+			reader.addEventListener("load", () => {
+				setImgData(reader.result);
+			});
+			reader.readAsDataURL(props.blog.banner);
+		}
+	};
+
+		useEffect(() => {
+			onChangePicture();
+		}, []);
+		
   return (
 		<>
-			<Navbarhome />
 			<div className=" lg:w-[70%] mr-auto ml-auto mt-12">
-				<img src={post} className="lg:w-[100%] ml-auto mr-auto w-[80%]"></img>
-				<div className="flex items-center space-x-4 mt-4 lg:mt-12 lg:mb-6 mb-4 px-24">
-					<img src={blank} alt="" className="h-8 w-8 rounded-full" />
-					<p className="text-xs lg:text-sm text-slate-600">
-						By Saishree Kouda, Scarlet Magazine
-					</p>
-				</div>
-				<div className="lg:flex space-x-12 lg:place-items-start ">
-					<div className="flex lg:flex-col lg:space-y-3 pb-4 lg:pt-2 lg:pb-2 justify-center">
+				<img
+					src={imgData}
+					className="lg:w-[100%] ml-auto mr-auto w-[80%]"
+				></img>
+				<div className="flex items-center space-x-4 mt-4 lg:mt-12 lg:mb-6 mb-4 px-24"></div>
+				<div className="lg:flex space-x-0 lg:place-items-start ">
+					<div className="flex hidden lg:flex-col lg:space-y-3 pb-4 lg:pt-2 lg:pb-2 justify-center">
 						<FontAwesomeIcon
 							icon={faFacebook}
 							className="mr-5 text-blue-600 text-lg lg:text-base"
@@ -54,14 +68,10 @@ export default function BlogPage() {
 					</div>
 					<div className="justify-center ml-auto mr-auto">
 						<h2 className="font-extrabold text-2xl lg:text-5xl text-slate-800 lg:leading-[1.25] mr-12 lg:mr-auto">
-							Which Podcasts Should Web Developers And Designers Be Listening
-							To?
+							{props.blog.title}
 						</h2>
 						<p className="text-slate-600 mt-4 mr-12 lg:mr-auto mb-10">
-							What podcasts Scarlet community listened to, aiming to complete a
-							shortlist of current podcasts for web designers ond developers. We
-							had what can be coded to a very strong response both in number and
-							in passion.
+							{props.blog.brief}
 						</p>
 
 						<Editor
@@ -70,9 +80,10 @@ export default function BlogPage() {
 							initialValue="<p>This is the initial content of the editor.</p>"
 							init={{
 								height: "100vh",
-								menubar: false,
+								toolbar_sticky: true,
+
 								plugins: [
-									"autolink lists link image charmap print preview anchor",
+									"autolink lists advlist link image charmap print preview anchor",
 									"searchreplace visualblocks code fullscreen",
 									"insertdatetime media table paste code help wordcount quickbars",
 								],
@@ -84,11 +95,17 @@ export default function BlogPage() {
 								],
 
 								content_style:
-									"body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
+									"body { font-family:Helvetica,Arial,sans-serif; font-size:17px }",
 							}}
 						/>
-						<button onClick={log} className="mt-5 mb-5 ">Log editor content</button>
-						
+						<div className="flex justify-end">
+							<button
+								onClick={log}
+								class="mt-8 mb-32 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+							>
+								Post Blog
+							</button>
+						</div>
 					</div>
 				</div>
 			</div>
