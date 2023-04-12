@@ -21,7 +21,7 @@ const Profile_Settings = () => {
   const [user, setUser] = useState({
 		user: {
 			_id: "",
-			name: "",add .
+			name: "",
 			email: "@gmail.com",
 			password: "",
 			picture: "",
@@ -171,7 +171,7 @@ const Profile_Settings = () => {
               only 20-something to do so in India.
             </p>
             <br />
-            <p className="">
+            <p className="opacity-0">
               {" "}
               He leads multiple teams and helps several clients make big bets
               and build businesses, leveraging his command over data and
