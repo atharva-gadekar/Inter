@@ -15,36 +15,38 @@ import { set } from "react-hook-form";
 
 export default function LeftChat() {
   const [conversations, setConversations] = useState([]);
-  const { user } = useContext(AuthContext);
-  const token = localStorage.getItem('token');
-  
+
+  // const { user } = useContext(AuthContext);
+  const token = localStorage.getItem("token");
+  const userId = localStorage.getItem("userId");
+ 
   useEffect(() => {
     const getConversations = async () => {
       try {
         if (token) {
-          const userId = localStorage.getItem('userId');
-          const response = await fetch(`https://inter-api-8q0x.onrender.com/conversations/${userId}`, {
-            headers: {
-              Authorization: `Bearer ${token}`
+          const userId = localStorage.getItem("userId");
+          const res = await axios.get(
+            `https://inter-api-8q0x.onrender.com/conversations/${userId}`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
             }
-          });
-          if (!response.ok) {
+          );
+          setConversations(res.data);
+          if (!res.ok) {
             throw new Error("Error fetching user details");
           }
-
-          const data = await response.json();
-          console.log(data);
-          
+          const data = await res.json();
         }
-        
-      }
-      catch (err) {
+      } catch (err) {
         console.log(err);
       }
     };
     getConversations();
-  }, [user]);
-  console.log(user);
+  }, [userId]);
+
+  // console.log(user);
   return (
     <div className="bg-white rounded-l-3xl h-full w-[40%] border-b-white border-b-2">
       <div className=" flex justify-between items-center sticky">
@@ -76,12 +78,8 @@ export default function LeftChat() {
       <div className="mt-6"></div>
       <div className="parent pb-2 h-[32rem] overflow-y-scroll ">
         {conversations.map((c) => (
-          <Conversation conversation={c} />
+          <Conversation conversation={c} currentUser={userId} />
         ))}
-        
-        <Conversation />
-        <Conversation />
-        
       </div>
     </div>
   );
