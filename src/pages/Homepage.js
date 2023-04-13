@@ -23,14 +23,14 @@ const Homepage = () => {
 		<div className="flex flex-col min-h-screen">
 			<Navbarhome />
 
-			<div className="flex flex-1">
-				<div className="lg:w-1/6">
+			<div className="flex justify-evenly pr-16">
+				<div className="lg:w-1/5">
 					<div className="sticky top-4">
 						<Sidebar />
 						<ProfileSidebar />
 					</div>
 				</div>
-				<div className="lg:w-2/3 lg:mt-4 ">
+				<div className="w-[60%] pr-4 mt-4 ">
 					<CreatePost
 						banner={banner}
 						setBanner={setBanner}
@@ -46,7 +46,8 @@ const Homepage = () => {
 				</div>
 			</div>
 			<NavigationHome />
-		</div>
+	  </div>
+	   
 	);
 };
 

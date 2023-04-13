@@ -77,7 +77,7 @@ export default function Chat() {
               consequatur quas?
             </div>
           </div>
-          <div className="flex justify-end mb-4">
+          {/* <div className="flex justify-end mb-4">
             <div>
               <div
                 className="mr-2 py-3 px-4 bg-blue-100 rounded-bl-3xl rounded-tl-3xl rounded-tr-xl text-slate-600"
@@ -98,7 +98,7 @@ export default function Chat() {
               className="object-cover h-8 w-8 rounded-full"
               alt=""
             />
-          </div>
+          </div> */}
           <div className="flex justify-start mb-4">
             <img
               src="https://source.unsplash.com/vpOeXr5wmR4/600x600"

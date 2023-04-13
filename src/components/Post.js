@@ -13,7 +13,7 @@ import {
   faFireAlt,
   faHeart,
   faCommentAlt,
-  faCommenting,
+  faCommenting, faArrowRight
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment } from "@fortawesome/free-regular-svg-icons";
@@ -76,7 +76,7 @@ export default function Post() {
       {blogs.map((blog) => (
         <div
           key={blog._id}
-          className="p-12 w-[92%] scale-90 rounded-2xl bg-white mr-auto ml-auto lg:mx-8 shadow-md pb-2 "
+          className="p-12 w-full mt-8 rounded-2xl bg-white shadow-sm pb-2 h-auto"
         >
           <img
             src={blog.bannerUrl}
@@ -128,8 +128,12 @@ export default function Post() {
             </div>
           </div>
           <div className=" mr-auto ml-auto text-center mt-8 ">
-            <button className="bg-slate-700 text-white p-2 pl-4 pr-4 text-sm font-medium">
-              <Link to="/BlogPage">Continue Reading</Link>
+            <button className=" text-white p-2 pl-4 pr-4 text-sm font-medium mb-8 rounded-lg">
+              <Link to="/BlogPage">
+                <div className="flex space-x-3 items-center bg-blue-100 px-3 py-3 rounded-lg">
+                <p className="text-blue-600">Continue Reading</p> <FontAwesomeIcon icon={faArrowRight} className="text-blue-600" />
+                </div>
+              </Link>
             </button>
           </div>
         </div>
