@@ -10,7 +10,7 @@ import '../App.css';
 import { Link } from "react-router-dom";
 import NavigationHome from '../components/NavigationHome';
 import Connections from '../components/Connections';
-import ChatPage from '../components/ChatPage';
+
 import Notif from '../components/Notif';
 export default function Notifications() {
   return (
