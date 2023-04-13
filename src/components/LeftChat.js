@@ -21,6 +21,7 @@ export default function LeftChat() {
 
   const [conversations, setConversations] = useState([]);
   const [currentChat, setCurrentChat] = useState(null);
+  const [messages, setMessages] = useState([]);
   // const { user } = useContext(AuthContext);
   const token = localStorage.getItem("token");
   const userId = localStorage.getItem("userId");
@@ -51,7 +52,21 @@ export default function LeftChat() {
     getConversations();
   }, [userId]);
 
+  useEffect(() => {
+    const getMessages = async () => {
+      try {
+        const res = await axios.get(`https://inter-api-8q0x.onrender.com/messages/${currentChat?._id}`);
+        setMessages(res.data);
+        console.log(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getMessages();
+   
+  }, [currentChat]);
   console.log(currentChat);
+ 
   return (
     <div className="bg-white rounded-l-3xl h-full w-[40%] border-b-white border-b-2">
       <div className=" flex justify-between items-center sticky">
@@ -84,7 +99,8 @@ export default function LeftChat() {
       <div className="parent pb-2 h-[32rem] overflow-y-scroll ">
         {conversations.map((c) => (
           <div onClick={()=>setCurrentChat(c)}>
-          <Conversation conversation={c} currentUser={userId} /></div>
+          <Conversation conversation={c} currentUser={userId} />
+          </div >
         ))}
       </div>
     </div>

@@ -10,12 +10,23 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import profile from "../assets/Rectangle 47.png";
 import { faPaperPlane } from "@fortawesome/free-regular-svg-icons";
 import Message from "./Message";
-
+import axios from "axios";
 
 export default function Chat() {
   const [conversations, setConversations] = useState([]);
   const [currentChat, setCurrentChat] = useState(null);
   const [messages, setMessages] = useState([]);
+  useEffect(() => {
+    const getMessages = async () => {
+      try {
+        const res = await axios.get(`https://inter-api-8q0x.onrender.com/messages` + currentChat?._id);
+        setMessages(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getMessages();
+  }, [currentChat]);
   return (
     <div className="bg-white rounded-r-3xl border-l w-full  h-[42rem] overflow-y-scroll ">
       <div className="heading pt-4 sticky top-0 bg-white">
@@ -58,7 +69,7 @@ export default function Chat() {
           currentChat ?
         <>
             <div className="flex flex-col mt-5">
-         
+            
               <Message own={false} />
               <Message own={true} />
               <Message own={true} />

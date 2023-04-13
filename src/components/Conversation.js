@@ -54,7 +54,7 @@ export default function Conversation({conversation,currentUser}) {
 
 
   return (
-    <div className="message">
+    <div className="message cursor-pointer">
           <div className="hover:bg-blue-200 items-center pt-3  space-x-6 flex pb-3 ">
             <div>
               <img src={user.url} className="rounded-xl h-12 w-12 ml-8"></img>
