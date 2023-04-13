@@ -97,7 +97,7 @@ export default function Chat() {
           <input
             type="text"
             placeholder="Write your message here..."
-            className="text-slate-400 !outline-none bg-transparent pt-5 px-3 mt-3 pl-4 mr-4 mb-6 w-[80%] bg-white"
+            className="ChatMessageInput text-slate-400 !outline-none bg-transparent pt-5 px-3 mt-3 pl-4 mr-4 mb-6 w-[80%] bg-white"
           />
           <FontAwesomeIcon
             icon={faPaperPlane}

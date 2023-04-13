@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   faSearch,
   faCog,
@@ -8,7 +8,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import profile from "../assets/Rectangle 47.png";
+
+import { AuthContext } from "../context/AuthContext";
+
 export default function LeftChat() {
+  const { user } = useContext(AuthContext);
+  console.log(user);
   return (
     <div className="bg-white rounded-l-3xl h-full w-[40%] border-b-white border-b-2">
       <div className=" flex justify-between items-center sticky">
@@ -34,167 +39,183 @@ export default function LeftChat() {
             className="text-slate-500 bg-transparent cursor-pointer h-4 w-4 pr-4"
           />
         </label>
-          </div>
-          
-          {/* <hr className="mt-6"></hr> */}
+      </div>
+
+      {/* <hr className="mt-6"></hr> */}
       <div className="mt-6"></div>
       <div className="parent pb-2 h-[32rem] overflow-y-scroll ">
-          <div className="message">
-        <div className="hover:bg-blue-200 items-center pt-3  space-x-6 flex pb-3 ">
-          <div>
-            <img src={profile} className="rounded-2xl h-12 w-12 ml-8"></img>
-          </div>
-          <div className="block ">
-            <div className="flex flex-row justify-between items-center mr-4 ">
-              <h1 className="text-sm font-medium ">Nick Rybak</h1>
-              <p className="text-xs font-medium text-slate-500  mr-4">16 Jan</p>
+        <div className="message">
+          <div className="hover:bg-blue-200 items-center pt-3  space-x-6 flex pb-3 ">
+            <div>
+              <img src={profile} className="rounded-2xl h-12 w-12 ml-8"></img>
             </div>
-            <p className="text-xs text-slate-400 mr-4">
-              Hello guys, this is my Connexa Messaging page
-            </p>
-          </div>
-        </div>
-        {/* <hr></hr> */}
-          </div>
-          <div className="message">
-        <div className="hover:bg-blue-200 items-center pt-3 space-x-6 flex pb-3">
-          <div>
-            <img src={profile} className="rounded-2xl h-12 w-12 ml-8"></img>
-          </div>
-          <div className="block ">
-            <div className="flex flex-row justify-between items-center mr-4  ">
-              <h1 className="text-sm font-medium ">Nick Rybak</h1>
-              <p className="text-xs font-medium text-slate-500  mr-4">16 Jan</p>
+            <div className="block ">
+              <div className="flex flex-row justify-between items-center mr-4 ">
+                <h1 className="text-sm font-medium ">Nick Rybak</h1>
+                <p className="text-xs font-medium text-slate-500  mr-4">
+                  16 Jan
+                </p>
+              </div>
+              <p className="text-xs text-slate-400 mr-4">
+                Hello guys, this is my Connexa Messaging page
+              </p>
             </div>
-            <p className="text-xs text-slate-400 mr-4 ">
-              Hello guys, this is my Connexa Messaging page
-            </p>
           </div>
+          {/* <hr></hr> */}
         </div>
-        {/* <hr></hr> */}
-          </div>
-          <div className="message">
-        <div className="hover:bg-blue-200 items-center pt-3 space-x-6 flex pb-3">
-          <div>
-            <img src={profile} className="rounded-2xl h-12 w-12 ml-8"></img>
-          </div>
-          <div className="block ">
-            <div className="flex flex-row justify-between items-center mr-4  ">
-              <h1 className="text-sm font-medium ">Nick Rybak</h1>
-              <p className="text-xs font-medium text-slate-500  mr-4">16 Jan</p>
+        <div className="message">
+          <div className="hover:bg-blue-200 items-center pt-3 space-x-6 flex pb-3">
+            <div>
+              <img src={profile} className="rounded-2xl h-12 w-12 ml-8"></img>
             </div>
-            <p className="text-xs text-slate-400 mr-4">
-              Hello guys, this is my Connexa Messaging page
-            </p>
-          </div>
-        </div>
-        {/* <hr></hr> */}
-          </div>
-          <div className="message">
-        <div className="hover:bg-blue-200 items-center pt-3 space-x-6 flex pb-3">
-          <div>
-            <img src={profile} className="rounded-2xl h-12 w-12 ml-8"></img>
-          </div>
-          <div className="block ">
-            <div className="flex flex-row justify-between items-center mr-4  ">
-              <h1 className="text-sm font-medium ">Nick Rybak</h1>
-              <p className="text-xs font-medium text-slate-500  mr-4">16 Jan</p>
+            <div className="block ">
+              <div className="flex flex-row justify-between items-center mr-4  ">
+                <h1 className="text-sm font-medium ">Nick Rybak</h1>
+                <p className="text-xs font-medium text-slate-500  mr-4">
+                  16 Jan
+                </p>
+              </div>
+              <p className="text-xs text-slate-400 mr-4 ">
+                Hello guys, this is my Connexa Messaging page
+              </p>
             </div>
-            <p className="text-xs text-slate-400 mr-4 ">
-              Hello guys, this is my Connexa Messaging page
-            </p>
           </div>
+          {/* <hr></hr> */}
         </div>
-        {/* <hr></hr> */}
-          </div>
-          <div className="message">
-        <div className="hover:bg-blue-200 items-center pt-3 space-x-6 flex pb-3">
-          <div>
-            <img src={profile} className="rounded-2xl h-12 w-12 ml-8"></img>
-          </div>
-          <div className="block ">
-            <div className="flex flex-row justify-between items-center mr-4  ">
-              <h1 className="text-sm font-medium ">Nick Rybak</h1>
-              <p className="text-xs font-medium text-slate-500  mr-4">16 Jan</p>
+        <div className="message">
+          <div className="hover:bg-blue-200 items-center pt-3 space-x-6 flex pb-3">
+            <div>
+              <img src={profile} className="rounded-2xl h-12 w-12 ml-8"></img>
             </div>
-            <p className="text-xs text-slate-400 mr-4 ">
-              Hello guys, this is my Connexa Messaging page
-            </p>
-          </div>
-        </div>
-        {/* <hr></hr> */}
-          </div>
-          <div className="message">
-        <div className="hover:bg-blue-200 items-center pt-3 space-x-6 flex pb-3">
-          <div>
-            <img src={profile} className="rounded-2xl h-12 w-12 ml-8"></img>
-          </div>
-          <div className="block ">
-            <div className="flex flex-row justify-between items-center mr-4  ">
-              <h1 className="text-sm font-medium ">Nick Rybak</h1>
-              <p className="text-xs font-medium text-slate-500  mr-4">16 Jan</p>
+            <div className="block ">
+              <div className="flex flex-row justify-between items-center mr-4  ">
+                <h1 className="text-sm font-medium ">Nick Rybak</h1>
+                <p className="text-xs font-medium text-slate-500  mr-4">
+                  16 Jan
+                </p>
+              </div>
+              <p className="text-xs text-slate-400 mr-4">
+                Hello guys, this is my Connexa Messaging page
+              </p>
             </div>
-            <p className="text-xs text-slate-400 mr-4 ">
-              Hello guys, this is my Connexa Messaging page
-            </p>
           </div>
+          {/* <hr></hr> */}
         </div>
-        {/* <hr></hr> */}
-          </div>
-          <div className="message">
-        <div className="hover:bg-blue-200 items-center pt-3 space-x-6 flex pb-3">
-          <div>
-            <img src={profile} className="rounded-2xl h-12 w-12 ml-8"></img>
-          </div>
-          <div className="block ">
-            <div className="flex flex-row justify-between items-center mr-4  ">
-              <h1 className="text-sm font-medium ">Nick Rybak</h1>
-              <p className="text-xs font-medium text-slate-500  mr-4">16 Jan</p>
+        <div className="message">
+          <div className="hover:bg-blue-200 items-center pt-3 space-x-6 flex pb-3">
+            <div>
+              <img src={profile} className="rounded-2xl h-12 w-12 ml-8"></img>
             </div>
-            <p className="text-xs text-slate-400 mr-4 ">
-              Hello guys, this is my Connexa Messaging page
-            </p>
-          </div>
-        </div>
-        {/* <hr></hr> */}
-          </div>
-          <div className="message">
-        <div className="hover:bg-blue-200 items-center pt-3 space-x-6 flex pb-3">
-          <div>
-            <img src={profile} className="rounded-2xl h-12 w-12 ml-8"></img>
-          </div>
-          <div className="block ">
-            <div className="flex flex-row justify-between items-center mr-4  ">
-              <h1 className="text-sm font-medium ">Nick Rybak</h1>
-              <p className="text-xs font-medium text-slate-500  mr-4">16 Jan</p>
+            <div className="block ">
+              <div className="flex flex-row justify-between items-center mr-4  ">
+                <h1 className="text-sm font-medium ">Nick Rybak</h1>
+                <p className="text-xs font-medium text-slate-500  mr-4">
+                  16 Jan
+                </p>
+              </div>
+              <p className="text-xs text-slate-400 mr-4 ">
+                Hello guys, this is my Connexa Messaging page
+              </p>
             </div>
-            <p className="text-xs text-slate-400 mr-4 ">
-              Hello guys, this is my Connexa Messaging page
-            </p>
           </div>
+          {/* <hr></hr> */}
         </div>
-        {/* <hr></hr> */}
-          </div>
-          <div className="message">
-        <div className="hover:bg-blue-200 items-center pt-3 space-x-6 flex pb-3">
-          <div>
-            <img src={profile} className="rounded-2xl h-12 w-12 ml-8"></img>
-          </div>
-          <div className="block ">
-            <div className="flex flex-row justify-between items-center mr-4  ">
-              <h1 className="text-sm font-medium ">Nick Rybak</h1>
-              <p className="text-xs font-medium text-slate-500  mr-4">16 Jan</p>
+        <div className="message">
+          <div className="hover:bg-blue-200 items-center pt-3 space-x-6 flex pb-3">
+            <div>
+              <img src={profile} className="rounded-2xl h-12 w-12 ml-8"></img>
             </div>
-            <p className="text-xs text-slate-400 mr-4 ">
-              Hello guys, this is my Connexa Messaging page
-            </p>
+            <div className="block ">
+              <div className="flex flex-row justify-between items-center mr-4  ">
+                <h1 className="text-sm font-medium ">Nick Rybak</h1>
+                <p className="text-xs font-medium text-slate-500  mr-4">
+                  16 Jan
+                </p>
+              </div>
+              <p className="text-xs text-slate-400 mr-4 ">
+                Hello guys, this is my Connexa Messaging page
+              </p>
+            </div>
           </div>
+          {/* <hr></hr> */}
         </div>
-        {/* <hr></hr> */}
+        <div className="message">
+          <div className="hover:bg-blue-200 items-center pt-3 space-x-6 flex pb-3">
+            <div>
+              <img src={profile} className="rounded-2xl h-12 w-12 ml-8"></img>
+            </div>
+            <div className="block ">
+              <div className="flex flex-row justify-between items-center mr-4  ">
+                <h1 className="text-sm font-medium ">Nick Rybak</h1>
+                <p className="text-xs font-medium text-slate-500  mr-4">
+                  16 Jan
+                </p>
+              </div>
+              <p className="text-xs text-slate-400 mr-4 ">
+                Hello guys, this is my Connexa Messaging page
+              </p>
+            </div>
           </div>
+          {/* <hr></hr> */}
+        </div>
+        <div className="message">
+          <div className="hover:bg-blue-200 items-center pt-3 space-x-6 flex pb-3">
+            <div>
+              <img src={profile} className="rounded-2xl h-12 w-12 ml-8"></img>
+            </div>
+            <div className="block ">
+              <div className="flex flex-row justify-between items-center mr-4  ">
+                <h1 className="text-sm font-medium ">Nick Rybak</h1>
+                <p className="text-xs font-medium text-slate-500  mr-4">
+                  16 Jan
+                </p>
+              </div>
+              <p className="text-xs text-slate-400 mr-4 ">
+                Hello guys, this is my Connexa Messaging page
+              </p>
+            </div>
+          </div>
+          {/* <hr></hr> */}
+        </div>
+        <div className="message">
+          <div className="hover:bg-blue-200 items-center pt-3 space-x-6 flex pb-3">
+            <div>
+              <img src={profile} className="rounded-2xl h-12 w-12 ml-8"></img>
+            </div>
+            <div className="block ">
+              <div className="flex flex-row justify-between items-center mr-4  ">
+                <h1 className="text-sm font-medium ">Nick Rybak</h1>
+                <p className="text-xs font-medium text-slate-500  mr-4">
+                  16 Jan
+                </p>
+              </div>
+              <p className="text-xs text-slate-400 mr-4 ">
+                Hello guys, this is my Connexa Messaging page
+              </p>
+            </div>
+          </div>
+          {/* <hr></hr> */}
+        </div>
+        <div className="message">
+          <div className="hover:bg-blue-200 items-center pt-3 space-x-6 flex pb-3">
+            <div>
+              <img src={profile} className="rounded-2xl h-12 w-12 ml-8"></img>
+            </div>
+            <div className="block ">
+              <div className="flex flex-row justify-between items-center mr-4  ">
+                <h1 className="text-sm font-medium ">Nick Rybak</h1>
+                <p className="text-xs font-medium text-slate-500  mr-4">
+                  16 Jan
+                </p>
+              </div>
+              <p className="text-xs text-slate-400 mr-4 ">
+                Hello guys, this is my Connexa Messaging page
+              </p>
+            </div>
+          </div>
+          {/* <hr></hr> */}
+        </div>
       </div>
-      
-      </div>
-      
+    </div>
   );
 }
