@@ -48,28 +48,28 @@ export default function Chat() {
           <div className="chatting mt-4 mb-4">
               <p className="text-center text-sm text-slate-500">Today</p>
           </div>
-          <div class="w-full px-7 flex flex-col justify-between">
-        <div class="flex flex-col mt-5">
-          <div class="flex justify-end mb-4">
+          <div className="w-full px-7 flex flex-col justify-between">
+        <div className="flex flex-col mt-5">
+          <div className="flex justify-end mb-4">
             <div
-              class="mr-2 py-3 px-4 bg-blue-100 rounded-bl-3xl rounded-tl-3xl rounded-tr-xl text-slate-600"
+              className="mr-2 py-3 px-4 bg-blue-100 rounded-bl-3xl rounded-tl-3xl rounded-tr-xl text-slate-600"
             >
               Welcome to group everyone !
             </div>
             <img
               src="https://source.unsplash.com/vpOeXr5wmR4/600x600"
-              class="object-cover h-8 w-8 rounded-full"
+              className="object-cover h-8 w-8 rounded-full"
               alt=""
             />
           </div>
-          <div class="flex justify-start mb-4">
+          <div className="flex justify-start mb-4">
             <img
               src="https://source.unsplash.com/vpOeXr5wmR4/600x600"
-              class="object-cover h-8 w-8 rounded-full"
+              className="object-cover h-8 w-8 rounded-full"
               alt=""
             />
             <div
-              class="ml-2 py-3 px-4 bg-gray-100 rounded-br-3xl rounded-tr-3xl rounded-tl-xl text-slate-600"
+              className="ml-2 py-3 px-4 bg-gray-100 rounded-br-3xl rounded-tr-3xl rounded-tl-xl text-slate-600"
             >
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat
               at praesentium, aut ullam delectus odio error sit rem. Architecto
@@ -77,17 +77,17 @@ export default function Chat() {
               consequatur quas?
             </div>
           </div>
-          <div class="flex justify-end mb-4">
+          <div className="flex justify-end mb-4">
             <div>
               <div
-                class="mr-2 py-3 px-4 bg-blue-100 rounded-bl-3xl rounded-tl-3xl rounded-tr-xl text-slate-600"
+                className="mr-2 py-3 px-4 bg-blue-100 rounded-bl-3xl rounded-tl-3xl rounded-tr-xl text-slate-600"
               >
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                 Magnam, repudiandae.
               </div>
 
               <div
-                class="mt-4 mr-2 py-3 px-4 bg-blue-100 rounded-bl-3xl rounded-tl-3xl rounded-tr-xl text-slate-600"
+                className="mt-4 mr-2 py-3 px-4 bg-blue-100 rounded-bl-3xl rounded-tl-3xl rounded-tr-xl text-slate-600"
               >
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Debitis, reiciendis!
@@ -95,18 +95,18 @@ export default function Chat() {
             </div>
             <img
               src="https://source.unsplash.com/vpOeXr5wmR4/600x600"
-              class="object-cover h-8 w-8 rounded-full"
+              className="object-cover h-8 w-8 rounded-full"
               alt=""
             />
           </div>
-          <div class="flex justify-start mb-4">
+          <div className="flex justify-start mb-4">
             <img
               src="https://source.unsplash.com/vpOeXr5wmR4/600x600"
-              class="object-cover h-8 w-8 rounded-full"
+              className="object-cover h-8 w-8 rounded-full"
               alt=""
             />
             <div
-              class="ml-2 py-3 px-4 bg-gray-100 rounded-br-3xl rounded-tr-3xl rounded-tl-xl text-slate-600"
+              className="ml-2 py-3 px-4 bg-gray-100 rounded-br-3xl rounded-tr-3xl rounded-tl-xl text-slate-600"
             >
               happy holiday guys!
             </div>
@@ -116,7 +116,7 @@ export default function Chat() {
             </div>
             
             
-          <div class=" bottom-0 sticky bg-white">
+          <div className=" bottom-0 sticky bg-white">
           <hr className=""/>
               <label htmlFor="" className="relative text-slate-400 py-5 px-3 pl-4 w-[80%] mb-6 bg-white">
               <input

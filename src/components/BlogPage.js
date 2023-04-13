@@ -101,7 +101,7 @@ export default function BlogPage(props) {
 						<div className="flex justify-end">
 							<button
 								onClick={log}
-								class="mt-8 mb-32 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+								className="mt-8 mb-32 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
 							>
 								Post Blog
 							</button>

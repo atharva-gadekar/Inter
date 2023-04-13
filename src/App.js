@@ -19,7 +19,8 @@ import ChatPage from './components/ChatPage';
 import ChatFinal from './pages/ChatFinal';
 import Blog from './components/Blog';
 import ProfileFinal from './pages/ProfileFinal';
-
+import Notif from './components/Notif';
+import Notifications from './pages/Notifications';
 function App() {
   return (
 
@@ -33,7 +34,8 @@ function App() {
         <Route path="/profile" element={<ProfileFinal />} />
         <Route path="/blog/:id" element={<Blog />} />
         <Route path="/chat" element={<ChatFinal />} />
-        <Route path="/connections" element={<ConnectionsPage />} />
+        <Route path="/network" element={<ConnectionsPage />} />
+        <Route path="/notifications" element={<Notifications />} />
         </Routes>
   </BrowserRouter>
     

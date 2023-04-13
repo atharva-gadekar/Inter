@@ -147,10 +147,10 @@ function Signup() {
 						<div className="flex flex-col items-center py-2">
 							<label className="flex border flex-col items-center w-full px-4 py-6 bg-[#dfe6f9] text-blue rounded-lg tracking-wide uppercase cursor-pointer hover:bg-blue">
 								<FiUpload className="w-8 h-8 text-gray-500" />
-								<p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
-									<span class="font-semibold">Click to upload</span>
+								<p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
+									<span className="font-semibold">Click to upload</span>
 								</p>
-								<p class="text-xs text-gray-500 dark:text-gray-400">
+								<p className="text-xs text-gray-500 dark:text-gray-400">
 									SVG, PNG, JPG or GIF (MAX. 800x400px)
 								</p>
 								<input

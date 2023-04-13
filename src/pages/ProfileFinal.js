@@ -24,7 +24,7 @@ export default function Hi() {
       <Navbarhome />
       
       <div className="flex flex-1 space-x-14">
-        <div className="">
+        <div className="w-1/6">
           <div className="sticky top-4">
             <Sidebar />
             <ProfileSidebar/>

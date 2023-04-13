@@ -19,7 +19,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="bg-white rounded-2xl w-[112%] h-[18rem] lg:flex justify-center items-center mx-5 mt-[0.9rem] hidden ">
+    <div className="bg-white rounded-2xl h-[18rem] lg:flex justify-center items-center mx-5 mt-[0.9rem] hidden ">
       <ul className="text-[#a0a0a0]  mt-7">
         <li className={`flex items-center mb-6 ${isActiveLink("/home")}`}>
           <FontAwesomeIcon icon={faHome} className="mr-2" />
@@ -39,7 +39,7 @@ const Sidebar = () => {
             <FontAwesomeIcon icon={faUserFriends} />
           </Badge>
           <span className={`font-medium ml-3 ${isActiveLink("/connections")}`}>
-            <Link to="/connections">Network</Link>
+            <Link to="/network">Network</Link>
           </span>
         </li>
         <li className={`flex items-center mb-6 ${isActiveLink("/chat")}`}>

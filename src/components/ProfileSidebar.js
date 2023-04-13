@@ -53,7 +53,7 @@ export default function ProfileSidebar() {
 
   return (
     <div>
-      <div className="bg-white p-1 w-[112%] rounded-3xl mx-5 mt-6 mb-2 hidden lg:block">
+      <div className="bg-white p-1 rounded-3xl mx-5 mt-6 mb-2 hidden lg:block">
         <img src={profile_bg} alt="" className="rounded-2xl mt-4 px-4" />
         {!user.user && (
           <img
