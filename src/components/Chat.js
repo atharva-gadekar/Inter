@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   faCog,
   faMessagePlus,
@@ -10,7 +10,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import profile from "../assets/Rectangle 47.png";
 import { faPaperPlane } from "@fortawesome/free-regular-svg-icons";
 import Message from "./Message";
+
+
 export default function Chat() {
+  const [conversations, setConversations] = useState([]);
+  const [currentChat, setCurrentChat] = useState(null);
+  const [messages, setMessages] = useState([]);
   return (
     <div className="bg-white rounded-r-3xl border-l w-full  h-[42rem] overflow-y-scroll ">
       <div className="heading pt-4 sticky top-0 bg-white">
@@ -49,43 +54,27 @@ export default function Chat() {
         <p className="text-center text-sm text-slate-500">Today</p>
       </div>
       <div className="w-full px-7 flex flex-col justify-between">
-        <div className="flex flex-col mt-5">
-          {/* <div className="flex justify-end mb-4">
-            <div
-              className="mr-2 py-3 px-4 bg-blue-100 rounded-bl-3xl rounded-tl-3xl rounded-tr-xl text-slate-600"
-            >
-              Welcome to group everyone !
-            </div>
-            <img
-              src="https://source.unsplash.com/vpOeXr5wmR4/600x600"
-              className="object-cover h-8 w-8 rounded-full"
-              alt=""
-            />
-            </div> */}
-          <Message own={false} />
-
-          <Message own={true} />
-
-          <Message own={true} />
-          <Message own={false} />
-
-<Message own={true} />
-<Message own={false} />
-
-<Message own={true} />
-<Message own={false} />
-
-<Message own={true} />  <Message own={false} />
-
-<Message own={true} />
-<Message own={false} />
-
-<Message own={true} />  <Message own={false} />
-
-<Message own={true} />  <Message own={false} />
-
-<Message own={true} />
-        </div>
+        {
+          currentChat ?
+        <>
+            <div className="flex flex-col mt-5">
+         
+              <Message own={false} />
+              <Message own={true} />
+              <Message own={true} />
+              <Message own={false} />
+              <Message own={true} />
+              <Message own={false} />
+              <Message own={true} />
+              <Message own={false} />
+              <Message own={true} /> <Message own={false} />
+              <Message own={true} />
+              <Message own={false} />
+              <Message own={true} /> <Message own={false} />
+              <Message own={true} /> <Message own={false} />
+              <Message own={true} />
+            </div></>: <span className="mb-6 text-gray-700 text-center">Open a conversation to start a chat.</span>
+}
       </div>
 
       <div className="bottom-0 sticky bg-white rounded-b-3xl">

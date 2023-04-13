@@ -13,9 +13,14 @@ import { AuthContext } from "../context/AuthContext";
 import axios from "axios";
 import { set } from "react-hook-form";
 
-export default function LeftChat() {
-  const [conversations, setConversations] = useState([]);
 
+
+
+
+export default function LeftChat() {
+
+  const [conversations, setConversations] = useState([]);
+  const [currentChat, setCurrentChat] = useState(null);
   // const { user } = useContext(AuthContext);
   const token = localStorage.getItem("token");
   const userId = localStorage.getItem("userId");
@@ -46,7 +51,7 @@ export default function LeftChat() {
     getConversations();
   }, [userId]);
 
-  // console.log(user);
+  console.log(currentChat);
   return (
     <div className="bg-white rounded-l-3xl h-full w-[40%] border-b-white border-b-2">
       <div className=" flex justify-between items-center sticky">
@@ -78,7 +83,8 @@ export default function LeftChat() {
       <div className="mt-6"></div>
       <div className="parent pb-2 h-[32rem] overflow-y-scroll ">
         {conversations.map((c) => (
-          <Conversation conversation={c} currentUser={userId} />
+          <div onClick={()=>setCurrentChat(c)}>
+          <Conversation conversation={c} currentUser={userId} /></div>
         ))}
       </div>
     </div>

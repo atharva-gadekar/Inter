@@ -57,7 +57,7 @@ export default function Conversation({conversation,currentUser}) {
     <div className="message">
           <div className="hover:bg-blue-200 items-center pt-3  space-x-6 flex pb-3 ">
             <div>
-              <img src={profile} className="rounded-2xl h-12 w-12 ml-8"></img>
+              <img src={user.url} className="rounded-xl h-12 w-12 ml-8"></img>
             </div>
             <div className="block ">
               <div className="flex flex-row justify-between items-center mr-4 ">
