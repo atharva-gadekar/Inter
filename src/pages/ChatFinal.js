@@ -19,7 +19,7 @@ export default function ChatFinal() {
       <Navbarhome />
       
       <div className="flex justify-between">
-        <div className="lg:w-[15%]">
+        <div className="lg:w-1/5">
           <div className="sticky top-4">
             <Sidebar />
             <ProfileSidebar/>
