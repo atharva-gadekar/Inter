@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import profile from "../assets/Rectangle 47.png";
 export default function LeftChat() {
   return (
-    <div className="bg-white rounded-l-3xl h-full w-[40%]">
+    <div className="bg-white rounded-l-3xl h-full w-[40%] border-b-white border-b-2">
       <div className=" flex justify-between items-center sticky">
         <h1 className="px-8 font-bold py-8 text-xl">Messaging</h1>
 
