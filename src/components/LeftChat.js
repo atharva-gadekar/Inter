@@ -9,7 +9,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import profile from "../assets/Rectangle 47.png";
 import Conversation from "./Conversation";
-import { AuthContext } from "../context/AuthContext";
+// import { AuthContext } from "../context/AuthContext";
 import axios from "axios";
 import { set } from "react-hook-form";
 import Message from "./Message";
@@ -34,7 +34,53 @@ export default function LeftChat() {
   const [input, setInput] = useState("");
   const socket=useRef(io("ws://localhost:8900"));
   const scrollRef = useRef();
-  console.log(socket)
+  console.log(socket);
+  const [user, setUser] = useState({
+		user: {
+			_id: "",
+			name: "",
+			email: "@gmail.com",
+			password: "",
+			picture: "",
+			collegeName: "",
+			year: 2,
+			branch: "",
+			interests: [],
+			following: [],
+			followers: [],
+			posts: [],
+			createdAt: "",
+			__v: 2,
+		},
+		url: "",});
+
+
+
+  useEffect(() => {
+    const fetchUserName = async () => {
+      try {
+        if (token) {
+          const receiverId=currentChat.members.find(m=> m!==userId);
+          axios({
+						method: "get",
+						url: `https://inter-api-8q0x.onrender.com/user/${receiverId}`,
+						headers: {
+							Authorization: `Bearer ${token}`,
+						},
+					}).then((response) => {
+						setUser(response.data);
+            console.log(response.data);
+           
+					});
+
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchUserName();
+  }, []);
 
   useEffect(()=>{
     socket.current=io("ws://localhost:8900");
@@ -201,11 +247,11 @@ setMessages(prev=>[...prev,arrivalMessage])
           <div className="heading pt-4 sticky top-0 bg-white">
         <div className=" items-center pt-3 space-x-4 flex pb-3">
           <div>
-            <img src={profile} className="rounded-2xl h-14 w-14 ml-8"></img>
+            <img src={user.url} className="rounded-2xl h-14 w-14 ml-8"></img>
           </div>
           <div className="flex-col space-y-1 ">
             <div className="flex flex-row space-x-3 items-center mr-4">
-              <h1 className=" font-medium ">Saishree Kouda</h1>
+              <h1 className=" font-medium ">{user.user.name}</h1>
               <FontAwesomeIcon
                 icon={faCircle}
                 size="lg"
@@ -214,15 +260,16 @@ setMessages(prev=>[...prev,arrivalMessage])
               <p className="text-xs font-normal text-slate-500  mr-4">
                 55 min ago
               </p>
-              <FontAwesomeIcon
+              {/* <FontAwesomeIcon
                 icon={faCircle}
                 size="lg"
                 className="text-slate-500 h-1 w-1 bg-transparent cursor-pointer"
-              />
-              <p className="text-xs font-light text-slate-500  mr-4">Mobile</p>
+              /> */}
+              {/* <p className="text-xs font-light text-slate-500  mr-4">Mobile</p> */}
             </div>
             <p className="text-sm text-slate-600 w-64">
-              UI/UX designer - Phoenix Agency
+              {user.user.collegeName}
+              {/* {user.collegeName} */}
             </p>
           </div>
         </div>
