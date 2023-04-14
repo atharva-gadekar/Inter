@@ -43,7 +43,7 @@ export default function LeftChat() {
       setArrivalMessage(
         {
           sender: data.senderId,
-          text:"xyz",
+          text:data.text,
           createdAt:Date.now,
         }
       );
