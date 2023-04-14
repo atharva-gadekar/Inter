@@ -85,7 +85,7 @@ export default function Message({message, own, userid, receiverid }) {
               {message.text}
             </div>
             <img
-              // src={own?recuser.url:user.url}
+              src={own?recuser.url:user.url}
              
               className={own?"object-cover h-8 w-8 rounded-full order-2":"object-cover h-8 w-8 rounded-full order-1"}
               alt=""

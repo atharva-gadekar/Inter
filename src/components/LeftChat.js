@@ -54,7 +54,7 @@ export default function LeftChat() {
   useEffect(() => {
     const fetchUserName = async () => {
       try {
-        if (token) {
+        if (token && currentChat) {
           const receiverId=currentChat.members.find(m=> m!==userId);
           axios({
 						method: "get",
@@ -75,7 +75,7 @@ export default function LeftChat() {
     };
 
     fetchUserName();
-  }, []);;
+  }, [currentChat]);;
 
   useEffect(()=>{
     socket.current=io("ws://localhost:8900");
@@ -185,13 +185,14 @@ export default function LeftChat() {
       }
     }
   };
+  console.log(messages)
+  const lastMessage = messages.length > 0 ? messages[messages.length - 1].text : null;
 
   // useEffect(()=>{})
   console.log(user.user.name)
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
-
   return (
     <div className="flex mb-6">
       <div className="bg-white rounded-l-3xl h-full w-[40%] border-b-white border-b-2">
@@ -225,7 +226,7 @@ export default function LeftChat() {
         <div className="parent pb-2 h-[32rem] overflow-y-scroll ">
           {conversations.map((c) => (
             <div onClick={() => setCurrentChat(c)}>
-              <Conversation conversation={c} currentUser={userId} currentText="xyx" />
+              <Conversation conversation={c} currentUser={userId} currentText={lastMessage} />
             </div>
           ))}
         </div>
