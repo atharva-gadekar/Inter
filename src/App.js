@@ -10,6 +10,7 @@ import ChatFinal from './pages/ChatFinal';
 import Blog from './components/Blog';
 import ProfileFinal from './pages/ProfileFinal';
 import Notifications from './pages/Notifications';
+import Forgotpass from "./pages/Forgotpass";
 
 function App() {
   return (
