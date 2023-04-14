@@ -26,7 +26,7 @@ function App() {
         <Route path="/blog/:id" element={<Blog />} />
         <Route path="/chat" element={<ChatFinal />} />
         <Route path="/network" element={<ConnectionsPage />} />
-        <Route path="/forgot" element={<ForgotPassword />} />
+        <Route path="/forgotpass" element={<ForgotPassword />} />
         
         <Route path="/notifications" element={<Notifications />} />
         <Route path="forgot" element={<Forgotpass />} />
