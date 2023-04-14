@@ -9,7 +9,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import profile from "../assets/Rectangle 47.png";
 import Conversation from "./Conversation";
-import { AuthContext } from "../context/AuthContext";
+
 import axios from "axios";
 import { set } from "react-hook-form";
 import Message from "./Message";
@@ -23,7 +23,7 @@ export default function LeftChat() {
   // const [socket, setSocket] =useState(null);
   const [newMessage, setNewMessage] = useState("");
   const [arrivalMessage, setArrivalMessage] = useState(null);
-  // const { user } = useContext(AuthContext);
+
   const token = localStorage.getItem("token");
   const userId = localStorage.getItem("userId");
   const [input, setInput] = useState("");
