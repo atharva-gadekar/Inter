@@ -54,7 +54,7 @@ export default function ProfileSidebar() {
 
   return (
 		<div>
-			<div className="bg-white p-1 w-[112%] rounded-3xl mx-5 mt-6 mb-2 hidden lg:block">
+			<div className="bg-white p-1 rounded-3xl mx-5 mt-6 mb-2 hidden lg:block">
 				<img src={profile_bg} alt="" className="rounded-2xl mt-4 px-4" />
 				{!user.user && (
 					<img
@@ -66,7 +66,7 @@ export default function ProfileSidebar() {
 					user.user && (
 						<img
 					src={user.url}
-					className="-mt-12 mr-auto ml-auto rounded-2xl h-20 w-20"
+					className="-mt-12 mr-auto ml-auto rounded-full h-20 w-20 object-cover"
 				></img>)
 				}
 				{user.user && (
@@ -77,12 +77,15 @@ export default function ProfileSidebar() {
 				<p className="text-center text-slate-500 mt-3 mb-0 text-base px-12">
 					{user.user && user.user.collegeName}
 				</p>
+				<p className="text-center text-slate-500 mt-0 mb-0 text-base px-12">
+					{user.user && user.user.year} year
+				</p>
 				<p className="text-center text-slate-500 mt-0 mb-20 text-base px-12">
 					{user.user && user.user.branch}
 				</p>
 				<div className="px-1 ">
 					<div className="flex justify-between px-4 mb-3 text-sm">
-						<p>Who viewed your profile</p>
+						<p>Number of Connections</p>
 						<p className="text-blue-600">205</p>
 					</div>
 					<div className="flex justify-between px-4 mb-8 text-sm">

@@ -1,6 +1,8 @@
+// profile page
+
 import React from 'react';
 import Navbarhome from '../components/Navbarhome';
-// import Navbar from '../components/Navbar';
+
 import Sidebar from '../components/Sidebar';
 import ProfileSidebar from '../components/ProfileSidebar';
 import CreatePost from '../components/CreatePost';
@@ -10,30 +12,34 @@ import '../App.css';
 import { Link } from "react-router-dom";
 import NavigationHome from '../components/NavigationHome';
 import Connections from '../components/Connections';
-import ProfileSettings from '../components/ProfileSettings';
+import imagee from "../assets/jr-korpa-wAXD_Its-48-unsplash.jpg";
+import profile from "../assets/pexels-pixabay-220453.jpg";
+import { FaEdit } from "react-icons/fa";
 
-export default function ProfileFinal() {
-  return (
-    <div className="flex flex-col min-h-screen">
+
+
+import Profile_Settings from '../components/ProfileSettings';
+export default function Hi() {
+    return (
+      <>
+    
+    <div className="flex flex-col min-h-screen ">
       <Navbarhome />
       
-      <div className="flex flex-1">
-        <div className="lg:w-1/6">
-          <div className="sticky top-4">
-            <Sidebar />
-            <ProfileSidebar/>
-          </div>
+      <div className="flex flex-1 justify-evenly">
+      <div className="lg:w-1/5">
+					<div className="sticky top-4">
+						<Sidebar />
+						<ProfileSidebar />
+					</div>
+				</div>
+        <div className="lg:w-5/6 mt-4 pr-2">
+          <Profile_Settings/>
         </div>
-        <div className="lg:w-2/3 lg:mt-4 ">
-          <ProfileSettings />
-        </div>
-        <div className="lg:w-1/6 mt-[0.9rem]">
-          <div className="sticky top-4 ">
-            <Connect />
-          </div>
-        </div>
+        
       </div>
       <NavigationHome />
     </div>
+            </>
   )
 }

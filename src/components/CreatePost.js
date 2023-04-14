@@ -1,8 +1,13 @@
 import {
 	faCamera,
-	faFileAlt,
-	faVideo,
+	faPlusCircle
+	
 } from "@fortawesome/free-solid-svg-icons";
+import {
+	
+
+
+} from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { Modal, Input, Select, Upload, Button } from "antd";
@@ -73,7 +78,7 @@ const CreatePost = (props) => {
 	return (
 		<>
 			<>
-				<div className="bg-white rounded-xl border shadow-slate-100 p-6 lg:flex items-center ml-[4.5rem] w-[53rem] hidden">
+				<div className="bg-white rounded-xl border shadow-slate-100 p-6 lg:flex items-center hidden">
 					<div className="relative w-full">
 						<input
 							type="text"
@@ -83,9 +88,13 @@ const CreatePost = (props) => {
 						/>
 					</div>
 					<div className="flex ml-auto">
-						<FontAwesomeIcon icon={faFileAlt} className="mr-5 text-gray-400" />
+						{/* <FontAwesomeIcon icon={faFileAlt} className="mr-5 text-gray-400" />
 						<FontAwesomeIcon icon={faVideo} className="mr-5 text-gray-400" />
-						<FontAwesomeIcon icon={faCamera} className="text-gray-400" />
+						<FontAwesomeIcon icon={faCamera} className="text-gray-400" /> */}
+						<FontAwesomeIcon
+							icon={faPlusCircle}
+							className="mr-5 text-blue-600 h-6 w-6"
+						/>
 					</div>
 				</div>
 

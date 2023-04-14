@@ -16,13 +16,13 @@ export default function ConnectionsPage() {
       <Navbarhome />
       
       <div className="flex">
-        <div className="lg:w-1/6">
+        <div className="lg:w-1/5">
           <div className="sticky top-4">
             <Sidebar />
             <ProfileSidebar/>
           </div>
         </div>
-        <div className="w-[82%] lg:mt-4 lg:pl-20">
+        <div className="w-[82%] lg:mt-4 pr-5">
           {/* <CreatePost />
           <Post />
           <Post /> */}

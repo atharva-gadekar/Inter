@@ -10,7 +10,7 @@ import '../App.css';
 import { Link } from "react-router-dom";
 import NavigationHome from '../components/NavigationHome';
 import Connections from '../components/Connections';
-import ChatPage from './ChatPage';
+import LeftChat from '../components/LeftChat';
 
 
 export default function ChatFinal() {
@@ -19,14 +19,14 @@ export default function ChatFinal() {
       <Navbarhome />
       
       <div className="flex justify-between">
-        <div className="lg:w-[15%]">
+        <div className="lg:w-1/5">
           <div className="sticky top-4">
             <Sidebar />
             <ProfileSidebar/>
           </div>
         </div>
         <div className="lg:mt-4 w-[80%] pr-6">
-          <ChatPage/>
+          <LeftChat/>
         </div>
         {/* <div className="lg:w-1/6 mt-[0.9rem]">
           <div className="sticky top-4 ">

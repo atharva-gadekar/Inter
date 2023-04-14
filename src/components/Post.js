@@ -13,16 +13,19 @@ import {
   faFireAlt,
   faHeart,
   faCommentAlt,
-  faCommenting,
+  faCommenting, faArrowRight
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment } from "@fortawesome/free-regular-svg-icons";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import moment from "moment";
 
 export default function Post() {
   const [blogs, setBlogs] = useState([]);
   const navigate = useNavigate();
+  const [likes, setLikes] = useState({});
+
 
   const token = localStorage.getItem("token");
 
@@ -36,14 +39,14 @@ export default function Post() {
       try {
         if (token) {
           axios({
-						method: "get",
-						url: `https://inter-api-8q0x.onrender.com/blog`,
-						headers: {
-							Authorization: `Bearer ${token}`,
-						},
-					}).then((response) => {
-						setBlogs(response.data.blogs);
-					});
+            method: "get",
+            url: `https://inter-api-8q0x.onrender.com/blog`,
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }).then((response) => {
+            setBlogs(response.data.blogs);
+          });
         }
       } catch (error) {
         console.error(error);
@@ -53,19 +56,34 @@ export default function Post() {
     fetchBlogs();
   }, []);
 
-
   const getReadingTime = (content) => {
     const wordsPerMinute = 250; // Average reading speed
     const words = content.trim().split(/\s+/).length;
     const minutes = Math.ceil(words / wordsPerMinute);
     return `${minutes} `;
   };
+
+  const handleLike = async (id) => {
+    try {
+      const likeData = { likes: { [id]: true } };
+      const response = await axios.patch(`https://inter-api-8q0x.onrender.com/blog/${id}/like`, likeData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setLikes((prevState) => ({ ...prevState, [id]: response.data.likes[id] }));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  
+
   return (
 		<>
 			{blogs.map((blog) => (
 				<div
 					key={blog._id}
-					className="p-12 w-[92%] scale-90 rounded-2xl bg-white mr-auto ml-auto lg:mx-8 shadow-md pb-2 -mt-3"
+					className="p-12 w-full mt-8 rounded-2xl bg-white shadow-sm pb-2 h-auto"
 				>
 					<img
 						src={blog.bannerUrl}
@@ -77,7 +95,7 @@ export default function Post() {
 					</h1>
 
 					<div className="subheading flex justify-center items-center space-x-5 text-xs pt-2 mb-4 text-slate-500">
-						<p>{blog.date}</p>
+						<p>{moment(blog.date).format("MMMM DD, YYYY")}</p>
 						<div className="flex justify-center items-center space-x-2">
 							<p className="text-lg text-pink-900">-</p>
 							<p>{getReadingTime(blog.content)} min read</p>
@@ -85,12 +103,15 @@ export default function Post() {
 
 						<div className="flex justify-center items-center space-x-2">
 							<FontAwesomeIcon icon={faCommenting} className="text-pink-700" />
-							<p>3</p>
+							<p>{blog.comments.length}</p>
 						</div>
 
 						<div className="flex justify-center items-center space-x-2">
 							<FontAwesomeIcon icon={faHeart} className="text-pink-700" />
-							<p>3</p>
+							<p>
+								{likes[blog._id] ||
+									(blog.likes && Object.keys(blog.likes).length)}
+							</p>
 						</div>
 					</div>
 
@@ -117,11 +138,16 @@ export default function Post() {
 						</div>
 					</div>
 					<div className=" mr-auto ml-auto text-center mt-8 ">
-						<button
-							className="bg-slate-700 text-white p-2 pl-4 pr-4 text-sm font-medium"
-							
-						>
-							<Link to={`/blog/${blog._id}`}>Read More</Link>
+						<button className=" text-white p-2 pl-4 pr-4 text-sm font-medium mb-8 rounded-lg">
+							<Link to={`/blog/${blog._id}`}>
+								<div className="flex space-x-3 items-center bg-blue-100 px-3 py-3 rounded-lg">
+									<p className="text-blue-600">Continue Reading</p>
+									<FontAwesomeIcon
+										icon={faArrowRight}
+										className="text-blue-600"
+									/>
+								</div>
+							</Link>
 						</button>
 					</div>
 				</div>
