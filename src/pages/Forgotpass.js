@@ -16,7 +16,7 @@ function Forgot() {
     setShowPassword(!showPassword);
   };
   const [email, setEmail] = useState("");
-  const token = localStorage.getItem("token");
+ 
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -30,12 +30,7 @@ function Forgot() {
     try {
       const response = await axios.put(
         `https://inter-api-8q0x.onrender.com/auth/forgot-password`,
-        data,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
+        data
       );
 
       console.log(response);
