@@ -207,18 +207,10 @@ export default function LeftChat() {
                     <p className="text-xs font-normal text-slate-500  mr-4">
                       55 min ago
                     </p>
-                    <FontAwesomeIcon
-                      icon={faCircle}
-                      size="lg"
-                      className="text-slate-500 h-1 w-1 bg-transparent cursor-pointer"
-                    />
-                    <p className="text-xs font-light text-slate-500  mr-4">
-                      Mobile
-                    </p>
+                    
+                    
                   </div>
-                  <p className="text-sm text-slate-600 w-64">
-                    UI/UX designer - Phoenix Agency
-                  </p>
+                  
                 </div>
               </div>
               <hr className="mt-4"></hr>
@@ -238,7 +230,7 @@ export default function LeftChat() {
               <div className="flex flex-col mt-5">
                 {messages.map((m) => (
                   <div ref={scrollRef}>
-                    <Message message={m} own={m.sender === userId} />
+                    <Message message={m} own={m.sender === userId} friendId={m.sender} myId={userId}/>
                   </div>
                 ))}
               </div>

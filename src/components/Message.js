@@ -14,6 +14,6 @@ export default function Message({message, own }) {
               alt=""
             />
           </div>
-  )
+  ) 
 }
 
