@@ -256,6 +256,8 @@ export default function LeftChat() {
                     </p>
                     
                     
+                    
+                    
                   </div>
                   <p className="text-sm text-slate-600 w-64">
                     {user.user.title}

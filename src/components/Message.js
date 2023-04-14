@@ -91,6 +91,6 @@ export default function Message({message, own, userid, receiverid }) {
               alt=""
             />
           </div>
-  )
+  ) 
 }
 
