@@ -9,7 +9,7 @@ import Chat from './components/Chat';
 import Connect from './components/Connect'
 import ProfileSidebar from './components/ProfileSidebar';
 import ImgUpload from './components/ImgUpload';
-import BlogPage from './components/BlogPage';
+import NewBlog from "./components/NewBlog";
 import Profile from './components/ProfileSettings';
 import ProfileSettings from './components/ProfileSettings';
 import Test from './components/Test';import Connections from './components/Connections';
@@ -44,7 +44,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Signup />} />
         <Route path="/profile" element={<ProfileFinal />} />
-        <Route path="/create/blog" element={<BlogPage />} />
+        <Route path="/create/blog" element={<NewBlog />} />
         <Route path="/blog/:id" element={<Blog />} />
         <Route path="/chat" element={<ChatFinal />} />
         <Route path="/connections" element={<ConnectionsPage />} />

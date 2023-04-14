@@ -30,6 +30,7 @@ export default function Post() {
    navigate(`/blog/${id}`);
   }
 
+
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
@@ -94,7 +95,7 @@ export default function Post() {
 					</div>
 
 					<p className="text-left mr-auto ml-auto text-slate-500 text-base">
-						{blog.content}
+						{blog.brief}
 					</p>
 
 					<div className="footer mr-auto ml-auto flex justify-between items-center text-sm text-slate-800 mt-8">
