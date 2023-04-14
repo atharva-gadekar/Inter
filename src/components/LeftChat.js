@@ -31,15 +31,17 @@ export default function LeftChat() {
   const scrollRef = useRef();
   console.log(socket);
 
-  useEffect(() => {
-    socket.current = io("ws://localhost:8900");
-    socket.current.on("getMessage", (data) => {
-      console.log(data);
-      setArrivalMessage({
-        sender: data.senderId,
-        text: "xyz",
-        createdAt: Date.now,
-      });
+  useEffect(()=>{
+    socket.current=io("ws://localhost:8900");
+    socket.current.on("getMessage", data =>{
+      console.log(data)
+      setArrivalMessage(
+        {
+          sender: data.senderId,
+          text:data.text,
+          createdAt:Date.now,
+        }
+      );
     });
   }, []);
   console.log(arrivalMessage);

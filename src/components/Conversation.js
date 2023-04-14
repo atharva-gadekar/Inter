@@ -24,9 +24,9 @@ export default function Conversation({conversation,currentUser}) {
   
 //   console.log("hello");
   useEffect(()=>{
-    console.log(currentUser);
+   
       const friendId = conversation.members.find((m) => m !== currentUser);
-      console.log(friendId);
+      
     const getUser= async () =>{
       try{
         if (token) {
