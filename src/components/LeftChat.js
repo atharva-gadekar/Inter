@@ -247,7 +247,9 @@ export default function LeftChat() {
                 <div className="flex-col space-y-1 ">
                   <div className="flex flex-row space-x-3 items-center mr-4">
                     <h1 className=" font-medium ">{user.user.name}</h1>
-                    <FontAwesomeIcon
+
+                    {/* checks last time online */}
+                    {/* <FontAwesomeIcon
                       icon={faCircle}
                       size="lg"
                       className="text-slate-500 h-1 w-1 bg-transparent cursor-pointer"
@@ -255,7 +257,7 @@ export default function LeftChat() {
                     <p className="text-xs font-normal text-slate-500  mr-4">
                       55 min ago
                     </p>
-                    
+                     */}
                     
                     
                     

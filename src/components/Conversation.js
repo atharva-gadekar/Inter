@@ -52,7 +52,23 @@ export default function Conversation({conversation,currentUser, currentText}) {
     }
     getUser();
   },[conversation, currentUser, currentText]);
+   
+  const MAX_WORDS = 4; 
+function formatMessage(currentText) {
+ 
+  if (currentText) { const words = currentText.split(' '); 
 
+  // Check if the message has more words than the maximum allowed
+  if (words.length > MAX_WORDS) {
+    
+    return words.slice(0, MAX_WORDS).join(' ') + '...';
+  } else {
+    
+    return currentText;
+  }
+  }
+}
+const formattedMessage = formatMessage(currentText);
 
   return (
     <div className="message cursor-pointer">
@@ -63,12 +79,13 @@ export default function Conversation({conversation,currentUser, currentText}) {
             <div className="block ">
               <div className="flex flex-row justify-between items-center mr-4">
                       <h1 className="text-sm font-medium ">{user.user.name }</h1>
-                <p className="text-xs font-medium text-slate-500  mr-4">
+                <p className="ml-4 text-xs font-medium text-slate-500  mr-4">
                   16 Jan
                 </p>
               </div>
-              <p className="text-xs text-slate-400 mr-4">
-                {currentText}
+              <p className="text-sm text-slate-400 mr-4">
+              {formattedMessage}
+            
               </p>
             </div>
           </div>
