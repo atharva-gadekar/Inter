@@ -1,7 +1,16 @@
 import React, { useState, useEffect, useContext } from 'react'
 import profile from "../assets/Rectangle 47.png";
 import axios from 'axios';
-export default function Conversation({conversation,currentUser, currentText}) {
+import moment from 'moment';
+
+export default function Conversation({conversation, currentUser,  time}) {
+
+  const isToday = moment().isSame(time, 'day');
+  const isYesterday = moment().subtract(1, 'days').isSame(time, 'day');
+  const timestamp = isToday ? moment(time).format('h:mm A') :
+    isYesterday ? 'Yesterday' :
+    moment(time).format('MMMM D, YYYY h:mm A');
+    console.log(moment(time).format('h:mm A'));
     const [user, setUser] = useState({
 		user: {
 			_id: "",
@@ -51,9 +60,9 @@ export default function Conversation({conversation,currentUser, currentText}) {
     
     }
     getUser();
-  },[conversation, currentUser, currentText]);
+  },[conversation, currentUser]);
 
-
+console.log(conversation.lastMessage)
   return (
     <div className="message cursor-pointer">
           <div className="items-center pt-3 space-x-6 flex pb-3">
@@ -63,12 +72,12 @@ export default function Conversation({conversation,currentUser, currentText}) {
             <div className="block ">
               <div className="flex flex-row justify-between items-center mr-4">
                       <h1 className="text-sm font-medium ">{user.user.name }</h1>
-                <p className="text-xs font-medium text-slate-500  mr-4">
-                  16 Jan
+                <p className="ml-4 text-xs font-medium text-slate-500  mr-4">
+                  {timestamp}
                 </p>
               </div>
               <p className="text-xs text-slate-400 mr-4">
-                {currentText}
+                {conversation.lastMessage}
               </p>
             </div>
           </div>
