@@ -11,12 +11,22 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGear, faPen } from "@fortawesome/free-solid-svg-icons";
 import Navbarhome from "./Navbarhome";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
+import { Modal, Form, Input, Tag } from "antd";
+import { PlusOutlined } from "@ant-design/icons";
+import { overflow } from "tailwindcss-classnames";
+import { useParams } from "react-router-dom";
+
+const { TextArea } = Input;
 
 const Profile_Settings = () => {
+  const { id} = useParams();
+const[isUser,setisUser]=useState(true);
+
+  const [change, setChange] = useState({});
   const [user, setUser] = useState({
     user: {
       _id: "",
@@ -38,16 +48,27 @@ const Profile_Settings = () => {
   });
 
   const token = localStorage.getItem("token");
+const userr=localStorage.getItem("userId");
 
+useEffect(() => {
+  if (userr === id) {
+    setisUser(true);
+  } else {
+    setisUser(false);
+  }
+}, []);
+
+console.log(id);
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchUserName = async () => {
       try {
         if (token) {
-          const userId = localStorage.getItem("userId");
+          
 
           axios({
             method: "get",
-            url: `https://inter-api-8q0x.onrender.com/user/${userId}`,
+            url: `https://inter-api-8q0x.onrender.com/user/${id}`,
             headers: {
               Authorization: `Bearer ${token}`,
             },
@@ -63,9 +84,184 @@ const Profile_Settings = () => {
     fetchUserName();
   }, []);
 
+  
+  const handleLogout = () => {
+    if (localStorage.getItem("userId")) {
+      localStorage.removeItem("token");
+      localStorage.removeItem("userId");
+    }
+    setTimeout(() => {
+      navigate("/");
+    }, 100);
+  };
+
+  const [visible, setVisible] = useState(false);
+
+  const showModal = () => {
+    setVisible(true);
+  };
+
+  const handleCancel = () => {
+    setVisible(false);
+  };
+
+  const handleCreate = () => {
+    // handle form submission here
+    setVisible(false);
+  };
+
+  const [tags, setTags] = useState([]);
+
+  const handleTagClose = (removedTag) => {
+    const newTags = tags.filter((tag) => tag !== removedTag);
+    setTags(newTags);
+  };
+
+  const handleTagAdd = () => {
+    const newTag = document.getElementById("newTag").value.trim();
+    if (newTag && tags.indexOf(newTag) === -1) {
+      const newTags = [...tags, newTag];
+      setTags(newTags);
+    }
+    document.getElementById("newTag").value = "";
+  };
+
+  const updateUser = async (id, updatedData) => {
+    axios
+      .patch(
+        `https://inter-api-8q0x.onrender.com/user/update/${id}`,
+        updatedData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((response) => {
+        console.log("User updated successfully:", response.data);
+        fetchUserName();
+      })
+      .catch((error) => {
+        console.error("Error updating user:", error);
+      });
+  };
+
+  const fetchUserName = async () => {
+    try {
+      if (token) {
+        const userId = localStorage.getItem("userId");
+
+        axios({
+          method: "get",
+          url: `https://inter-api-8q0x.onrender.com/user/${userId}`,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }).then((response) => {
+          setUser(response.data);
+        });
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleChange = (event) => {
+    setChange({ ...change, [event.target.name]: event.target.value });
+  };
+
+  const handleSubmit = async () => {
+    if (tags) {
+      setChange({ ...change, interests: [...tags] });
+    }
+
+    const userId = localStorage.getItem("userId");
+    await updateUser(userId, change);
+  };
+
+  useEffect(() => {
+    console.log("final Data Object : ", change);
+  }, [change]);
+
   return (
     <>
       {/* <Navbarhome /> */}
+
+      <Modal
+        visible={visible}
+        title="Edit form"
+        okText="Create"
+        onCancel={handleCancel}
+        style={{ scale: "98%", overflowY: "hidden" }}
+        footer={null}
+      >
+        <Form layout="vertical" onFinish={handleSubmit}>
+          <Form.Item label="Name">
+            <Input disabled defaultValue={user.user.name} />
+          </Form.Item>
+          <Form.Item label="About">
+            <TextArea
+              rows={2}
+              defaultValue={user.user.about}
+              onChange={handleChange}
+              name="about"
+            />
+          </Form.Item>
+          <Form.Item label="Title">
+            <Input
+              defaultValue={user.user.title}
+              onChange={handleChange}
+              name="title"
+            />
+          </Form.Item>
+          <Form.Item label="Interest Tags">
+            <div>
+              {tags.length !== 0 &&
+                tags.map((tag) => (
+                  <Tag
+                    key={tag}
+                    closable
+                    onClose={() => handleTagClose(tag)}
+                    style={{ marginBottom: "5px" }}
+                  >
+                    {tag}
+                  </Tag>
+                ))}
+              <Input
+                id="newTag"
+                type="text"
+                defaultValue={user.user.interests}
+                onPressEnter={handleTagAdd}
+                name="interests"
+              />
+            </div>
+          </Form.Item>
+
+          <Form.Item label="College Name">
+            <Input
+              defaultValue={user.user.collegeName}
+              onChange={handleChange}
+              name="collegeName"
+            />
+          </Form.Item>
+          <Form.Item label="Branch">
+            <Input
+              defaultValue={user.user.branch}
+              onChange={handleChange}
+              name="branch"
+            />
+          </Form.Item>
+          <div className="flex justify-end">
+            <button
+              type="submit"
+              className="p-2 ml-auto bg-blue-600 text-white rounded px-4"
+            >
+              Submit
+            </button>
+          </div>
+        </Form>
+      </Modal>
+
       <div className="flex flex-row">
         <div className="  ml-3 mr-3 lg:mx-auto bg-white lg:h-[42rem] w-[98%] lg:w-[97.6%] rounded-2xl overflow-hidden ">
           <img
@@ -85,23 +281,28 @@ const Profile_Settings = () => {
                       alt="Profile"
                     />
 
-                    <div className="flex justify-center">
-                      <FaEdit className="text-black  text-xl cursor-pointer hover:text-gray-800 " />
-                    </div>
+                  
                   </div>
+
+                  {isUser? 
+                  (  
                   <div className="flex space-x-4">
                     <FontAwesomeIcon
                       icon={faPen}
+                      onClick={showModal}
                       className="mr-5 h-6 w-6 text-blue-600 text-lg lg:text-base"
                     />
-                    <Link to="/">
-                      {" "}
-                      <FontAwesomeIcon
-                        icon={faGear}
-                        className="mr-5 h-6 w-6 text-blue-600 text-lg lg:text-base"
-                      />
-                    </Link>
+
+                    <FontAwesomeIcon
+                      icon={faGear}
+                      className="mr-5 h-6 w-6 text-blue-600 text-lg lg:text-base"
+                      onClick={handleLogout}
+                    />
                   </div>
+                  ):(" ")
+                  }
+                
+
                 </div>
 
                 <div className="lg:flex justify-between">
@@ -147,14 +348,19 @@ const Profile_Settings = () => {
                   </div>
                 </div>
               </div>
+             {isUser? (" "):(
               <div className="buttons -ml-1 mt-6 flex flex-row mb-8">
-                <button className="ml-0 px-6 py-3 rounded-xl text-sm font-medium text-white bg-blue-500 hover:bg-blue-400 ">
-                  Connect
-                </button>
-                <button className="ml-4 px-9 py-3 rounded-xl text-sm font-medium text-white bg-blue-500 hover:bg-blue-400  ">
-                  Chat
-                </button>
-              </div>
+              <button className="ml-0 px-6 py-3 rounded-xl text-sm font-medium text-white bg-blue-500 hover:bg-blue-400 " >
+                Connect
+              </button>
+              <button className="ml-4 px-9 py-3 rounded-xl text-sm font-medium text-white bg-blue-500 hover:bg-blue-400  ">
+                Chat
+              </button>
+            </div>
+             )
+             }
+              
+
             </div>
           </div>
         </div>
@@ -162,10 +368,10 @@ const Profile_Settings = () => {
 
       <div className=" mt-5 ml-3 mr-3 lg:mx-auto bg-white lg:w-[97.6%] py-6 px-8 rounded-2xl mb-5 h-[40%]">
         <div className="ml-2 lg:text-left mt-3 mb-6">
-          <div className="flex justify-between"><h3 className="text-3xl font-bold text-black ">About</h3>
-          <FontAwesomeIcon icon={faPen} className="mr-5 h-6 w-6 text-blue-600 text-lg lg:text-base" />
+          <div className="flex justify-between">
+            <h3 className="text-3xl font-bold text-black ">About</h3>
           </div>
-          
+
           <div className="mt-6 text-black text-[1.2rem]">
             <p>{user.user.about}</p>
           </div>

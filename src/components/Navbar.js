@@ -29,26 +29,26 @@ export default function Navbar() {
 					</ul> */}
 					<ul className="hidden lg:flex space-x-12 w-auto mr-64 justify-center items-center ">
 						<li>
-							{window.location.pathname === "/login" && (
-								<button className="bg-white px-8 py-2 rounded-3xl text-blue-700 font-semibold">
-									<Link to="/login">Login</Link>
-								</button>
-							)}
-							{window.location.pathname !== "/login" && (
-								<a className="text-blue-700  px-8 py-2 font-semibold">
-									<Link to="/login">Login</Link>
-								</a>
-							)}
-						</li>
-						<li>
 							{window.location.pathname === "/" && (
 								<button className="bg-white px-8 py-2 rounded-3xl text-blue-700 font-semibold">
-									<Link to="/">Register</Link>
+									<Link to="/">Login</Link>
 								</button>
 							)}
 							{window.location.pathname !== "/" && (
 								<a className="text-blue-700  px-8 py-2 font-semibold">
-									<Link to="/">Register</Link>
+									<Link to="/">Login</Link>
+								</a>
+							)}
+						</li>
+						<li>
+							{window.location.pathname === "/signup" && (
+								<button className="bg-white px-8 py-2 rounded-3xl text-blue-700 font-semibold">
+									<Link to="/signup">Register</Link>
+								</button>
+							)}
+							{window.location.pathname !== "/signup" && (
+								<a className="text-blue-700  px-8 py-2 font-semibold">
+									<Link to="/signup">Register</Link>
 								</a>
 							)}
 						</li>

@@ -14,6 +14,7 @@ import { Badge } from "antd";
 import { Link } from "react-router-dom";
 
 const Sidebar = () => {
+  const userId = localStorage.getItem('userId');
   const isActiveLink = (link) => {
     return window.location.pathname === link ? "text-blue-500" : "";
   };
@@ -68,7 +69,7 @@ const Sidebar = () => {
         <li className={`flex items-center mb-6 ${isActiveLink("/profile")}`}>
           <FontAwesomeIcon icon={faUser} />
           <span className={`font-medium ml-5 ${isActiveLink("/profile")}`}>
-            <Link to="/profile">Settings</Link>
+            <Link to={`/profile/${userId}`}>Settings</Link>
           </span>
         </li>
       </ul>

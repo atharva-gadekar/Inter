@@ -13,6 +13,8 @@ import { AuthContext } from "../context/AuthContext";
 import axios from "axios";
 import { set } from "react-hook-form";
 import Message from "./Message";
+import { io } from "socket.io-client";
+import { message } from "antd";
 
 
 
@@ -23,12 +25,44 @@ export default function LeftChat() {
   const [conversations, setConversations] = useState([]);
   const [currentChat, setCurrentChat] = useState(null);
   const [messages, setMessages] = useState([]);
+  // const [socket, setSocket] =useState(null);
   const [newMessage, setNewMessage] = useState("");
+  const [arrivalMessage, setArrivalMessage]=useState(null);
   // const { user } = useContext(AuthContext);
   const token = localStorage.getItem("token");
   const userId = localStorage.getItem("userId");
   const [input, setInput] = useState("");
+  const socket=useRef(io("ws://localhost:8900"));
   const scrollRef = useRef();
+  console.log(socket)
+
+  useEffect(()=>{
+    socket.current=io("ws://localhost:8900");
+    socket.current.on("getMessage", data =>{
+      console.log(data)
+      setArrivalMessage(
+        {
+          sender: data.senderId,
+          text:"xyz",
+          createdAt:Date.now,
+        }
+      );
+    });
+  },[]);
+console.log(arrivalMessage);
+
+
+  useEffect(()=>{
+arrivalMessage && currentChat?.members.includes(arrivalMessage.sender) && 
+setMessages(prev=>[...prev,arrivalMessage])
+  },[arrivalMessage, currentChat]);
+
+  useEffect(()=>{
+    socket.current.emit("addUser", userId);
+    socket.current.on("getUsers",users=>{
+      console.log(users);
+    })
+  },[userId]);
 
   useEffect(() => {
     const getConversations = async () => {
@@ -61,7 +95,7 @@ export default function LeftChat() {
       try {
         const res = await axios.get(`https://inter-api-8q0x.onrender.com/messages/${currentChat?._id}`);
         setMessages(res.data);
-        console.log(res.data);
+        // console.log(res.data);
       } catch (err) {
         console.log(err);
       }
@@ -81,6 +115,17 @@ export default function LeftChat() {
       conversationId: currentChat._id,
 
     };
+
+    const receiverId=currentChat.members.find(m=> m!==userId);
+    console.log(receiverId);
+    socket.current.emit("sendMessage",{
+      senderId: userId,
+      receiverId,
+      text:input, 
+      
+
+    });
+
     try {
       const res = await axios.post('https://inter-api-8q0x.onrender.com/messages', message);
       setInput("");
@@ -92,6 +137,8 @@ export default function LeftChat() {
     }
   }
   
+// useEffect(()=>{})
+
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
