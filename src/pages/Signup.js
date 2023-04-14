@@ -13,7 +13,9 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { message } from "antd";
 import '../App.css'
 import { Select } from 'antd';
+import axios from "axios";
 const { Option } = Select;
+
 
 
 const schema = yup.object().shape({
@@ -53,25 +55,24 @@ function Signup() {
 	});
 
 	const submitForm = async (data) => {
+
 		try {
+			
 			data = { ...data, pfp: selectedFile, interests: tags };
 			const formData = new FormData();
 			for (let key in data) {
 				formData.append(key, data[key]);
 			}
-			// console.log(data);
-			const response = await fetch("http://localhost:3001/auth/register", {
-				method: "POST",
-				body: formData,
-			});
-			const result = await response.json();
+	
+			const response = await axios.post("https://inter-api-8q0x.onrender.com/auth/register", formData);
+			const result = response.data;
 			console.log(result);
 			
 			if(result.status === 200)
 			message.success("User account created!");
 		} catch (error) {
 			message.error("Something went wrong");
-			console.log(data);
+			
 			console.error(error);
 		}
 	};
@@ -157,7 +158,7 @@ function Signup() {
 									type="file"
 									className="hidden border"
 									name="pfp"
-									{...register("pfp", { required: false })}
+									{...register("pfp", { required: true })}
 									onChange={handleFileChange}
 									accept="image/*"
 								/>

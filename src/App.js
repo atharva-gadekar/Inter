@@ -10,7 +10,7 @@ import ChatFinal from './pages/ChatFinal';
 import Blog from './components/Blog';
 import ProfileFinal from './pages/ProfileFinal';
 import Notifications from './pages/Notifications';
-import ForgotPassword from "./components/ForgotPassword";
+import Resetpass from "./pages/Resetpass";
 import Forgotpass from "./pages/Forgotpass";
 
 function App() {
@@ -26,9 +26,9 @@ function App() {
         <Route path="/blog/:id" element={<Blog />} />
         <Route path="/chat" element={<ChatFinal />} />
         <Route path="/network" element={<ConnectionsPage />} />
-        <Route path="/reset" element={<ForgotPassword />} />
+        <Route path="/reset/:id" element={<Resetpass/>} />
         <Route path="/notifications" element={<Notifications />} />
-        <Route path="forgot" element={<Forgotpass />} />
+        <Route path="/forgot" element={<Forgotpass />} />
       </Routes>
     </BrowserRouter>
   );
