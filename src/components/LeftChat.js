@@ -105,8 +105,16 @@ setMessages(prev=>[...prev,arrivalMessage])
   }, [currentChat]);
   console.log(currentChat);
 
+  const handleKeypress = e => {
+    //it triggers by pressing the enter key
+    if (e.key === 'Enter' || e.key === 'Return') {
+      console.log("Button click");
+    handleSubmit();
+  }
+};
+
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e?.preventDefault();
 
     const message = {
      
@@ -115,6 +123,9 @@ setMessages(prev=>[...prev,arrivalMessage])
       conversationId: currentChat._id,
 
     };
+
+
+    
 
     const receiverId=currentChat.members.find(m=> m!==userId);
     console.log(receiverId);
@@ -236,7 +247,7 @@ setMessages(prev=>[...prev,arrivalMessage])
                   ))}
               
                 </div>
-              </> : <span className="mb-6 text-gray-700 text-center">Open a conversation to start a chat.</span>
+              </> : <span className="mb-6 text-gray-400 text-3xl text-center mt-[30%] ">Open a conversation to start a chat.</span>
 }
       </div>
         {
@@ -252,14 +263,14 @@ setMessages(prev=>[...prev,arrivalMessage])
                 type="text"
                   placeholder="Write your message here..."
                   onChange={(e) => setInput(e.target.value)}
-                  
+                  onKeyDown={handleKeypress}
                   value={input}
                 className="ChatMessageInput text-slate-400 !outline-none bg-transparent pt-5 px-3 mt-3 pl-4 mr-4 mb-6 w-[80%] bg-white"
                 />
                 <button><FontAwesomeIcon
                 icon={faPaperPlane}
                   size="lg"
-                 onClick={handleSubmit}
+                  onClick={handleSubmit}
                 className="text-slate-500 bg-transparent cursor-pointer h-6 w-6 "
               /></button>
               
