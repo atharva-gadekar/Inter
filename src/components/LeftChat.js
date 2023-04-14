@@ -241,7 +241,7 @@ export default function LeftChat() {
                 <div>
                   <img
                     src={user.url}
-                    className="rounded-2xl h-14 w-14 ml-8"
+                    className="rounded-full h-14 w-14 ml-8"
                   ></img>
                 </div>
                 <div className="flex-col space-y-1 ">
