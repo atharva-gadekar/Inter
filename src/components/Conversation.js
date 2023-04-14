@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import profile from "../assets/Rectangle 47.png";
 import axios from 'axios';
-export default function Conversation({conversation,currentUser}) {
+export default function Conversation({conversation,currentUser, currentText}) {
     const [user, setUser] = useState({
 		user: {
 			_id: "",
@@ -50,7 +50,7 @@ export default function Conversation({conversation,currentUser}) {
     
     }
     getUser();
-  },[conversation, currentUser]);
+  },[conversation, currentUser, currentText]);
 
 
   return (
@@ -67,7 +67,7 @@ export default function Conversation({conversation,currentUser}) {
                 </p>
               </div>
               <p className="text-xs text-slate-400 mr-4">
-                Hello guys, this is my Connexa Messaging page
+                {currentText}
               </p>
             </div>
           </div>
