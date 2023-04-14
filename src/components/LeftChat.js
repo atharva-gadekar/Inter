@@ -30,6 +30,52 @@ export default function LeftChat() {
   const socket = useRef(io("ws://localhost:8900"));
   const scrollRef = useRef();
   console.log(socket);
+  const [user, setUser] = useState({
+		user: {
+			_id: "",
+			name: "",
+			email: "@gmail.com",
+			password: "",
+			picture: "",
+			collegeName: "",
+			year: 2,
+			branch: "",
+			interests: [],
+			following: [],
+			followers: [],
+			posts: [],
+			createdAt: "",
+			__v: 2,
+		},
+		url: "",});
+
+
+
+  useEffect(() => {
+    const fetchUserName = async () => {
+      try {
+        if (token) {
+          const receiverId=currentChat.members.find(m=> m!==userId);
+          axios({
+						method: "get",
+						url: `https://inter-api-8q0x.onrender.com/user/${receiverId}`,
+						headers: {
+							Authorization: `Bearer ${token}`,
+						},
+					}).then((response) => {
+						setUser(response.data);
+            console.log(response.data);
+           
+					});
+
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchUserName();
+  }, []);;
 
   useEffect(()=>{
     socket.current=io("ws://localhost:8900");
@@ -141,7 +187,7 @@ export default function LeftChat() {
   };
 
   // useEffect(()=>{})
-
+  console.log(user.user.name)
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
@@ -179,26 +225,27 @@ export default function LeftChat() {
         <div className="parent pb-2 h-[32rem] overflow-y-scroll ">
           {conversations.map((c) => (
             <div onClick={() => setCurrentChat(c)}>
-              <Conversation conversation={c} currentUser={userId} />
+              <Conversation conversation={c} currentUser={userId} currentText="xyx" />
             </div>
           ))}
         </div>
       </div>
 
       <div className="bg-white rounded-r-3xl border-l w-full  h-[42rem] overflow-y-scroll ">
-        {currentChat ? (
+       
+      {currentChat ? (
           <>
             <div className="heading pt-4 sticky top-0 bg-white">
               <div className=" items-center pt-3 space-x-4 flex pb-3">
                 <div>
                   <img
-                    src={profile}
+                    src={user.url}
                     className="rounded-2xl h-14 w-14 ml-8"
                   ></img>
                 </div>
                 <div className="flex-col space-y-1 ">
                   <div className="flex flex-row space-x-3 items-center mr-4">
-                    <h1 className=" font-medium ">Saishree Kouda</h1>
+                    <h1 className=" font-medium ">{user.user.name}</h1>
                     <FontAwesomeIcon
                       icon={faCircle}
                       size="lg"
@@ -209,8 +256,12 @@ export default function LeftChat() {
                     </p>
                     
                     
+                    
+                    
                   </div>
-                  
+                  <p className="text-sm text-slate-600 w-64">
+                    {user.user.title}
+                  </p>
                 </div>
               </div>
               <hr className="mt-4"></hr>
@@ -219,7 +270,6 @@ export default function LeftChat() {
         ) : (
           <></>
         )}
-
         {/* message */}
         {/* <div className="chatting mt-4 mb-4">
         <p className="text-center text-sm text-slate-500">Today</p>
@@ -230,7 +280,7 @@ export default function LeftChat() {
               <div className="flex flex-col mt-5">
                 {messages.map((m) => (
                   <div ref={scrollRef}>
-                    <Message message={m} own={m.sender === userId} friendId={m.sender} myId={userId}/>
+                    <Message message={m} own={m.sender === userId} userid={userId} receiverid={currentChat.members.find((m) => m !== userId)} />
                   </div>
                 ))}
               </div>
