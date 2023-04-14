@@ -27,7 +27,6 @@ function App() {
         <Route path="/chat" element={<ChatFinal />} />
         <Route path="/network" element={<ConnectionsPage />} />
         <Route path="/reset" element={<ForgotPassword />} />
-        
         <Route path="/notifications" element={<Notifications />} />
         <Route path="forgot" element={<Forgotpass />} />
       </Routes>

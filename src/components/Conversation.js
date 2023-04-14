@@ -34,7 +34,8 @@ export default function Conversation({conversation,currentUser}) {
   
             axios({
                           method: "get",
-                          url: `https://inter-api-8q0x.onrender.com/user/${friendId}`,
+              url: `https://inter-api-8q0x.onrender.com/user/${friendId}`,
+                          
                           headers: {
                               Authorization: `Bearer ${token}`,
                           },
@@ -57,7 +58,7 @@ export default function Conversation({conversation,currentUser}) {
     <div className="message cursor-pointer">
           <div className="hover:bg-blue-200 items-center pt-3  space-x-6 flex pb-3 ">
             <div>
-              <img src={user.url} className="rounded-xl h-12 w-12 ml-8"></img>
+              <img src={user.url}   className="rounded-xl h-12 w-12 ml-8"></img>
             </div>
             <div className="block ">
               <div className="flex flex-row justify-between items-center mr-4 ">
