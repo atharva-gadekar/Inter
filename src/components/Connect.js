@@ -16,7 +16,33 @@ const Connect = () => {
   const [following, setFollowing] = useState([]);
   const token = localStorage.getItem('token');
   const userId = localStorage.getItem('userId');
-  
+  // useEffect(() => {
+  //   const fetchUserName = async () => {
+  //     try {
+  //       if (token) {
+          
+
+  //         axios({
+	// 					method: "get",
+	// 					url: `https://inter-api-8q0x.onrender.com/user/${userId}/following`,
+	// 					headers: {
+	// 						Authorization: `Bearer ${token}`,
+	// 					},
+	// 				}).then((response) => {
+	// 				setFollowing(response.data.following);
+         
+	// 				});
+
+          
+  //       }
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
+
+  //   fetchUserName();
+  // }, []);
+
   return (
     <div className="bg-white rounded-2xl p-6 w-[117%] h-full hidden lg:block">
       <h1 className="font-bold text-sm">Friend List</h1>
