@@ -7,7 +7,7 @@ import CreatePost from '../components/CreatePost';
 import Post from '../components/Post';
 import Connect from '../components/Connect';
 import '../App.css';
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import NavigationHome from '../components/NavigationHome';
 import Connections from '../components/Connections';
 
