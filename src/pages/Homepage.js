@@ -7,17 +7,23 @@ import CreatePost from '../components/CreatePost';
 import Post from '../components/Post';
 import Connect from '../components/Connect';
 import '../App.css';
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import NavigationHome from '../components/NavigationHome';
 import Connections from '../components/Connections';
+import { useEffect } from 'react';
 
 const Homepage = () => {
+	const navigate=useNavigate();
+	const token = localStorage.getItem("token");
   const [banner, setBanner] = React.useState(null);
   const [blog, setBlog] = React.useState({
     title: "",
     brief: "",
     tags: [],
   });
+
+
+  
 
   return (
 		<div className="flex flex-col min-h-screen">

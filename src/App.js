@@ -12,7 +12,6 @@ import ProfileFinal from "./pages/ProfileFinal";
 import Notifications from "./pages/Notifications";
 import Resetpass from "./pages/Resetpass";
 import Forgotpass from "./pages/Forgotpass";
-import { AuthProvider } from "./AuthContext";
 
 function App() {
 	const [loggedIn, setLoggedIn] = useState(false);
