@@ -46,6 +46,7 @@ const Connect = () => {
   return (
     <div className="bg-white rounded-2xl p-6 w-[117%] h-full hidden lg:block">
       <h1 className="font-bold text-sm">Friend List</h1>
+      
       {connections && connections.map((connections) => (
         <div className="flex pt-6 items-center space-x-4 justify-between">
           <div className="flex items-center space-x-3">
