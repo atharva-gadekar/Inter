@@ -13,49 +13,49 @@ faHome,
 import axios from 'axios';
 
 const Connect = () => {
-  const [following, setFollowing] = useState([]);
+  const [connections, setconnections] = useState([]);
   const token = localStorage.getItem('token');
-  const userId = localStorage.getItem('userId');
-  // useEffect(() => {
-  //   const fetchUserName = async () => {
-  //     try {
-  //       if (token) {
+
+  useEffect(() => {
+    const fetchUserName = async () => {
+      try {
+        if (token) {
+          const userId = localStorage.getItem('userId');
+
+          axios({
+						method: "get",
+						url: `https://inter-api-8q0x.onrender.com/user/${userId}/connections`,
+						headers: {
+							Authorization: `Bearer ${token}`,
+						},
+					}).then((response) => {
+					setconnections(response.data.connections);
+          console.log(response.data.connections);
+					});
+
           
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
 
-  //         axios({
-	// 					method: "get",
-	// 					url: `https://inter-api-8q0x.onrender.com/user/${userId}/following`,
-	// 					headers: {
-	// 						Authorization: `Bearer ${token}`,
-	// 					},
-	// 				}).then((response) => {
-	// 				setFollowing(response.data.following);
-         
-	// 				});
-
-          
-  //       }
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
-
-  //   fetchUserName();
-  // }, []);
+    fetchUserName();
+  }, []);
 
   return (
     <div className="bg-white rounded-2xl p-6 w-[117%] h-full hidden lg:block">
       <h1 className="font-bold text-sm">Friend List</h1>
-      {following.map((following) => (
+      {connections && connections.map((connections) => (
         <div className="flex pt-6 items-center space-x-4 justify-between">
           <div className="flex items-center space-x-3">
             <img
-              src={following.url}
+              src={connections.url}
               alt=""
               className="h-12 w-12 rounded-full"
             />
             <div className="block">
-              <h1 className="font-bold text-sm">{following.name}</h1>
+              <h1 className="font-bold text-sm">{connections.name}</h1>
               <p className="text-xs text-slate-400">india</p>
             </div>
           </div>
