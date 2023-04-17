@@ -58,8 +58,8 @@ export default function UserProfile({ user }) {
   };
 
   return (
-    <div>
-      <div className=" bg-white h-full rounded-3xl shadow-lg">
+    <div> 
+      <div className=" bg-white h-full rounded-3xl shadow-lg w-1/3">
         <img
           src={profile_bg}
           alt=""

@@ -60,28 +60,7 @@ export default function Conversation({conversation, currentUser,  time}) {
     
     }
     getUser();
-<<<<<<< HEAD
-  },[conversation, currentUser, currentText]);
-  console.log(conversation);
-  const MAX_WORDS = 4; 
-function formatMessage(currentText) {
- 
-  if (currentText) { const words = currentText.split(' '); 
-
-  // Check if the message has more words than the maximum allowed
-  if (words.length > MAX_WORDS) {
-    
-    return words.slice(0, MAX_WORDS).join(' ') + '...';
-  } else {
-    
-    return currentText;
-  }
-  }
-}
-const formattedMessage = formatMessage(currentText);
-=======
   },[conversation, currentUser]);
->>>>>>> f62a3ec8968e942b5a761ba08d9b2e0d0f49e1dd
 
 console.log(conversation.lastMessage)
   return (
