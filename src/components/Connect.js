@@ -29,8 +29,8 @@ const Connect = () => {
 							Authorization: `Bearer ${token}`,
 						},
 					}).then((response) => {
-					setFollowing(response.data.following);
-          console.log(response.data.following);
+					if(response.data)setFollowing(response.data.following);
+          console.log(response.data);
 					});
 
           
@@ -46,7 +46,8 @@ const Connect = () => {
   return (
     <div className="bg-white rounded-2xl p-6 w-[117%] h-full hidden lg:block">
       <h1 className="font-bold text-sm">Friend List</h1>
-      {following.map((following) => (
+      {/* console.log('hello') */}
+      {following && following.map((following) => (
         <div className="flex pt-6 items-center space-x-4 justify-between">
           <div className="flex items-center space-x-3">
             <img

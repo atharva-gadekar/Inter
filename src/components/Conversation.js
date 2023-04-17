@@ -41,7 +41,7 @@ export default function Conversation({conversation,currentUser, currentText}) {
                           },
                       }).then((response) => {
                           setUser(response.data);
-             
+                       
                       });
   
           }    }
@@ -52,7 +52,7 @@ export default function Conversation({conversation,currentUser, currentText}) {
     }
     getUser();
   },[conversation, currentUser, currentText]);
-   
+  console.log(conversation);
   const MAX_WORDS = 4; 
 function formatMessage(currentText) {
  

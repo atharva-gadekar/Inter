@@ -33,7 +33,7 @@ setIsModalVisible(false);
 
 return (
 <div>
-<div className=" bg-white h-full rounded-3xl shadow-lg">
+<div className=" bg-white h-full rounded-3xl shadow-lg w-">
 <img
        src={profile_bg}
        alt=""
@@ -53,8 +53,8 @@ UX/UI designer- Phoenix Agency
 
     <p className="text-center text-slate-500 mt-1 mb-6 text-base px-6 ">
       Computer Science
-    </p>
-
+      </p>
+      
     <div className="flex justify-center space-x-3 mb-6">
       <button className="bg-blue-100 py-2 px-3 text-blue-600 font-medium rounded-3xl text-sm">Design</button>
       <button className="bg-blue-100 py-2 px-3 text-blue-600 font-medium rounded-3xl text-sm">Cloud</button>

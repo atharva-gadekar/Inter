@@ -15,8 +15,11 @@ import { set } from "react-hook-form";
 import Message from "./Message";
 import { io } from "socket.io-client";
 import { message } from "antd";
+import MessageList from "./MessageList";
+import Friend from "./Friend";
 
-export default function LeftChat() {
+export default function LeftChat(friends) {
+
   const [conversations, setConversations] = useState([]);
   const [currentChat, setCurrentChat] = useState(null);
   const [messages, setMessages] = useState([]);
@@ -49,7 +52,7 @@ export default function LeftChat() {
 		},
 		url: "",});
 
-
+    
 
   useEffect(() => {
     const fetchUserName = async () => {
@@ -119,6 +122,7 @@ export default function LeftChat() {
             }
           );
           setConversations(res.data);
+          console.log(res.data);
           if (!res.ok) {
             throw new Error("Error fetching user details");
           }
@@ -130,7 +134,7 @@ export default function LeftChat() {
     };
     getConversations();
   }, [userId]);
-
+  
   useEffect(() => {
     const getMessages = async () => {
       try {
@@ -154,6 +158,17 @@ export default function LeftChat() {
       handleSubmit();
     }
   };
+
+
+  const [showMessageList, setShowMessageList] = useState(false);
+
+    // Add an event listener to toggle the message list component
+    function handleFapentosquareClick() {
+      setShowMessageList(!showMessageList);
+    }
+
+  
+  
 
   const handleSubmit = async (e) => {
     if (input.trim() !== "") {
@@ -193,20 +208,34 @@ export default function LeftChat() {
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
+
+
+  const [selectedFriendId, setSelectedFriendId] = useState(null); // store the selected friend ID in state
+
+  const handleClickFriend = (id) => {
+    setSelectedFriendId(id); // set the selected friend ID to state
+  };
+
+
+
   return (
     <div className="flex mb-6">
       <div className="bg-white rounded-l-3xl h-full w-[40%] border-b-white border-b-2">
         <div className=" flex justify-between items-center sticky">
           <h1 className="px-8 font-bold py-8 text-xl">Messaging</h1>
-
+          <button onClick={handleFapentosquareClick}>
           <FontAwesomeIcon
             icon={faPenToSquare}
             size="lg"
             className="text-slate-500 bg-transparent cursor-pointer pr-8 stroke-0"
           />
+          </button>
+          
         </div>
-
-        <div className="flex items-center justify-center ">
+        {showMessageList ? (<><MessageList /> </>) : (<> <div>
+          
+          <div className="flex items-center justify-center ">
+          
           <label className="relative bg-[#f5f5f5] rounded-2xl py-1 px-2  leading-tight ">
             <input
               className="bg-[#f5f5f5] rounded-2xl py-2 px-4  leading-tight focus:outline-none text-sm text-slate-500 focus:bg-gray-100"
@@ -220,8 +249,6 @@ export default function LeftChat() {
             />
           </label>
         </div>
-
-        {/* <hr className="mt-6"></hr> */}
         <div className="mt-6"></div>
         <div className="parent pb-2 h-[32rem] overflow-y-scroll ">
           {conversations.map((c) => (
@@ -229,25 +256,28 @@ export default function LeftChat() {
               <Conversation conversation={c} currentUser={userId} currentText={lastMessage} />
             </div>
           ))}
-        </div>
+          </div>
+        </div></>)}
+       
       </div>
-
+      {/* right element */}
       <div className="bg-white rounded-r-3xl border-l w-full  h-[42rem] overflow-y-scroll ">
        
-      {currentChat ? (
+      {currentChat | selectedFriendId? (
           <>
             <div className="heading pt-4 sticky top-0 bg-white">
               <div className=" items-center pt-3 space-x-4 flex pb-3">
                 <div>
                   <img
-                    src={user.url}
+                  src={currentChat ? user.url : friends[selectedFriendId].url}
                     className="rounded-full h-14 w-14 ml-8"
                   ></img>
                 </div>
                 <div className="flex-col space-y-1 ">
                   <div className="flex flex-row space-x-3 items-center mr-4">
-                    <h1 className=" font-medium ">{user.user.name}</h1>
-
+                    <h1 className=" font-medium ">  {currentChat ? user.user.name : friends[selectedFriendId].name}</h1>
+                    
+                  
                     {/* checks last time online */}
                     {/* <FontAwesomeIcon
                       icon={faCircle}
@@ -263,7 +293,7 @@ export default function LeftChat() {
                     
                   </div>
                   <p className="text-sm text-slate-600 w-64">
-                    {user.user.title}
+                  {currentChat ? user.user.title : friends[selectedFriendId].title}
                   </p>
                 </div>
               </div>

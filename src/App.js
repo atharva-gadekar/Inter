@@ -12,6 +12,8 @@ import ProfileFinal from './pages/ProfileFinal';
 import Notifications from './pages/Notifications';
 import ForgotPassword from "./components/ForgotPassword";
 import Forgotpass from "./pages/Forgotpass";
+import MessageList from "./components/MessageList";
+import Hashtag from "./components/Hashtag";
 
 function App() {
   return (
@@ -29,6 +31,7 @@ function App() {
         <Route path="/reset" element={<ForgotPassword />} />
         <Route path="/notifications" element={<Notifications />} />
         <Route path="forgot" element={<Forgotpass />} />
+        <Route path="/test" element={<Hashtag />} />
       </Routes>
     </BrowserRouter>
   );

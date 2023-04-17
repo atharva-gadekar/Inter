@@ -10,7 +10,7 @@ import '../App.css';
 import { Link } from "react-router-dom";
 import NavigationHome from '../components/NavigationHome';
 import Connections from '../components/Connections';
-
+import Hashtag from '../components/Hashtag';
 const Homepage = () => {
   const [banner, setBanner] = React.useState(null);
   const [blog, setBlog] = React.useState({
@@ -37,6 +37,7 @@ const Homepage = () => {
 						blog={blog}
 						setBlog={setBlog}
 					/>
+				  
 					<Post />
 				</div>
 				<div className="lg:w-1/6 mt-[0.9rem]">
