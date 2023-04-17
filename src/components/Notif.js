@@ -42,7 +42,7 @@ export default function Notif() {
         {
           headers: {
             Authorization: `Bearer ${token}`,
-          },
+          }
         }
       )
       .then((response) => {
