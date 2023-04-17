@@ -19,7 +19,7 @@ import { FaEdit } from "react-icons/fa";
 
 
 import Profile_Settings from '../components/ProfileSettings';
-export default function Hi() {
+export default function Hi({setLoggedIn}) {
     return (
       <>
     
@@ -34,7 +34,7 @@ export default function Hi() {
 					</div>
 				</div>
         <div className="lg:w-5/6 mt-4 pr-2">
-          <Profile_Settings/>
+          <Profile_Settings setLoggedIn={setLoggedIn}/>
         </div>
         
       </div>

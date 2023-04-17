@@ -201,7 +201,8 @@ export default function LeftChat(friends) {
     }
   };
   console.log(messages)
-  const lastMessage = messages.length > 0 ? messages[messages.length - 1].text : null;
+  // const lastMessage = messages.length > 0 ? messages[messages.length - 1].text : null;
+  const lasttime = messages.length > 0 ? messages[messages.length - 1].createdAt : null;
 
   // useEffect(()=>{})
   console.log(user.user.name)
@@ -253,7 +254,7 @@ export default function LeftChat(friends) {
         <div className="parent pb-2 h-[32rem] overflow-y-scroll ">
           {conversations.map((c) => (
             <div onClick={() => setCurrentChat(c)}>
-              <Conversation conversation={c} currentUser={userId} currentText={lastMessage} />
+              <Conversation conversation={c} currentUser={userId}  time={lasttime} />
             </div>
           ))}
           </div>

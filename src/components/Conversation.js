@@ -1,7 +1,16 @@
 import React, { useState, useEffect, useContext } from 'react'
 import profile from "../assets/Rectangle 47.png";
 import axios from 'axios';
-export default function Conversation({conversation,currentUser, currentText}) {
+import moment from 'moment';
+
+export default function Conversation({conversation, currentUser,  time}) {
+
+  const isToday = moment().isSame(time, 'day');
+  const isYesterday = moment().subtract(1, 'days').isSame(time, 'day');
+  const timestamp = isToday ? moment(time).format('h:mm A') :
+    isYesterday ? 'Yesterday' :
+    moment(time).format('MMMM D, YYYY h:mm A');
+    console.log(moment(time).format('h:mm A'));
     const [user, setUser] = useState({
 		user: {
 			_id: "",
@@ -44,13 +53,14 @@ export default function Conversation({conversation,currentUser, currentText}) {
                        
                       });
   
-          }    }
+          }}
       catch(err){
         console.log(err);
       }
     
     }
     getUser();
+<<<<<<< HEAD
   },[conversation, currentUser, currentText]);
   console.log(conversation);
   const MAX_WORDS = 4; 
@@ -69,7 +79,11 @@ function formatMessage(currentText) {
   }
 }
 const formattedMessage = formatMessage(currentText);
+=======
+  },[conversation, currentUser]);
+>>>>>>> f62a3ec8968e942b5a761ba08d9b2e0d0f49e1dd
 
+console.log(conversation.lastMessage)
   return (
     <div className="message cursor-pointer">
           <div className="items-center pt-3 space-x-6 flex pb-3">
@@ -80,12 +94,11 @@ const formattedMessage = formatMessage(currentText);
               <div className="flex flex-row justify-between items-center mr-4">
                       <h1 className="text-sm font-medium ">{user.user.name }</h1>
                 <p className="ml-4 text-xs font-medium text-slate-500  mr-4">
-                  16 Jan
+                  {timestamp}
                 </p>
               </div>
-              <p className="text-sm text-slate-400 mr-4">
-              {formattedMessage}
-            
+              <p className="text-xs text-slate-400 mr-4">
+                {conversation.lastMessage}
               </p>
             </div>
           </div>

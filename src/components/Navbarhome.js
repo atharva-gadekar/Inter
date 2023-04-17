@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import logo from '../assets/Frame 6 1.png';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from "react-router-dom";
 
 
 const Navbarhome = () => {
@@ -55,7 +56,8 @@ const[url,setUrl]=useState('');
         </div>
         <div className="flex items-center justify-center flex-grow ">
           <div className="text-[#0a66c2]">
-            <h1 className="font-bold ml-9 text-3xl tracking-tight">Connexa</h1>
+            
+            <h1 className="font-bold ml-9 text-3xl tracking-tight"><Link to="/home">Connexa</Link></h1>
           </div>
         </div>
 
