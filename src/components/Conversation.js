@@ -53,7 +53,7 @@ export default function Conversation({conversation, currentUser,  time}) {
              
                       });
   
-          }    }
+          }}
       catch(err){
         console.log(err);
       }
