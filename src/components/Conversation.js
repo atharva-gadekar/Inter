@@ -50,7 +50,7 @@ export default function Conversation({conversation, currentUser,  time}) {
                           },
                       }).then((response) => {
                           setUser(response.data);
-             
+                       
                       });
   
           }}

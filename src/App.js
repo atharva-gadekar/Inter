@@ -12,6 +12,8 @@ import ProfileFinal from "./pages/ProfileFinal";
 import Notifications from "./pages/Notifications";
 import Resetpass from "./pages/Resetpass";
 import Forgotpass from "./pages/Forgotpass";
+import MessageList from "./components/MessageList";
+import Hashtag from "./components/Hashtag";
 
 function App() {
 	const [loggedIn, setLoggedIn] = useState(false);

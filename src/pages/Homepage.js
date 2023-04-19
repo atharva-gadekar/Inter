@@ -43,6 +43,7 @@ const Homepage = () => {
 						blog={blog}
 						setBlog={setBlog}
 					/>
+				  
 					<Post />
 				</div>
 				<div className="lg:w-1/6 mt-[0.9rem]">

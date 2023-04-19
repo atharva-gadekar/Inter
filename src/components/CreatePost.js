@@ -78,7 +78,7 @@ const CreatePost = (props) => {
 	return (
 		<>
 			<>
-				<div className="bg-white rounded-xl border shadow-slate-100 p-6 lg:flex items-center hidden">
+				<div className="bg-white rounded-xl  p-6 lg:flex items-center hidden">
 					<div className="relative w-full">
 						<input
 							type="text"
