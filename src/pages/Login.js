@@ -118,10 +118,8 @@ function Login({setLoggedIn}) {
 								<input type="checkbox" className="mr-2" />
 								<label>Keep me logged in</label>
 							</div>
-							<Link to="/forgot">
-								<a href="#" className="text-blue-500 font-medium">
-									Forgot password?
-								</a>
+							<Link to="/forgot" className="text-blue-500 font-medium">
+								Forgot password?
 							</Link>
 						</div>
 						{/* <Link to='/home'> */}
