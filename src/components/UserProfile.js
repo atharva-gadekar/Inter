@@ -72,7 +72,7 @@ export default function UserProfile({ user }) {
           />
         )) || (
           <img
-            src={profile}
+            src={user.user.url}
             className="-mt-12 mr-auto ml-auto rounded-2xl h-20 w-20"
           />
         )}
