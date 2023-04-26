@@ -9,9 +9,12 @@ import { Spin } from "antd";
 import { faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import moment from "moment";
 
-function Login({setLoggedIn}) {
+
+function Login({ setLoggedIn }) {
 	const [showPassword, setShowPassword] = useState(false);
+	const [remember, setRemember] = useState(false);
 
 	const handleTogglePassword = () => {
 		setShowPassword(!showPassword);
@@ -38,12 +41,16 @@ function Login({setLoggedIn}) {
 			const token = response.data.jwt_token;
 			const userId = response.data.id;
 			if (token) {
+				const expiration = moment().add(4, "days");
+				setLoggedIn(true);
+				if(remember)
+				localStorage.setItem("tokenExpiration", expiration);
+				console.log(localStorage.getItem("tokenExpiration"));
 				localStorage.setItem("token", token);
 				localStorage.setItem("userId", userId);
-        setLoggedIn(true);
-				message.success("Login successful!");
 
 				// navigate("/home");
+				message.success("Login successful!");
 				setLoading(false);
 			}
 		} catch (error) {
@@ -115,7 +122,14 @@ function Login({setLoggedIn}) {
 
 						<div className="flex justify-between items-center">
 							<div className="items-center hidden lg:flex">
-								<input type="checkbox" className="mr-2" />
+								<input
+									type="checkbox"
+									className="mr-2"
+									onChange={(e) => {
+										setRemember(e.target.value);
+										console.log(e.target.value);
+									}}
+								/>
 								<label>Keep me logged in</label>
 							</div>
 							<Link to="/forgot" className="text-blue-500 font-medium">

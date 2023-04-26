@@ -14,13 +14,36 @@ import Resetpass from "./pages/Resetpass";
 import Forgotpass from "./pages/Forgotpass";
 import MessageList from "./components/MessageList";
 import Hashtag from "./components/Hashtag";
+import moment from "moment";
+
 
 function App() {
 	const [loggedIn, setLoggedIn] = useState(false);
 	const token = localStorage.getItem("token");
 
+	const checkTokenExpiration = () => {
+		const expiration = localStorage.getItem("tokenExpiration");
+		 if (expiration && moment(expiration).isBefore(moment())) {
+				setLoggedIn(false);
+				localStorage.removeItem("token");
+				localStorage.removeItem("userId");
+				localStorage.removeItem("tokenExpiration");
+			} 
+	}; 
+
 	useEffect(() => {
-		if (token) setLoggedIn(true);
+		const token = localStorage.getItem("token");
+		if (token) {
+			setLoggedIn(true);
+			const expiration = localStorage.getItem("tokenExpiration");
+			if (expiration) {
+				const expirationDate = new Date(expiration);
+				console.log(expirationDate);
+				checkTokenExpiration();
+			}
+			else setLoggedIn(false);
+		}
+
 	}, []);
 
 	return (
@@ -42,7 +65,9 @@ function App() {
 						loggedIn ? (
 							<Navigate to="/home" replace={true} />
 						) : (
-							<Login setLoggedIn={setLoggedIn} />
+							<Login
+								setLoggedIn={setLoggedIn}
+							/>
 						)
 					}
 				/>
@@ -53,7 +78,9 @@ function App() {
 						loggedIn ? (
 							<Navigate to="/home" replace={true} />
 						) : (
-							<Login setLoggedIn={setLoggedIn} />
+							<Login
+								setLoggedIn={setLoggedIn}
+							/>
 						)
 					}
 				/>
@@ -63,10 +90,13 @@ function App() {
 						!loggedIn ? (
 							<Navigate to="/" replace={true} />
 						) : (
-							<ProfileFinal setLoggedIn={setLoggedIn} />
+							<ProfileFinal
+								setLoggedIn={setLoggedIn}
+							/>
 						)
 					}
 				/>
+
 				<Route
 					path="/blog/:id"
 					element={
@@ -99,12 +129,7 @@ function App() {
 						!loggedIn ? <Navigate to="/" replace={true} /> : <ConnectionsPage />
 					}
 				/>
-				<Route
-					path="/reset/:id"
-					element={
-						<Resetpass />
-					}
-				/>
+				<Route path="/reset/:id" element={<Resetpass />} />
 				<Route
 					path="/notifications"
 					element={

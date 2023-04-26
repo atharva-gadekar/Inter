@@ -85,13 +85,14 @@ const Profile_Settings = ({ setLoggedIn }) => {
 
 	const handleLogout = () => {
 		if (localStorage.getItem("userId")) {
-      setLoggedIn(false);
+			setLoggedIn(false);
 			localStorage.removeItem("token");
 			localStorage.removeItem("userId");
-      navigate("/");
+			localStorage.removeItem("tokenExpiration");
+			navigate("/");
 		}
 		// setTimeout(() => {
-			
+
 		// }, 100);
 	};
 
