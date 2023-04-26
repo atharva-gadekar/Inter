@@ -139,15 +139,15 @@ export default function Post() {
 					</div>
 					<div className=" mr-auto ml-auto text-center mt-8 ">
 						<button className=" text-white p-2 pl-4 pr-4 text-sm font-medium mb-8 rounded-lg">
-							<Link to={`/blog/${blog._id}`}>
+							
 								<div className="flex space-x-3 items-center bg-blue-100 px-3 py-3 rounded-lg">
-									<p className="text-blue-600">Continue Reading</p>
+								<Link to={`/blog/${blog._id}`}><p className="text-blue-600">Continue Reading</p></Link>
 									<FontAwesomeIcon
 										icon={faArrowRight}
 										className="text-blue-600"
 									/>
 								</div>
-							</Link>
+							
 						</button>
 					</div>
 				</div>
