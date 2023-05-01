@@ -137,39 +137,7 @@ export default function Blog() {
 								dangerouslySetInnerHTML={{ __html: blog.blog.content }}
 							></div>
 
-							{/* <img src={post} alt="" className="pt-12 pb-12 w-[80%] lg:w-auto" />
-						<h2 className="font-extrabold text-slate-800 text-xl mr-12 lg:mr-auto lg:text-2xl">
-							First, We Winnowed Out The Podcasts
-						</h2>
-						<ul className="p-4 marker:text-blue-600 list-disc text-slate-600 space-y-2">
-							<li> On a broader theme (Eg: Hey, Hi, Hello)</li>
-							<li>On a broader theme (Eg: Hey, Hi, Hello)</li>
-							<li>On a broader theme (Eg: Hey, Hi, Hello)</li>
-						</ul>
-						<p className="text-slate-600 mt-4 mr-12 lg:mr-auto">
-							When we filtered out those that had produced no new content in the
-							last three months or more (although then we did have to make some
-							exceptions, as you'll see), and ordered the rest according to how
-							many times they were nominated, we had a graded shortiist of 55
-						</p>
-						<p className="text-slate-600 mt-4">
-							{" "}
-							Agreed, that's not a very short shortlist.
-						</p>
-						<img src={post} alt="" className="pt-12 pb-12 w-[80%] lg:w-auto" />
-						<h2 className="font-extrabold text-slate-800 text-xl lg:text-2xl pr-12 lg:pr-auto">
-							So, We Broke It Down Into Five More Reasonably Sized Shortlists:
-						</h2>
-						<ul className="p-4 marker:text-blue-600 list-disc text-slate-600 space-y-2 pr-12 lg:pr-auto mb-4">
-							<li>Podcasts for web designers</li>
-							<li>Podcasts for web developers</li>
-							<li>Podcasts on the web, the Internet and technology</li>
-							<li>Business podcasts for web professionals</li>
-							<li>
-								Podcasts that don't have recent episodes (but do have great
-								archives)
-							</li>
-						</ul> */}
+							
 
 							{/* comment section */}
 

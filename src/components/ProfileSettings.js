@@ -316,7 +316,7 @@ const Profile_Settings = ({ setLoggedIn }) => {
 											</h3>
 											<h3 className="mt-2 text-gray-600 text-xl font-medium tracking-wide">
 												<span className="text-black text-[1rem] font-medium mr-2">
-													500+
+													{user.user.following.length}
 												</span>
 												<span className="text-gray-600 text-[1rem] font-medium tracking-wide">
 													Connections

@@ -133,7 +133,7 @@ export default function Post() {
 						</div>
 
 						<div className="flex justify-center items-center space-x-3">
-							<img src={profile} alt="" className="rounded-full h-8 w-8"></img>
+							<img src={blog.owner.url} alt="" className="rounded-full h-8 w-8"></img>
 							<h3>{blog.owner.name}</h3>
 						</div>
 					</div>

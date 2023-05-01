@@ -59,7 +59,9 @@ const Connect = () => {
               />
               <div className="block">
                 <h1 className="font-bold text-sm">{connections.name}</h1>
-                <p className="text-xs text-slate-400">india</p>
+                <p className="text-xs text-slate-400">
+                  {connections.collegeName}
+                </p>
               </div>
             </div>
 
