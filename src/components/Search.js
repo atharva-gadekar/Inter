@@ -1,8 +1,9 @@
 import { DownOutlined } from "@ant-design/icons";
 import { Dropdown, Space } from "antd";
 import axios from "axios";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Result from "./Result";
+import { BlogContext } from "../utils/context/BlogContext";
 
 const Search = () => {
 	const [query, setQuery] = useState("");
@@ -10,6 +11,7 @@ const Search = () => {
 	const [content, setContent] = useState("");
 	const [user, setUser] = useState({});
 	const [type, setType] = useState("");
+	const { blogs, setBlogs } = useContext(BlogContext);
 
 	const handleSearchClick = (e) => {
 		e.target.placeholder = "Search for a @user or #tag or a post";
@@ -27,6 +29,10 @@ const Search = () => {
 				}
 			);
 			console.log(res.data);
+			setBlogs(res.data);
+			setItems([]);
+			e.target.placeholder = "Global Search";
+			e.target.blur();
 		}
 	};
 
@@ -65,7 +71,13 @@ const Search = () => {
 				console.log(content);
 				setItems([
 					{
-						label: <Result type="tag" content={e.target.value.substring(1)} />,
+						label: (
+							<Result
+								type="tag"
+								content={e.target.value}
+								setItems={setItems}
+							/>
+						),
 						key: 0,
 					},
 				]);
@@ -73,7 +85,13 @@ const Search = () => {
 			if (type === "blog") {
 				setItems([
 					{
-						label: <Result type="blog" content={e.target.value} />,
+						label: (
+							<Result
+								type="blog"
+								content={e.target.value}
+								setItems={setItems}
+							/>
+						),
 						key: 1,
 					},
 				]);

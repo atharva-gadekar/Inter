@@ -11,6 +11,10 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import NavigationHome from '../components/NavigationHome';
 import Connections from '../components/Connections';
 import { useEffect } from 'react';
+import BlogContextProvider from '../utils/context/BlogContext';
+import { BlogContext } from '../utils/context/BlogContext';
+import { useContext } from 'react';
+import axios from "axios";
 
 const Homepage = () => {
 	const navigate=useNavigate();
@@ -22,12 +26,37 @@ const Homepage = () => {
     tags: [],
   });
 
+  const { blogs, setBlogs } = useContext(BlogContext);
+
+    useEffect(() => {
+			const fetchBlogs = async () => {
+				try {
+					if (token) {
+						axios({
+							method: "get",
+							url: `https://inter-api-8q0x.onrender.com/blog`,
+							headers: {
+								Authorization: `Bearer ${token}`,
+							},
+						}).then((response) => {
+							setBlogs(response.data.blogs);
+						});
+					}
+				} catch (error) {
+					console.error(error);
+				}
+			};
+
+			fetchBlogs();
+		}, []);
+
 
   
 
   return (
 		<div className="flex flex-col min-h-screen">
-			<Navbarhome />
+			
+				<Navbarhome />
 
 			<div className="flex justify-evenly pr-16">
 				<div className="lg:w-1/5">
@@ -43,8 +72,7 @@ const Homepage = () => {
 						blog={blog}
 						setBlog={setBlog}
 					/>
-				  
-					<Post />
+						<Post />
 				</div>
 				<div className="lg:w-1/6 mt-[0.9rem]">
 					<div className="sticky top-4 ">
@@ -53,8 +81,7 @@ const Homepage = () => {
 				</div>
 			</div>
 			<NavigationHome />
-	  </div>
-	   
+		</div>
 	);
 };
 

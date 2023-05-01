@@ -1,15 +1,15 @@
-import React, { createContext, useContext, useState } from 'react'
+import React, { createContext, useContext, useState } from "react";
 
-export const BlogContext = createContext(null);
+export const BlogContext = createContext();
 
-export default function BlogContextProvider({children}) {
-    const [blogs, setBlogs] = useState([]);
+export default function BlogContextProvider({ children }) {
+	const [blogs, setBlogs] = useState([]);
+	console.log("blogs:", blogs);
+	console.log("setBlogs:", setBlogs);
 
-    const value = {
-        blogs, setBlogs,
-    }
-
-  return (
-    <BlogContext.Provider value={value}>{children}</BlogContext.Provider>
-  )
+	return (
+		<BlogContext.Provider value={{ blogs, setBlogs }}>
+			{children}
+		</BlogContext.Provider>
+	);
 }

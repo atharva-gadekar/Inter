@@ -24,7 +24,7 @@ import { BlogContext } from "../utils/context/BlogContext";
 import { useContext } from "react";
 
 export default function Post() {
-  const [blogs, setBlogs] = useState([]);
+  const {blogs, setBlogs} = useContext(BlogContext);
   const navigate = useNavigate();
   const [likes, setLikes] = useState({});
 
@@ -36,27 +36,7 @@ export default function Post() {
   }
 
 
-  useEffect(() => {
-    const fetchBlogs = async () => {
-      try {
-        if (token) {
-          axios({
-            method: "get",
-            url: `https://inter-api-8q0x.onrender.com/blog`,
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }).then((response) => {
-            setBlogs(response.data.blogs);
-          });
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
 
-    fetchBlogs();
-  }, []);
 
   const getReadingTime = (content) => {
     const wordsPerMinute = 250; // Average reading speed

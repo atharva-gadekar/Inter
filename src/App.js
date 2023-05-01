@@ -15,6 +15,7 @@ import Forgotpass from "./pages/Forgotpass";
 import MessageList from "./components/MessageList";
 import Hashtag from "./components/Hashtag";
 import moment from "moment";
+import BlogContextProvider from "./utils/context/BlogContext";
 
 
 function App() {
@@ -48,96 +49,98 @@ function App() {
 
 	return (
 		<BrowserRouter>
-			<Routes>
-				<Route
-					path="/home"
-					element={
-						!loggedIn ? (
-							<Navigate to="/" replace={true} />
-						) : (
-							<Homepage setLoggedIn={setLoggedIn} />
-						)
-					}
-				/>
-				<Route
-					path="/login"
-					element={
-						loggedIn ? (
-							<Navigate to="/home" replace={true} />
-						) : (
-							<Login
-								setLoggedIn={setLoggedIn}
-							/>
-						)
-					}
-				/>
-				<Route path="/signup" element={<Signup />} />
-				<Route
-					path="/"
-					element={
-						loggedIn ? (
-							<Navigate to="/home" replace={true} />
-						) : (
-							<Login
-								setLoggedIn={setLoggedIn}
-							/>
-						)
-					}
-				/>
-				<Route
-					path="/profile/:id"
-					element={
-						!loggedIn ? (
-							<Navigate to="/" replace={true} />
-						) : (
-							<ProfileFinal
-								setLoggedIn={setLoggedIn}
-							/>
-						)
-					}
-				/>
+			<BlogContextProvider>
+				<Routes>
+					<Route
+						path="/home"
+						element={
+							!loggedIn ? (
+								<Navigate to="/" replace={true} />
+							) : (
+								<Homepage setLoggedIn={setLoggedIn} />
+							)
+						}
+					/>
+					<Route
+						path="/login"
+						element={
+							loggedIn ? (
+								<Navigate to="/home" replace={true} />
+							) : (
+								<Login setLoggedIn={setLoggedIn} />
+							)
+						}
+					/>
+					<Route path="/signup" element={<Signup />} />
+					<Route
+						path="/"
+						element={
+							loggedIn ? (
+								<Navigate to="/home" replace={true} />
+							) : (
+								<Login setLoggedIn={setLoggedIn} />
+							)
+						}
+					/>
+					<Route
+						path="/profile/:id"
+						element={
+							!loggedIn ? (
+								<Navigate to="/" replace={true} />
+							) : (
+								<ProfileFinal setLoggedIn={setLoggedIn} />
+							)
+						}
+					/>
 
-				<Route
-					path="/blog/:id"
-					element={
-						!loggedIn ? (
-							<Navigate to="/" replace={true} />
-						) : (
-							<Blog setLoggedIn={setLoggedIn} />
-						)
-					}
-				/>
-				<Route
-					path="/create/blog"
-					element={!loggedIn ? <Navigate to="/" replace={true} /> : <NewBlog />}
-				/>
-				<Route
-					path="/chat"
-					element={
-						!loggedIn ? <Navigate to="/" replace={true} /> : <ChatFinal />
-					}
-				/>
-				<Route
-					path="/chat"
-					element={
-						!loggedIn ? <Navigate to="/" replace={true} /> : <ChatFinal />
-					}
-				/>
-				<Route
-					path="/network"
-					element={
-						!loggedIn ? <Navigate to="/" replace={true} /> : <ConnectionsPage />
-					}
-				/>
-				<Route path="/reset/:id" element={<Resetpass />} />
-				<Route
-					path="/notifications"
-					element={
-						!loggedIn ? <Navigate to="/" replace={true} /> : <Notifications />
-					}
-				/>
-				<Route path="/forgot" element={<Forgotpass />} />
-			</Routes>
+					<Route
+						path="/blog/:id"
+						element={
+							!loggedIn ? (
+								<Navigate to="/" replace={true} />
+							) : (
+								<Blog setLoggedIn={setLoggedIn} />
+							)
+						}
+					/>
+					<Route
+						path="/create/blog"
+						element={
+							!loggedIn ? <Navigate to="/" replace={true} /> : <NewBlog />
+						}
+					/>
+					<Route
+						path="/chat"
+						element={
+							!loggedIn ? <Navigate to="/" replace={true} /> : <ChatFinal />
+						}
+					/>
+					<Route
+						path="/chat"
+						element={
+							!loggedIn ? <Navigate to="/" replace={true} /> : <ChatFinal />
+						}
+					/>
+					<Route
+						path="/network"
+						element={
+							!loggedIn ? (
+								<Navigate to="/" replace={true} />
+							) : (
+								<ConnectionsPage />
+							)
+						}
+					/>
+					<Route path="/reset/:id" element={<Resetpass />} />
+					<Route
+						path="/notifications"
+						element={
+							!loggedIn ? <Navigate to="/" replace={true} /> : <Notifications />
+						}
+					/>
+					<Route path="/forgot" element={<Forgotpass />} />
+				</Routes>
+			</BlogContextProvider>
 		</BrowserRouter>
 	);
 }
