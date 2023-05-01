@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
     faSearch,
     faPenToSquare,
@@ -8,16 +8,17 @@ import {
   } from "@fortawesome/free-solid-svg-icons";
   
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-  
+import { Link } from "react-router-dom";
 export default function Friend(props) {
+  useEffect(() => {
     console.log(props);
-
+    },[])
     // const handleClick = {
     
     //   };
     const handleClickFriend = () => {
         console.log(props);
-        props.onClick(props.id);
+        props.onClick(props._id);
     };
     
     
@@ -37,9 +38,13 @@ export default function Friend(props) {
     </div>
 
     <div>
-      <button className="bg-blue-200 h-12 w-12 rounded-full">
-        <FontAwesomeIcon icon={faUser} />
+        <button className="bg-blue-200 h-12 w-12 rounded-full" onClick={handleClickFriend}>
+          <Link to={`/profile/${props._id}`}>
+          <FontAwesomeIcon icon={faUser} />
+        </Link>
+        
       </button>
+        
     </div>
   </div>
   )
