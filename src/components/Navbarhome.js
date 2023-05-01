@@ -10,6 +10,8 @@ const Navbarhome = () => {
   const [ismobileopen, setmobileopen] = useState(false);
   const [userName, setUserName] = useState('');
   const token = localStorage.getItem('token');
+  const userId = localStorage.getItem("userId");
+  
 const[url,setUrl]=useState('');
   useEffect(() => {
     const fetchUserName = async () => {
@@ -52,7 +54,7 @@ const[url,setUrl]=useState('');
         <div className="flex items-center flex-shrink-0 text-gray-800">
           <div className="flex items-center">
             <img src={url} alt="Logo" className="h-8 w-8 mr-2 rounded-md" />
-            <h1 className="font-semibold text-base tracking-tight">{userName}</h1>
+            <h1 className="font-semibold text-base tracking-tight"> <Link to={`/profile/${userId}`}>{userName}</Link></h1>
           </div>
         </div>
         <div className="flex items-center justify-center flex-grow ">
