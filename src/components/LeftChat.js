@@ -264,7 +264,7 @@ export default function LeftChat(friends) {
       {/* right element */}
       <div className="bg-white rounded-r-3xl border-l w-full  h-[42rem] overflow-y-scroll ">
        
-      {currentChat | selectedFriendId? (
+      {currentChat? (
           <>
             <div className="heading pt-4 sticky top-0 bg-white">
               <div className=" items-center pt-3 space-x-4 flex pb-3">
