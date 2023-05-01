@@ -53,7 +53,16 @@ body{
 }
 
 
+<<<<<<< HEAD
 
+=======
+.ant-select-selector{
+  /* background-color: #dfe6f9 !important; */
+  border:none !important;
+
+}
+
+>>>>>>> 3ae9465de37172bc400db36e0c32fe44ca11c4c0
 .ant-select-selector:hover {
   border:none !important;
   outline: none;

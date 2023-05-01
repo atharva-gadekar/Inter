@@ -92,7 +92,7 @@ const CreatePost = (props) => {
 						<FontAwesomeIcon icon={faVideo} className="mr-5 text-gray-400" />
 						<FontAwesomeIcon icon={faCamera} className="text-gray-400" /> */}
 						<FontAwesomeIcon
-							icon={faPlusCircle}
+							icon={faPlusCircle} onClick={showModal}
 							className="mr-5 text-blue-600 h-6 w-6"
 						/>
 					</div>
@@ -130,12 +130,13 @@ const CreatePost = (props) => {
 						value={tags}
 						onChange={handleTagChange}
 						placeholder="Blog Tags"
-						className="mb-4"
+						className="mb-4 bg-white"
 					>
 						<Option key="JavaScript">JavaScript</Option>
 						<Option key="React">React</Option>
 						<Option key="App Development">App Development</Option>
 						<Option key="Web Development">Web Development</Option>
+						<Option key="Web Development">Blockchain</Option>
 					</Select>
 
 					{/* <div className="mb-4" style={{ width: "110%" }}>

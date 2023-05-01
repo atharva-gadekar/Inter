@@ -87,7 +87,7 @@ export default function Post() {
 				>
 					<img
 						src={blog.bannerUrl}
-						className=" mr-auto ml-auto outline outline-white -outline-offset-4"
+						className=" mr-auto ml-auto object-contain outline outline-white -outline-offset-4 w-[95%] max-h-96"
 					></img>
 
 					<h1 className="text-center font-bold pt-4 text-xl text-slate-800">

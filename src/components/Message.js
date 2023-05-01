@@ -49,7 +49,7 @@ export default function Message({message, own, userid, receiverid }) {
       };
   
       fetchrec();
-    }, []);;
+    }, []);
 
   useEffect(() => {
     const fetchUserName = async () => {
@@ -75,7 +75,7 @@ export default function Message({message, own, userid, receiverid }) {
     };
 
     fetchUserName();
-  }, []);;
+  }, []);
   // console.log(user.url)
   return (
       <div className={own?"flex justify-end mb-4 space-x-2":"flex justify-start mb-4 space-x-"}>

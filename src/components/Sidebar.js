@@ -49,7 +49,7 @@ const Sidebar = () => {
  
 
   const isActiveLink = (link) => {
-    return window.location.pathname === link ? "text-blue-500" : "";
+    return window.location.pathname.includes(link) ? "text-blue-500" : "";
   };
 
   return (
@@ -62,12 +62,12 @@ const Sidebar = () => {
           </span>
         </li>
         <li
-          className={`flex items-center mb-6 ${isActiveLink("/connections")}`}
+          className={`flex items-center mb-6 ${isActiveLink("/network")}`}
         >
          
             <FontAwesomeIcon icon={faUserFriends} />
-          
-          <span className={`font-medium ml-3 ${isActiveLink("/connections")}`}>
+        
+          <span className={`font-medium ml-3 ${isActiveLink("/network")}`}>
             <Link to="/network">Network</Link>
           </span>
         </li>

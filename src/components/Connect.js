@@ -66,7 +66,7 @@ const Connect = () => {
             </div>
 
             <div>
-              <Link to={`/profile/${userId}`}>
+              <Link to={`/profile/${connections._id}`}>
                 <button className="bg-blue-200 h-12 w-12 rounded-full">
                   <FontAwesomeIcon icon={faUser} />
                 </button>

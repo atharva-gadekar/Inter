@@ -59,7 +59,7 @@ export default function UserProfile({ user }) {
 
   return (
     <div> 
-      <div className=" bg-white h-full rounded-3xl shadow-lg w-1/3">
+      <div className=" bg-white h-full rounded-3xl shadow-lg w-[20rem]">
         <img
           src={profile_bg}
           alt=""
@@ -73,7 +73,7 @@ export default function UserProfile({ user }) {
         )) || (
           <img
             src={user.user.url}
-            className="-mt-12 mr-auto ml-auto rounded-2xl h-20 w-20"
+            className="-mt-12 mr-auto ml-auto rounded-full h-20 w-20"
           />
         )}
 

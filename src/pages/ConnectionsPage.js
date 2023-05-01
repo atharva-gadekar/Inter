@@ -22,7 +22,7 @@ export default function ConnectionsPage() {
             <ProfileSidebar/>
           </div>
         </div>
-        <div className="w-[82%] lg:mt-4 pr-5">
+        <div className="w-[90%] lg:mt-4 ">
           {/* <CreatePost />
           <Post />
           <Post /> */}
