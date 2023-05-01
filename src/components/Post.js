@@ -20,6 +20,8 @@ import { faComment } from "@fortawesome/free-regular-svg-icons";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
+import { BlogContext } from "../utils/context/BlogContext";
+import { useContext } from "react";
 
 export default function Post() {
   const [blogs, setBlogs] = useState([]);
