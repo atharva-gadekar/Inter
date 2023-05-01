@@ -139,7 +139,7 @@ export default function NewBlog(props) {
 					<img
 						src={URL.createObjectURL(selectedFile)}
 						alt="Selected file"
-						className="lg:w-[100%] ml-auto mr-auto w-[80%]"
+						className="object-contain ml-auto mr-auto w-[95%] max-h-96"
 					/>
 				)}
 				<div className="flex justify-end">

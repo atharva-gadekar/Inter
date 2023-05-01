@@ -104,7 +104,7 @@ export default function Blog() {
 				<div className=" lg:w-[70%] mr-auto ml-auto mt-12">
 					<img
 						src={blog.url}
-						className="lg:w-[100%] ml-auto mr-auto w-[80%]"
+						className=" ml-auto mr-auto w-[95%] max-h-96 object-contain"
 					></img>
 					<div className="flex items-center space-x-4 mt-4 lg:mt-12 lg:mb-6 mb-4 px-24">
 						{user.url && (

@@ -57,10 +57,11 @@ body{
 }
 
 .ant-select-selector{
-  background-color: #dfe6f9 !important;
+  /* background-color: #dfe6f9 !important; */
   border:none !important;
 
 }
+
 .ant-select-selector:hover {
   border:none !important;
   outline: none;
