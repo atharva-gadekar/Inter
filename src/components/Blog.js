@@ -17,12 +17,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Navbarhome from "./Navbarhome";
 import { Link, useParams } from "react-router-dom";
 import { message } from "antd";
+import ArticleLoader from "./Skeleton_Blog";
 
 export default function Blog() {
 	const token = localStorage.getItem("token");
 	let blogID = useParams().id;
 	const [blog, setBlog] = useState({});
 	const [user, setUser] = useState({});
+	const [loading, setLoading] = useState(true);
 
   useEffect(() => {
 	
@@ -37,7 +39,10 @@ export default function Blog() {
 						},
 					}).then((response) => {
 						setBlog(response.data);
-					});
+						setLoading(false);
+
+					})
+				
 			} catch (error) {
 				console.error(error);
 			}
@@ -100,6 +105,7 @@ export default function Blog() {
 	return (
 		<>
 			<Navbarhome />
+			{loading && <ArticleLoader/>}
 			{blog.blog && (
 				<div className=" lg:w-[70%] mr-auto ml-auto mt-12">
 					<img

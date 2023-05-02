@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbarhome from '../components/Navbarhome';
 // import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
@@ -15,6 +15,7 @@ import BlogContextProvider from '../utils/context/BlogContext';
 import { BlogContext } from '../utils/context/BlogContext';
 import { useContext } from 'react';
 import axios from "axios";
+import DoorDashFavorite from '../components/Skeleton_Post';
 
 const Homepage = () => {
 	const navigate=useNavigate();
@@ -27,6 +28,7 @@ const Homepage = () => {
   });
 
   const { blogs, setBlogs } = useContext(BlogContext);
+  const [loading, setLoading] = useState(true);
 
     useEffect(() => {
 			const fetchBlogs = async () => {
@@ -40,7 +42,9 @@ const Homepage = () => {
 							},
 						}).then((response) => {
 							setBlogs(response.data.blogs);
+							setLoading(false);
 						});
+						
 					}
 				} catch (error) {
 					console.error(error);
@@ -55,8 +59,7 @@ const Homepage = () => {
 
   return (
 		<div className="flex flex-col min-h-screen">
-			
-				<Navbarhome />
+			<Navbarhome />
 
 			<div className="flex justify-evenly pr-16">
 				<div className="lg:w-1/5">
@@ -72,7 +75,14 @@ const Homepage = () => {
 						blog={blog}
 						setBlog={setBlog}
 					/>
-						<Post />
+					{loading ? (
+						<div className="text-center">
+							<DoorDashFavorite />
+						</div>
+					)
+						:
+						<Post/>
+					}
 				</div>
 				<div className="lg:w-1/6 mt-[0.9rem]">
 					<div className="sticky top-4 ">
