@@ -16,6 +16,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Navbarhome from "./Navbarhome";
 import { Link, useParams } from "react-router-dom";
 import { message } from "antd";
+import ArticleLoader from "./Skeleton_Blog";
 
 export default function Blog() {
   const token = localStorage.getItem("token");
@@ -25,6 +26,7 @@ export default function Blog() {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
   const [user, setUser] = useState({});
+	const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchBlog = async () => {

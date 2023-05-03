@@ -14,6 +14,9 @@ import { Modal, Input, Select, Upload, Button } from "antd";
 import BlogPage from "./NewBlog";
 import { useNavigate } from "react-router";
 
+import { BlogContext } from "../utils/context/BlogContext";
+import { useContext } from "react";
+
 const { Option } = Select;
 const { TextArea } = Input;
 
@@ -22,6 +25,8 @@ const CreatePost = (props) => {
 	const [modalVisible, setModalVisible] = useState(false);
 	const [data, setData] = useState({});
 	const [tags, setTags] = useState([]);
+	const { newBlog, setNewBlog } = useContext(BlogContext);
+
 	const navigate = useNavigate();
 	const handleTagChange = (newTags) => {
 		setTags(newTags);
@@ -48,18 +53,16 @@ const CreatePost = (props) => {
 	};
 
 	const handleSubmit = () => {
-		
 		localStorage.setItem("newBlog", JSON.stringify(data));
 		props.setBlog({
 			...props.blog,
 			...data,
 			tags,
 		});
+		setNewBlog(data);
 		setModalVisible(false);
 		console.log(
-		"Blog Object in Local Storage : ",
-		JSON.parse(localStorage.getItem("newBlog"))
-);
+		"Blog Object in Local Storage : ",newBlog);
 		navigate(`/create/blog`);
 	};
 

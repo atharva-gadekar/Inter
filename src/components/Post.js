@@ -3,87 +3,77 @@ import postimg from "../assets/post.png";
 import profile from "../assets/profile.png";
 import { Link } from "react-router-dom";
 import {
-  faHome,
-  faUserFriends,
-  faBriefcase,
-  faEnvelope,
-  faBell,
-  faBuilding,
-  faFire,
-  faFireAlt,
-  faHeart,
-  faCommentAlt,
-  faCommenting, faArrowRight
+	faHome,
+	faUserFriends,
+	faBriefcase,
+	faEnvelope,
+	faBell,
+	faBuilding,
+	faFire,
+	faFireAlt,
+	faHeart,
+	faCommentAlt,
+	faCommenting,
+	faArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment } from "@fortawesome/free-regular-svg-icons";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
+import { BlogContext } from "../utils/context/BlogContext";
+import { useContext } from "react";
 
 export default function Post() {
-  const [blogs, setBlogs] = useState([]);
-  const navigate = useNavigate();
-  const [likes, setLikes] = useState({});
+	const { blogs, setBlogs } = useContext(BlogContext);
+	const navigate = useNavigate();
+	const [likes, setLikes] = useState({});
+	const token = localStorage.getItem("token");
+	const userID = localStorage.getItem("userId");
 
+	const redircet = (id) => {
+		navigate(`/blog/${id}`);
+	};
 
-  const token = localStorage.getItem("token");
+	const getReadingTime = (content) => {
+		const wordsPerMinute = 250; // Average reading speed
+		const words = content.trim().split(/\s+/).length;
+		const minutes = Math.ceil(words / wordsPerMinute);
+		return `${minutes} `;
+	};
 
-  const redircet = (id)=>{
-   navigate(`/blog/${id}`);
-  }
+	const handleLike = async (id) => {
+		try {
+			const likeData = { userID  };
+			console.log("likedData : ", likeData );
+			const response = await axios.patch(
+				`https://inter-api-8q0x.onrender.com/blog/${id}/like`,
+				likeData,
+				{
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+				}
+			);
+			console.log(response.data.likes);
+			setLikes( response.data.likes[id]);
+			
+		} catch (error) {
+			console.error(error);
+		}
+	};
 
-
-  useEffect(() => {
-    const fetchBlogs = async () => {
-      try {
-        if (token) {
-          axios({
-            method: "get",
-            url: `https://inter-api-8q0x.onrender.com/blog`,
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }).then((response) => {
-            setBlogs(response.data.blogs);
-          });
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchBlogs();
-  }, []);
-
-  const getReadingTime = (content) => {
-    const wordsPerMinute = 250; // Average reading speed
-    const words = content.trim().split(/\s+/).length;
-    const minutes = Math.ceil(words / wordsPerMinute);
-    return `${minutes} `;
-  };
-
-  const handleLike = async (id) => {
-    try {
-      const likeData = { likes: { [id]: true } };
-      const response = await axios.patch(`https://inter-api-8q0x.onrender.com/blog/${id}/like`, likeData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      setLikes((prevState) => ({ ...prevState, [id]: response.data.likes[id] }));
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  
-
-  return (
+	return (
 		<>
 			{blogs.map((blog) => (
 				<div
 					key={blog._id}
 					className="p-12 w-full mt-8 rounded-2xl bg-white shadow-sm pb-2 h-auto"
+					onDoubleClick={() => handleLike(blog._id)}
+					onClick={(event) => {
+						event.preventDefault();
+						event.stopPropagation();
+					}}
 				>
 					<img
 						src={blog.bannerUrl}
@@ -107,7 +97,11 @@ export default function Post() {
 						</div>
 
 						<div className="flex justify-center items-center space-x-2">
-							<FontAwesomeIcon icon={faHeart} className="text-pink-700" />
+							<FontAwesomeIcon
+								icon={faHeart}
+								className="text-pink-700"
+								onClick={() => handleLike(blog._id)}
+							/>
 							<p>
 								{likes[blog._id] ||
 									(blog.likes && Object.keys(blog.likes).length)}
@@ -133,21 +127,25 @@ export default function Post() {
 						</div>
 
 						<div className="flex justify-center items-center space-x-3">
-							<img src={blog.owner.url} alt="" className="rounded-full h-8 w-8"></img>
+							<img
+								src={blog.owner.url}
+								alt=""
+								className="rounded-full h-8 w-8"
+							></img>
 							<h3>{blog.owner.name}</h3>
 						</div>
 					</div>
 					<div className=" mr-auto ml-auto text-center mt-8 ">
 						<button className=" text-white p-2 pl-4 pr-4 text-sm font-medium mb-8 rounded-lg">
-							
-								<div className="flex space-x-3 items-center bg-blue-100 px-3 py-3 rounded-lg">
-								<Link to={`/blog/${blog._id}`}><p className="text-blue-600">Continue Reading</p></Link>
-									<FontAwesomeIcon
-										icon={faArrowRight}
-										className="text-blue-600"
-									/>
-								</div>
-							
+							<div className="flex space-x-3 items-center bg-blue-100 px-3 py-3 rounded-lg">
+								<Link to={`/blog/${blog._id}`}>
+									<p className="text-blue-600">Continue Reading</p>
+								</Link>
+								<FontAwesomeIcon
+									icon={faArrowRight}
+									className="text-blue-600"
+								/>
+							</div>
 						</button>
 					</div>
 				</div>
