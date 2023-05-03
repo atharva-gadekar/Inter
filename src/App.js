@@ -15,7 +15,7 @@ import Forgotpass from "./pages/Forgotpass";
 import MessageList from "./components/MessageList";
 import Hashtag from "./components/Hashtag";
 import moment from "moment";
-
+import ModalComponent from "./components/Modal";
 
 function App() {
 	const [loggedIn, setLoggedIn] = useState(false);
@@ -100,11 +100,9 @@ function App() {
 				<Route
 					path="/blog/:id"
 					element={
-						!loggedIn ? (
-							<Navigate to="/" replace={true} />
-						) : (
+						 
 							<Blog setLoggedIn={setLoggedIn} />
-						)
+						
 					}
 				/>
 				<Route
@@ -137,6 +135,7 @@ function App() {
 					}
 				/>
 				<Route path="/forgot" element={<Forgotpass />} />
+				<Route path="/modal" element={<ModalComponent />} />
 			</Routes>
 		</BrowserRouter>
 	);
