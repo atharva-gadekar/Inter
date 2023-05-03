@@ -16,8 +16,9 @@ import MessageList from "./components/MessageList";
 import Hashtag from "./components/Hashtag";
 import moment from "moment";
 import BlogContextProvider from "./utils/context/BlogContext";
-
-
+// import Event from "./components/Event";
+// import Events from "./components/Events";
+import EventsPage from "./pages/EventsPage";
 function App() {
 	const [loggedIn, setLoggedIn] = useState(false);
 	const token = localStorage.getItem("token");
@@ -135,7 +136,7 @@ function App() {
 					<Route
 						path="/notifications"
 						element={
-							!loggedIn ? <Navigate to="/" replace={true} /> : <Notifications />
+							!loggedIn ? <Navigate to="/" replace={true} /> : <EventsPage />
 						}
 					/>
 					<Route path="/forgot" element={<Forgotpass />} />
