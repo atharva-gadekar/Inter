@@ -47,7 +47,7 @@ export default function Post() {
 			const likeData = { userID  };
 			console.log("likedData : ", likeData );
 			const response = await axios.patch(
-				`http://localhost:3001/blog/${id}/like`,
+				`https://inter-api-8q0x.onrender.com/blog/${id}/like`,
 				likeData,
 				{
 					headers: {
