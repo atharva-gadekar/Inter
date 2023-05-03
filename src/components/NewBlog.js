@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useContext } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 // import post from "../assets/post.png"
 import post from "../assets/post.png";
@@ -15,10 +15,13 @@ import Navbarhome from "./Navbarhome";
 import { message } from "antd";
 import axios from "axios";
 import { useNavigate } from "react-router";
+import { BlogContext } from "../utils/context/BlogContext";
+
 
 
 export default function NewBlog(props) {
 	const editorRef = useRef(null);
+  const { newBlog } = useContext(BlogContext);
 
 	const [content, setContent] = useState("");
 	const id = localStorage.getItem("userId");
@@ -49,15 +52,15 @@ export default function NewBlog(props) {
 	const log = async () => {
 		if (editorRef.current) {
 			setContent(editorRef.current.getContent());
-			const newBlog = {
-				...blog,
+			const newBlogData = {
+				...newBlog,
 				content: editorRef.current.getContent(),
 				owner: id,
 			};
 			if (selectedFile) {
-				newBlog.banner = selectedFile;
+				newBlogData.banner = selectedFile;
 			}
-			await submitForm(newBlog);
+			await submitForm(newBlogData);
 		}
 	};
 
@@ -69,11 +72,12 @@ export default function NewBlog(props) {
 			for (let key in data) {
 				formData.append(key, data[key]);
 			}
+			
 
 			console.log("formData : ", formData);
 
 			const response = await axios.post(
-				"https://inter-api-8q0x.onrender.com/blog/create",
+				"http://localhost:3001/blog/create",
 				formData,
 				{
 					headers: {
