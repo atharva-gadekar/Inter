@@ -15,10 +15,9 @@ import Forgotpass from "./pages/Forgotpass";
 import MessageList from "./components/MessageList";
 import Hashtag from "./components/Hashtag";
 import moment from "moment";
+import ModalComponent from "./components/Modal";
 import BlogContextProvider from "./utils/context/BlogContext";
-// import Event from "./components/Event";
-// import Events from "./components/Events";
-import EventsPage from "./pages/EventsPage";
+
 function App() {
 	const [loggedIn, setLoggedIn] = useState(false);
 	const token = localStorage.getItem("token");
@@ -94,6 +93,48 @@ function App() {
 						}
 					/>
 
+
+				<Route
+					path="/blog/:id"
+					element={
+						 
+							<Blog setLoggedIn={setLoggedIn} />
+						
+					}
+				/>
+				<Route
+					path="/create/blog"
+					element={!loggedIn ? <Navigate to="/" replace={true} /> : <NewBlog />}
+				/>
+				<Route
+					path="/chat"
+					element={
+						!loggedIn ? <Navigate to="/" replace={true} /> : <ChatFinal />
+					}
+				/>
+				<Route
+					path="/chat"
+					element={
+						!loggedIn ? <Navigate to="/" replace={true} /> : <ChatFinal />
+					}
+				/>
+				<Route
+					path="/network"
+					element={
+						!loggedIn ? <Navigate to="/" replace={true} /> : <ConnectionsPage />
+					}
+				/>
+				<Route path="/reset/:id" element={<Resetpass />} />
+				<Route
+					path="/notifications"
+					element={
+						!loggedIn ? <Navigate to="/" replace={true} /> : <Notifications />
+					}
+				/>
+				<Route path="/forgot" element={<Forgotpass />} />
+				<Route path="/modal" element={<ModalComponent />} />
+			
+
 					<Route
 						path="/blog/:id"
 						element={
@@ -136,12 +177,13 @@ function App() {
 					<Route
 						path="/notifications"
 						element={
-							!loggedIn ? <Navigate to="/" replace={true} /> : <EventsPage />
+							!loggedIn ? <Navigate to="/" replace={true} /> : <Notifications />
 						}
 					/>
 					<Route path="/forgot" element={<Forgotpass />} />
 				</Routes>
 			</BlogContextProvider>
+
 		</BrowserRouter>
 	);
 }
