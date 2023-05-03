@@ -17,6 +17,8 @@ import Navbarhome from "./Navbarhome";
 import { Link, useParams } from "react-router-dom";
 import { message } from "antd";
 import ArticleLoader from "./Skeleton_Blog";
+import moment from "moment";
+
 
 export default function Blog() {
   const token = localStorage.getItem("token");
@@ -40,9 +42,10 @@ export default function Blog() {
             Authorization: `Bearer ${token}`,
           },
         }).then((response) => {
+          setLoading(false);
           setBlog(response.data);
           setComments(response.data.blog.comments);
-          // console.log( comments);
+          
         });
       } catch (error) {
         console.error(error);
@@ -142,79 +145,90 @@ export default function Blog() {
   // }, []);
   
   return (
-    <>
-      <Navbarhome />
-      {blog.blog && (
-        <div className=" lg:w-[70%] mr-auto ml-auto mt-12">
-          <img
-            src={blog.url}
-            className=" ml-auto mr-auto w-[95%] max-h-96 object-contain"
-          ></img>
-          <div className="flex items-center space-x-4 mt-4 lg:mt-12 lg:mb-6 mb-4 px-24">
-            {user.url && (
-              <img src={user.url} alt="" className="h-8 w-8 rounded-full" />
-            )}
-            <p className="text-xs lg:text-sm text-slate-600">
-              {user.user && (
-                <Link to={`/user/${user.user._id}`}>{user.user.name}</Link>
-              )}
-            </p>
-          </div>
-          <div className="lg:flex space-x-12 lg:place-items-start ">
-            <div className="flex lg:flex-col lg:space-y-3 pb-4 lg:pt-2 lg:pb-2 justify-center">
-              <FontAwesomeIcon
-                icon={faShareNodes}
-                className="text-4xl font-thin"
-                onClick={handleCopyClick}
-              />
-            </div>
-            <div className="justify-center ml-auto mr-auto">
-              <h2 className="font-extrabold text-2xl lg:text-5xl text-slate-800 lg:leading-[1.25] mr-12 lg:mr-auto">
-                {blog.blog.title}
-              </h2>
-              <p className="text-slate-600 mt-4 mr-12 lg:mr-auto mb-10">
-                {blog.blog.brief}
-              </p>
+		<>
+			<Navbarhome />
+      {loading && <ArticleLoader/>}
+			{blog.blog && (
+				<div className=" lg:w-[70%] mr-auto ml-auto mt-12">
+					<img
+						src={blog.url}
+						className=" ml-auto mr-auto w-[95%] max-h-96 object-contain"
+					></img>
+					<div className="flex items-center space-x-4 mt-4 lg:mt-12 lg:mb-6 mb-4 px-24">
+						{user.url && (
+							<img src={user.url} alt="" className="h-8 w-8 rounded-full" />
+						)}
+						<p className="text-xs lg:text-sm text-slate-600">
+							{user.user && (
+								<Link to={`/user/${user.user._id}`}>{user.user.name}</Link>
+							)}
+						</p>
+					</div>
+					<div className="lg:flex space-x-12 lg:place-items-start ">
+						<div className="flex lg:flex-col lg:space-y-3 pb-4 lg:pt-2 lg:pb-2 justify-center">
+							<FontAwesomeIcon
+								icon={faShareNodes}
+								className="text-4xl font-thin"
+								onClick={handleCopyClick}
+							/>
+						</div>
+						<div className="justify-center ml-auto mr-auto">
+							<h2 className="font-extrabold text-2xl lg:text-5xl text-slate-800 lg:leading-[1.25] mr-12 lg:mr-auto">
+								{blog.blog.title}
+							</h2>
+							<p className="text-slate-600 mt-4 mr-12 lg:mr-auto mb-10">
+								{blog.blog.brief}
+							</p>
 
-              <div
-                className="content mb-10"
-                dangerouslySetInnerHTML={{ __html: blog.blog.content }}
-              ></div>
+							<div
+								className="content mb-10"
+								dangerouslySetInnerHTML={{ __html: blog.blog.content }}
+							></div>
 
-              {/* comment section */}
+							{/* comment section */}
 
-              <hr className="mr-12 lg:mr-auto"></hr>
-              <div className="flex p-1  pt-5 space-x-12 mb-20">
-                <img src={blank} alt="" className="rounded-full h-8 w-8" />
+							<hr className="mr-12 lg:mr-auto"></hr>
+							<div className="flex p-1  pt-5 space-x-12 mb-20">
+								<img src={blank} alt="" className="rounded-full h-8 w-8" />
 
-				<input
-        type="text"
-        placeholder="Write a comment..."
-        value={newComment}
-        onChange={(event) => setNewComment(event.target.value)}
-        className="text-slate-400 text-sm !outline-none bg-transparent"
-      />
-     
-              </div>
-              <hr className="mr-12 lg:mr-auto"></hr>
+								<input
+									type="text"
+									placeholder="Write a comment..."
+									value={newComment}
+									onChange={(event) => setNewComment(event.target.value)}
+									className="text-slate-400 text-sm !outline-none bg-transparent"
+								/>
+							</div>
+							<hr className="mr-12 lg:mr-auto"></hr>
 
-			  {blog.comments && comments.map((comment) => (
-      <div key={comment.blogID} className="flex p-1  pt-5 space-x-12 mr-12 lg:mr-auto">
-        <img src="" alt="" className="rounded-full h-8 w-8" />
-        <div>
-          <h1 className="text-slate-800 font-bold text-sm">{comment._id}</h1>
-          <p className="text-slate-400 text-xs -mt-0 mb-6">{comment.createdAt}</p>
-          <p className="text-slate-400 text-sm mb-14">{comment.content}</p>
-        </div>
-      </div>
-	     ))}
-
-
-
-            </div>
-          </div>
-        </div>
-      )}
-    </>
-  );
+							{comments.length !== 0 &&
+								comments.map((comment) => (
+									<div
+										key={comment.blogID}
+										className="flex p-1  pt-5 space-x-12 mr-12 lg:mr-auto"
+									>
+										<img
+											src={comment.author.url}
+											alt=""
+											className="rounded-full h-8 w-8"
+										/>
+										<div>
+											<h1 className="text-slate-800 font-bold text-sm">
+												{comment.author.name}
+											</h1>
+											<p className="text-slate-400 text-xs -mt-0 mb-6">
+												{moment(comment.createdAt).fromNow()}
+											</p>
+											<p className="text-slate-400 text-sm mb-14">
+												{comment.content}
+											</p>
+										</div>
+									</div>
+								))}
+						</div>
+					</div>
+				</div>
+			)}
+		</>
+	);
 }

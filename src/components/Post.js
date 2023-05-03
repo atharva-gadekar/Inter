@@ -24,6 +24,7 @@ import moment from "moment";
 import { BlogContext } from "../utils/context/BlogContext";
 import { useContext } from "react";
 
+
 export default function Post() {
 	const { blogs, setBlogs } = useContext(BlogContext);
 	const navigate = useNavigate();
@@ -45,7 +46,10 @@ export default function Post() {
 	const handleLike = async (id) => {
 		try {
 			const likeData = { userID  };
-			console.log("likedData : ", likeData );
+			setLikes((prevState) => ({
+				...prevState,
+				[id]: likes[id] ? likes[id] + 1 : 1,
+			}));
 			const response = await axios.patch(
 				`https://inter-api-8q0x.onrender.com/blog/${id}/like`,
 				likeData,
@@ -56,7 +60,18 @@ export default function Post() {
 				}
 			);
 			console.log(response.data.likes);
-			setLikes( response.data.likes[id]);
+			const postLiked = likes[id];
+
+			// Update the likes state
+			setLikes((prevState) => {
+				const updatedLikes = { ...prevState };
+				if (postLiked) {
+					delete updatedLikes[id];
+				} else {
+					updatedLikes[id] = response.data.likes[id];
+				}
+				return updatedLikes;
+			});
 			
 		} catch (error) {
 			console.error(error);
