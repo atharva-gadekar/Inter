@@ -14,7 +14,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Modal, Input } from "antd";
 
-import profile_bg from "../assets/Twitterspace_Aptod.png";
+import profile_bg from "../assets/bg_profile.png";
 import profile from "../assets/Rectangle 47.png";
 import userEvent from "@testing-library/user-event";
 import axios from "axios";
