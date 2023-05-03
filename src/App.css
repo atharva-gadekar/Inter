@@ -5,7 +5,7 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
-}
+} 
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -52,9 +52,7 @@ body{
   background-color: transparent!important;
 }
 
-.ant-select-selection-overflow {
-  background-color: #dfe6f9 !important;
-}
+
 
 .ant-select-selector{
   /* background-color: #dfe6f9 !important; */
@@ -77,4 +75,7 @@ body{
   outline: none;
 }
 
+body{
+  overflow-x: hidden;
+}
 

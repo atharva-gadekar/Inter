@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbarhome from '../components/Navbarhome';
 // import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
@@ -11,6 +11,11 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import NavigationHome from '../components/NavigationHome';
 import Connections from '../components/Connections';
 import { useEffect } from 'react';
+import BlogContextProvider from '../utils/context/BlogContext';
+import { BlogContext } from '../utils/context/BlogContext';
+import { useContext } from 'react';
+import axios from "axios";
+import DoorDashFavorite from '../components/Skeleton_Post';
 
 const Homepage = () => {
 	const navigate=useNavigate();
@@ -21,6 +26,33 @@ const Homepage = () => {
     brief: "",
     tags: [],
   });
+
+  const { blogs, setBlogs } = useContext(BlogContext);
+  const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+			const fetchBlogs = async () => {
+				try {
+					if (token) {
+						axios({
+							method: "get",
+							url: `https://inter-api-8q0x.onrender.com/blog`,
+							headers: {
+								Authorization: `Bearer ${token}`,
+							},
+						}).then((response) => {
+							setBlogs(response.data.blogs);
+							setLoading(false);
+						});
+						
+					}
+				} catch (error) {
+					console.error(error);
+				}
+			};
+
+			fetchBlogs();
+		}, []);
 
 
   
@@ -43,8 +75,14 @@ const Homepage = () => {
 						blog={blog}
 						setBlog={setBlog}
 					/>
-				  
-					<Post />
+					{loading ? (
+						<div className="text-center">
+							<DoorDashFavorite />
+						</div>
+					)
+						:
+						<Post/>
+					}
 				</div>
 				<div className="lg:w-1/6 mt-[0.9rem]">
 					<div className="sticky top-4 ">
@@ -53,8 +91,7 @@ const Homepage = () => {
 				</div>
 			</div>
 			<NavigationHome />
-	  </div>
-	   
+		</div>
 	);
 };
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome,
@@ -12,9 +12,42 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Badge } from "antd";
 import { Link } from "react-router-dom";
+import axios from "axios";
+
 
 const Sidebar = () => {
-  const userId = localStorage.getItem('userId');
+  const [user, setUser] = useState({});
+   const token = localStorage.getItem("token");
+   const userId = localStorage.getItem("userId");
+
+
+  useEffect(() => {
+    const fetchUserName = async () => {
+      try {
+        if (token) {
+          const userId = localStorage.getItem("userId");
+
+          axios({
+            method: "get",
+            url: `https://inter-api-8q0x.onrender.com/user/${userId}`,
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }).then((response) => {
+            setUser(response.data);
+          });
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchUserName();
+  }, []);
+
+  
+ 
+
   const isActiveLink = (link) => {
     return window.location.pathname.includes(link) ? "text-blue-500" : "";
   };
@@ -31,14 +64,9 @@ const Sidebar = () => {
         <li
           className={`flex items-center mb-6 ${isActiveLink("/network")}`}
         >
-          <Badge
-            count={1}
-            className="mr-2"
-            style={{ backgroundColor: "#1890ff" }}
-            size="small"
-          >
+         
             <FontAwesomeIcon icon={faUserFriends} />
-          </Badge>
+        
           <span className={`font-medium ml-3 ${isActiveLink("/network")}`}>
             <Link to="/network">Network</Link>
           </span>
@@ -52,16 +80,21 @@ const Sidebar = () => {
         <li
           className={`flex items-center mb-6 ${isActiveLink("/notifications")}`}
         >
-          <Badge
-            count={5}
-            className="mr-2"
-            style={{ backgroundColor: "#1890ff" }}
-            size="small"
-          >
-            <FontAwesomeIcon icon={faBell} />
-          </Badge>
+      
+      <Badge
+  count={user.user && user.user.notifications.length > 0 ? user.user.notifications.length : 0}
+  className="mr-2"
+  style={{ backgroundColor: "#1890ff" }}
+  size="small"
+>
+  <FontAwesomeIcon icon={faBell} className="text-[#a0a0a0] text-lg" />
+</Badge>
+
+
+
+
           <span
-            className={`font-medium ml-4 ${isActiveLink("/notifications")}`}
+            className={`font-medium ml-3 ${isActiveLink("/notifications")}`}
           >
             <Link to="/notifications">Notifications</Link>
           </span>
