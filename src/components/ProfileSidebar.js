@@ -1,37 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import profile_bg from "../assets/bg_profile.png";
 import profile from "../assets/Frame 6 1.png";
 import axios from "axios";
+import { UserContext } from "../utils/context/UserContext";
+
 
 export default function ProfileSidebar() {
-  const [user, setUser] = useState({
-    user: {
-      _id: "",
-      name: "",
-      email: "@gmail.com",
-      password: "",
-      picture: "",
-      collegeName: "",
-      year: 2,
-      branch: "",
-      interests: [],
-      following: [],
-      followers: [],
-      posts: [],
-      createdAt: "",
-      __v: 2,
-    },
-    url: "",
-  });
-
-  const token = localStorage.getItem("token");
-
+  const { user, setUser, token } = useContext(UserContext);
   useEffect(() => {
     const fetchUserName = async () => {
       try {
         if (token) {
           const userId = localStorage.getItem("userId");
-
           axios({
             method: "get",
             url: `https://inter-api-8q0x.onrender.com/user/${userId}`,
@@ -39,7 +19,8 @@ export default function ProfileSidebar() {
               Authorization: `Bearer ${token}`,
             },
           }).then((response) => {
-            setUser(response.data);
+            setUser(response.data); 
+            console.log("Data fetched : ", response.data);
           });
         }
       } catch (error) {
@@ -49,6 +30,10 @@ export default function ProfileSidebar() {
 
     fetchUserName();
   }, []);
+
+  useEffect(()=>{
+    console.log(user);  
+  },[user])
 
   return (
     <div>
@@ -71,7 +56,9 @@ export default function ProfileSidebar() {
             {user.user.name}
           </h1>
         )}
-        <p className="text-center text-slate-500 mt-3 mb-0 text-base px-12">
+        {user.user && (
+          <>
+          <p className="text-center text-slate-500 mt-3 mb-0 text-base px-12">
           {user.user && user.user.collegeName}
         </p>
         <p className="text-center text-slate-500 mt-0 mb-0 text-base px-12">
@@ -90,6 +77,7 @@ export default function ProfileSidebar() {
             <p className="text-blue-600">{user.user.posts.length}</p>
           </div>
         </div>
+          </>)}
       </div>
     </div>
   );
