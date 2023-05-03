@@ -1,55 +1,96 @@
-import { useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Modal, Button } from "antd";
+import { UserContext } from "../utils/context/UserContext";
+import axios from "axios";
 
-const ModalComponent = () => {
-  const [isModalVisible, setIsModalVisible] = useState(false);
+const ModalComponent = ({isModalVisible,setIsModalVisible}) => {
+  const { user, setUser, token, isNewUser, setIsNewUser } = useContext(UserContext);
+  const [tags, setTags] = useState([]);
+  const[secondarytags,setSecondarytags]=useState([]);
 
-  const showModal = () => {
-    setIsModalVisible(true);
+
+  //fetching all tags 
+  useEffect(() => {
+    axios.get(`https://inter-api-8q0x.onrender.com/interests/`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then(response => {
+      setTags(response.data);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  }, [token]);
+
+
+
+//fetching single tag
+  const handleSelectTag = (interestName) => {
+    axios.get(`https://inter-api-8q0x.onrender.com/interests/${interestName}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then(response => {
+      const newTags = response.data;
+      setSecondarytags([...secondarytags, ...newTags]);
+    })
+    .catch(error => {
+      console.log(error);
+    });
   };
 
+
+
   const handleOk = () => {
+    setIsNewUser(false);
     setIsModalVisible(false);
   };
 
   const handleCancel = () => {
+    setIsNewUser(false);
     setIsModalVisible(false);
   };
 
   return (
-    <>
-      <Button type="primary" onClick={showModal}>
-        Click Me
-      </Button>
-      <Modal
-        title="Select Your Tags"
-        visible={isModalVisible}
-        onOk={handleOk}
-        onCancel={handleCancel}
-        footer={[
-          <Button key="back" onClick={handleCancel}>
-            Cancel
-          </Button>,
-          <Button key="submit" type="primary" onClick={handleOk}>
-            Submit
-          </Button>,
-        ]}
-      >
-        <div className="flex flex-wrap">
-          <Tag />
-          <Tag />
-          <Tag />
-        </div>
-      </Modal>
-    </>
+    <Modal
+      title="Select Your Tags"
+      visible={isModalVisible}
+      maskClosable={false}
+      onOk={handleOk}
+      onCancel={handleCancel}
+      footer={[
+        <Button key="back" onClick={handleCancel}>
+          Cancel
+        </Button>,
+        <Button key="submit" type="primary" onClick={handleOk}>
+          Submit
+        </Button>,
+      ]}
+      bodyStyle={{ overflowY: 'auto', maxHeight: 'calc(100vh - 300px)' }}
+    >
+      <div className="flex flex-wrap mt-3">
+        {tags.map(tag => (
+          <Tag key={tag._id} name={tag.name} handleSelectTag={handleSelectTag} />
+        ))}
+
+{secondarytags.map(secondarytag => (
+          <Tag key={secondarytag} name={secondarytag}  />
+        ))}
+
+      </div>
+    </Modal>
   );
 };
 
-const Tag = () => {
+const Tag = ({ name, handleSelectTag }) => {
   const [isSelected, setIsSelected] = useState(false);
 
   const handleSelect = () => {
     setIsSelected(!isSelected);
+    handleSelectTag(name);
   };
 
   return (
@@ -59,7 +100,7 @@ const Tag = () => {
       }`}
       onClick={handleSelect}
     >
-      {isSelected ? "Selected" : "Not Selected"}
+      {name}
     </div>
   );
 };

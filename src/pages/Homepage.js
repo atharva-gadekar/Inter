@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Navbarhome from '../components/Navbarhome';
-// import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
 import ProfileSidebar from '../components/ProfileSidebar';
 import CreatePost from '../components/CreatePost';
@@ -16,10 +15,18 @@ import { BlogContext } from '../utils/context/BlogContext';
 import { useContext } from 'react';
 import axios from "axios";
 import DoorDashFavorite from '../components/Skeleton_Post';
+import { UserContext } from "../utils/context/UserContext";
+import ModalComponent from '../components/Modal';
+
+
+
+
 
 const Homepage = () => {
 	const navigate=useNavigate();
-	const token = localStorage.getItem("token");
+	const { user, setUser, token,isNewUser,setIsNewUser  } = useContext(UserContext);
+	const [isModalVisible, setIsModalVisible] = useState(isNewUser);
+
   const [banner, setBanner] = React.useState(null);
   const [blog, setBlog] = React.useState({
     title: "",
@@ -54,10 +61,19 @@ const Homepage = () => {
 			fetchBlogs();
 		}, []);
 
-
+		useEffect(() => {
+			if (isNewUser) {
+			  setIsModalVisible(true);
+			}
+		  }, [isNewUser]);
+		  
   
 
   return (
+	<div>
+	
+	 <ModalComponent isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} />
+
 		<div className="flex flex-col min-h-screen">
 			<Navbarhome />
 
@@ -91,6 +107,7 @@ const Homepage = () => {
 				</div>
 			</div>
 			<NavigationHome />
+		</div>
 		</div>
 	);
 };
