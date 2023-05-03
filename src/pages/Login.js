@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import image from "../assets/Group-5674.png";
 import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
@@ -10,11 +10,12 @@ import { faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import moment from "moment";
-
+import { UserContext } from "../utils/context/UserContext";
 
 function Login({ setLoggedIn }) {
 	const [showPassword, setShowPassword] = useState(false);
 	const [remember, setRemember] = useState(false);
+	const {setToken} = useContext(UserContext);
 
 	const handleTogglePassword = () => {
 		setShowPassword(!showPassword);
@@ -46,6 +47,7 @@ function Login({ setLoggedIn }) {
 				if(remember)
 				localStorage.setItem("tokenExpiration", expiration);
 				console.log(localStorage.getItem("tokenExpiration"));
+				setToken(token);
 				localStorage.setItem("token", token);
 				localStorage.setItem("userId", userId);
 

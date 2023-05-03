@@ -18,6 +18,8 @@ import moment from "moment";
 import ModalComponent from "./components/Modal";
 import BlogContextProvider from "./utils/context/BlogContext";
 import EventsPage from "./pages/EventsPage";
+import UserContextProvider from "./utils/context/UserContext";
+
 
 function App() {
 	const [loggedIn, setLoggedIn] = useState(false);
@@ -50,6 +52,7 @@ function App() {
 
 	return (
 		<BrowserRouter>
+		<UserContextProvider>
 			<BlogContextProvider>
 				<Routes>
 					<Route
@@ -184,7 +187,7 @@ function App() {
 					<Route path="/forgot" element={<Forgotpass />} />
 				</Routes>
 			</BlogContextProvider>
-
+			</UserContextProvider>
 		</BrowserRouter>
 	);
 }
