@@ -77,7 +77,7 @@ export default function NewBlog(props) {
 			console.log("formData : ", formData);
 
 			const response = await axios.post(
-				"http://localhost:3001/blog/create",
+				"https://inter-api-8q0x.onrender.com/blog/create",
 				formData,
 				{
 					headers: {
