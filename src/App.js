@@ -15,12 +15,10 @@ import Forgotpass from "./pages/Forgotpass";
 import MessageList from "./components/MessageList";
 import Hashtag from "./components/Hashtag";
 import moment from "moment";
-<<<<<<< HEAD
 import ModalComponent from "./components/Modal";
-=======
 import BlogContextProvider from "./utils/context/BlogContext";
 
->>>>>>> da833ae24aa6ac55a86a5d496329799aedcb0557
+
 
 function App() {
 	const [loggedIn, setLoggedIn] = useState(false);
@@ -97,7 +95,7 @@ function App() {
 						}
 					/>
 
-<<<<<<< HEAD
+
 				<Route
 					path="/blog/:id"
 					element={
@@ -137,8 +135,8 @@ function App() {
 				/>
 				<Route path="/forgot" element={<Forgotpass />} />
 				<Route path="/modal" element={<ModalComponent />} />
-			</Routes>
-=======
+			
+
 					<Route
 						path="/blog/:id"
 						element={
@@ -187,7 +185,7 @@ function App() {
 					<Route path="/forgot" element={<Forgotpass />} />
 				</Routes>
 			</BlogContextProvider>
->>>>>>> da833ae24aa6ac55a86a5d496329799aedcb0557
+
 		</BrowserRouter>
 	);
 }

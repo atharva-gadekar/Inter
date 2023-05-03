@@ -20,6 +20,7 @@ import ArticleLoader from "./Skeleton_Blog";
 
 export default function Blog() {
   const token = localStorage.getItem("token");
+
   const userId = localStorage.getItem("userId");
   let blogID = useParams().id;
   const [blog, setBlog] = useState({});
