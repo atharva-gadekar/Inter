@@ -12,6 +12,7 @@ faHome,
 } from "@fortawesome/free-solid-svg-icons";
 import axios from 'axios';
 import Friend from "./Friend";
+import FriendChat from "./FriendChat";
 
 // const handleKeypress = (e) => {
 //     //it triggers by pressing the enter key
@@ -23,7 +24,7 @@ import Friend from "./Friend";
 
 
 const MessageList=()=> {
-    const [following, setFollowing] = useState([]);
+    const [connections, setconnections] = useState([]);
   const token = localStorage.getItem('token');
 
   useEffect(() => {
@@ -34,13 +35,13 @@ const MessageList=()=> {
 
           axios({
 						method: "get",
-						url: `https://inter-api-8q0x.onrender.com/user/${userId}/following`,
+						url: `https://inter-api-8q0x.onrender.com/user/${userId}/connections`,
 						headers: {
 							Authorization: `Bearer ${token}`,
 						},
 					}).then((response) => {
-					setFollowing(response.data.following);
-          console.log(response.data.following);
+					setconnections(response.data.connections);
+          console.log(response.data.connections);
 					});
 
           
@@ -52,14 +53,14 @@ const MessageList=()=> {
 
     fetchUserName();
   }, []);
-    console.log(following);
+    console.log(connections);
   return (
     <div>
       <div className="bg-white rounded-2xl p-6  h-full hidden lg:block ">
       <h1 className="font-bold text-sm">Friend List</h1>
-              {following && following.map((following) => (
+              {connections && connections.map((connections) => (
          
-                  <Friend url={following.url} name={following.name} title={following.title} />
+                  <FriendChat url={connections.url} name={connections.name} title={connections.title} />
           
       ))}
     </div>

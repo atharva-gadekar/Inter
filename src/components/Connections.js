@@ -89,7 +89,7 @@ const Connections = () => {
 			<h1 className="my-4 font-bold text-3xl text-blue-600">Interests</h1>
 			<div className="flex justify-left space-x-3 items-center  mb-12">
 				<button
-					className="px-5 py-2 border border-blue-100 rounded-3xl text-blue-700 bg-blue-100 font-medium focus:bg-blue-200"
+					className="px-5 py-2 border border-blue-100 rounded-3xl text-blue-700 bg-blue-50 font-medium focus:bg-blue-300"
 					onClick={() => {
 						getConnectionsAll();
 					}}
@@ -99,7 +99,7 @@ const Connections = () => {
 				{userInterests &&
 					userInterests.map((interest) => (
 						<button
-							className="px-5 py-2 border border-blue-100 rounded-3xl text-blue-700 bg-blue-100 font-medium focus:bg-blue-200"
+							className="px-5 py-2 border border-blue-100 rounded-3xl text-blue-700 bg-blue-50 font-medium focus:bg-blue-300"
 							onClick={() => {
 								getConnections(interest);
 							}}
