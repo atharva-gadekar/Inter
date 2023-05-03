@@ -9,16 +9,29 @@ import {
   
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
-export default function FriendChat(props) {
+export default function FriendChat({ url, name, title, friendid }) {
+    const userId = localStorage.getItem("userId");
+    // const friendid = props.friendid;
+    const handleNewConversation = () =>
+    {
+        axios.post("https://inter-api-8q0x.onrender.com/conversations", { senderId: userId, receiverId: friendid }).then((response) => {
+            console.log("new conv", response.data);
+
+        })
+            .catch((error) => {
+                console.error("failed to create conv", error);
+            });
+    };
     useEffect(() => {
-        console.log(props);
+        // console.log(props);
         },[])
         // const handleClick = {
         
         //   };
         const handleClickFriend = () => {
-            console.log(props);
+            // console.log(props.friendid);
             // props.onClick(props._id);
         };
   return (
@@ -26,18 +39,18 @@ export default function FriendChat(props) {
       >
     <div className="flex items-center space-x-3">
       <img
-        src={props.url}
+        src={url}
         alt=""
         className="h-12 w-12 rounded-full"
       />
       <div className="block">
-        <h1 className="font-bold text-sm">{props.name}</h1>
-                  <p className="text-xs text-slate-400">{props.title}</p>
+        <h1 className="font-bold text-sm">{name}</h1>
+                  <p className="text-xs text-slate-400">{title}</p>
       </div>
     </div>
 
     <div>
-        <button className="bg-blue-200 h-12 w-12 rounded-full" onClick={handleClickFriend}>
+        <button className="bg-blue-200 h-12 w-12 rounded-full" onClick={handleNewConversation}>
           {/* <Link to={`/profile/${props._id}`}> */}
           <FontAwesomeIcon icon={faUser} />
         {/* </Link> */}

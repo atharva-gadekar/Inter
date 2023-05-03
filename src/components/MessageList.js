@@ -53,14 +53,33 @@ const MessageList=()=> {
 
     fetchUserName();
   }, []);
-    console.log(connections);
+  console.log(connections);
+  
+  const handleFriendChatClick = async (url) => {
+    try {
+      const conversation = await axios.post(
+        "https://inter-api-8q0x.onrender.com/conversations",
+        {
+          participants: [url],
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log(conversation);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <div>
       <div className="bg-white rounded-2xl p-6  h-full hidden lg:block ">
       <h1 className="font-bold text-sm">Friend List</h1>
               {connections && connections.map((connections) => (
          
-                  <FriendChat url={connections.url} name={connections.name} title={connections.title} />
+                <FriendChat url={connections.url} name={connections.name} title={connections.title} friendid={connections._id}/>
           
       ))}
     </div>
