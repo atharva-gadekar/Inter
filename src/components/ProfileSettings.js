@@ -9,7 +9,7 @@ import {
   faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGear, faPen } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRightFromBracket, faGear, faPen } from "@fortawesome/free-solid-svg-icons";
 import Navbarhome from "./Navbarhome";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
@@ -343,7 +343,7 @@ const Profile_Settings = ({ setLoggedIn }) => {
                         />
 
                         <FontAwesomeIcon
-                          icon={faGear}
+                          icon={faArrowRightFromBracket}
                           className="mr-5 h-6 w-6 text-blue-600 text-lg lg:text-base"
                           onClick={handleLogout}
                         />

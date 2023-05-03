@@ -17,6 +17,7 @@ import Hashtag from "./components/Hashtag";
 import moment from "moment";
 import ModalComponent from "./components/Modal";
 import BlogContextProvider from "./utils/context/BlogContext";
+import EventsPage from "./pages/EventsPage";
 
 function App() {
 	const [loggedIn, setLoggedIn] = useState(false);
@@ -128,7 +129,7 @@ function App() {
 				<Route
 					path="/notifications"
 					element={
-						!loggedIn ? <Navigate to="/" replace={true} /> : <Notifications />
+						!loggedIn ? <Navigate to="/" replace={true} /> : <EventsPage />
 					}
 				/>
 				<Route path="/forgot" element={<Forgotpass />} />
