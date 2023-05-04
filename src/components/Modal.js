@@ -36,13 +36,13 @@ const handleSelectTag = (interestName) => {
   })
   .then(response => {
     const newTags = response.data;
-    const uniqueTags = new Set([...secondarytags, ...newTags]);
-    setSecondarytags([...uniqueTags]);
+    setSecondarytags([...secondarytags, ...newTags]);
   })
   .catch(error => {
     console.log(error);
   });
 };
+
 
 
 
