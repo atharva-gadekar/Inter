@@ -17,30 +17,32 @@ const ModalComponent = ({isModalVisible,setIsModalVisible}) => {
       },
     })
     .then(response => {
-      setTags(response.data);
+      const uniqueTags = new Set(response.data);
+      setTags(uniqueTags);
     })
     .catch(error => {
       console.log(error);
     });
   }, [token]);
-
+  
 
 
 //fetching single tag
-  const handleSelectTag = (interestName) => {
-    axios.get(`https://inter-api-8q0x.onrender.com/interests/${interestName}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-    .then(response => {
-      const newTags = response.data;
-      setSecondarytags([...secondarytags, ...newTags]);
-    })
-    .catch(error => {
-      console.log(error);
-    });
-  };
+const handleSelectTag = (interestName) => {
+  axios.get(`https://inter-api-8q0x.onrender.com/interests/${interestName}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+  .then(response => {
+    const newTags = response.data;
+    setSecondarytags([...secondarytags, ...newTags]);
+  })
+  .catch(error => {
+    console.log(error);
+  });
+};
+
 
 
 
@@ -71,16 +73,15 @@ const ModalComponent = ({isModalVisible,setIsModalVisible}) => {
       ]}
       bodyStyle={{ overflowY: 'auto', maxHeight: 'calc(100vh - 300px)' }}
     >
-      <div className="flex flex-wrap mt-3">
-        {tags.map(tag => (
-          <Tag key={tag._id} name={tag.name} handleSelectTag={handleSelectTag} />
-        ))}
+     <div className="flex flex-wrap mt-3">
+  {Array.from(tags).map(tag => (
+    <Tag key={tag._id} name={tag.name} handleSelectTag={handleSelectTag} />
+  ))}
+  {Array.from(secondarytags).map(secondarytag => (
+    <Tag key={secondarytag} name={secondarytag} handleSelectTag={handleSelectTag} />
+  ))}
+</div>
 
-{secondarytags.map(secondarytag => (
-          <Tag key={secondarytag} name={secondarytag}  />
-        ))}
-
-      </div>
     </Modal>
   );
 };

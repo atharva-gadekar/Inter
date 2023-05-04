@@ -25,16 +25,7 @@ const schema = yup.object().shape({
 });
 
 function Signup() {
-	const navigate=useNavigate();
-  const [tags, setTags] = useState([]);
-
-  function handleTagChange(value) {
-    setTags(value.slice(-3));
-  }
-
-  function handleTagClose(tag) {
-    setTags(tags.filter((t) => t !== tag));
-  }
+  const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -54,7 +45,7 @@ function Signup() {
 
   const submitForm = async (data) => {
     try {
-      data = { ...data, pfp: selectedFile, interests: tags };
+      data = { ...data, pfp: selectedFile };
       const formData = new FormData();
       for (let key in data) {
         formData.append(key, data[key]);
@@ -68,8 +59,7 @@ function Signup() {
       console.log(result);
 
       if (result) message.success("User account created!");
-	  navigate("/");
-
+      navigate("/");
     } catch (error) {
       message.error("Something went wrong");
 
@@ -176,33 +166,6 @@ function Signup() {
                 </div>
               )}
             </div>
-          </div>
-
-          <div className="flex flex-col">
-            <Select
-              mode="tags"
-              value={tags}
-              onChange={handleTagChange}
-              tokenSeparators={[","]}
-              showArrow={false}
-              dropdownStyle={{ display: "none" }}
-              className="w-full px-4 text-[1.1rem] font-[500] text-[#9ca3af]  border py-[0.70rem] bg-[#dfe6f9] border-gray-300 rounded-lg"
-              placeholder="Enter your interests"
-            >
-              {tags.map((tag) => (
-                <Option key={tag} value={tag}>
-                  {tag}
-                  <span
-                    style={{
-                      marginLeft: "5px",
-                      color: "#dfe6f9]",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => handleTagClose(tag)}
-                  ></span>
-                </Option>
-              ))}
-            </Select>
           </div>
 
           <div className="flex flex-col">

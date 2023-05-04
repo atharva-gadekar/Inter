@@ -20,11 +20,17 @@ import { PlusOutlined } from "@ant-design/icons";
 import { overflow } from "tailwindcss-classnames";
 import { useParams } from "react-router-dom";
 import DevtoCard from "./Skeleton_Profile";
+import BlogContextProvider from '../utils/context/BlogContext';
+import { BlogContext } from '../utils/context/BlogContext';
+import { useContext } from "react";
+import BlogPage from '../components/BlogPage';
+
 
 const { TextArea } = Input;
 
 const Profile_Settings = ({ setLoggedIn }) => {
   const { id } = useParams();
+  const { blogs, setBlogs } = useContext(BlogContext);
   const [isUser, setisUser] = useState(true);
   const [loading, setLoading] = useState(true);
 
@@ -195,27 +201,7 @@ const Profile_Settings = ({ setLoggedIn }) => {
     }
   };
 	
-  const fetchUserBlog = async () => {
-    try {
-      if (token) {
-        const userId = localStorage.getItem("userId");
 
-        axios({
-          method: "get",
-			maxBodyLength: Infinity,
-			url: `http://inter-api-8q0x.onrender.com/user/${userId}/blogs`,
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-		}).then((response) => {
-			console.log(response.data);
-          setUser(response.data);
-        });
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
   const handleChange = (event) => {
     setChange({ ...change, [event.target.name]: event.target.value });
@@ -435,9 +421,7 @@ const Profile_Settings = ({ setLoggedIn }) => {
               <h3 className="text-3xl font-bold text-black ">My posts</h3>
             </div>
 
-            <div className="mt-6 text-black text-[1.2rem]">
-              <p>{user.posts}</p>
-            </div>
+           {/* <BlogPage/> */}
           </div>
         </div>
       )}
