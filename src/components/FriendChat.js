@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import {
     faSearch,
     faPenToSquare,
@@ -10,14 +10,20 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import axios from 'axios';
+import { ChatContext } from '../utils/context/ChatContext';
 
 export default function FriendChat({ url, name, title, friendid }) {
     const userId = localStorage.getItem("userId");
+    const {conversations,setConversations ,currentChat,setCurrentChat, showMessageList, setShowMessageList} = useContext(ChatContext);
+  
     // const friendid = props.friendid;
     const handleNewConversation = () =>
     {
         axios.post("http://localhost:3001/conversations", { senderId: userId, receiverId: friendid }).then((response) => {
             console.log("new conv", response.data);
+            setCurrentChat(response.data.conversation)
+            setShowMessageList(!showMessageList);
+
 
         })
             .catch((error) => {

@@ -19,7 +19,7 @@ import ModalComponent from "./components/Modal";
 import BlogContextProvider from "./utils/context/BlogContext";
 import EventsPage from "./pages/EventsPage";
 import UserContextProvider from "./utils/context/UserContext";
-
+import ChatContextProvider from "./utils/context/ChatContext";
 
 function App() {
 	const [loggedIn, setLoggedIn] = useState(false);
@@ -54,6 +54,7 @@ function App() {
 		<BrowserRouter>
 		<UserContextProvider>
 			<BlogContextProvider>
+				<ChatContextProvider>
 				<Routes>
 					<Route
 						path="/home"
@@ -186,6 +187,7 @@ function App() {
 					/>
 					<Route path="/forgot" element={<Forgotpass />} />
 				</Routes>
+				</ChatContextProvider>
 			</BlogContextProvider>
 			</UserContextProvider>
 		</BrowserRouter>

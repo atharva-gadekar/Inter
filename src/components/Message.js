@@ -38,7 +38,6 @@ export default function Message({message, own, userid, receiverid }) {
               },
             }).then((response) => {
               setUser(response.data);
-              console.log(response.data);
              
             });
   
@@ -64,7 +63,6 @@ export default function Message({message, own, userid, receiverid }) {
 						},
 					}).then((response) => {
 						setrecuser(response.data);
-            console.log(response.data);
            
 					});
 
@@ -82,10 +80,10 @@ export default function Message({message, own, userid, receiverid }) {
             <div
               className={own?"mr-2 py-3 px-4 bg-blue-100 rounded-bl-3xl rounded-tl-3xl rounded-tr-xl text-slate-600 order-1":"ml-2 py-3 px-4 bg-gray-100 rounded-br-3xl rounded-tr-3xl rounded-tl-xl text-slate-600 order-2"}
             >
-              {message.text}
+              {message.text || message.lastMessage}
             </div>
             <img
-              src={own?recuser.url:user.url}
+              // src={own?recuser.url:user.url}
              
               className={own?"object-cover h-8 w-8 rounded-full order-2":"object-cover h-8 w-8 rounded-full order-1"}
               alt=""
