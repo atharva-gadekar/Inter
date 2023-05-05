@@ -48,7 +48,7 @@ export default function BlogPage(props) {
 				></img>
 				<div className="flex items-center space-x-4 mt-4 lg:mt-12 lg:mb-6 mb-4 px-24"></div>
 				<div className="lg:flex space-x-0 lg:place-items-start ">
-					<div className="flex hidden lg:flex-col lg:space-y-3 pb-4 lg:pt-2 lg:pb-2 justify-center">
+					<div className="flex lg:flex-col lg:space-y-3 pb-4 lg:pt-2 lg:pb-2 justify-center">
 						<FontAwesomeIcon
 							icon={faFacebook}
 							className="mr-5 text-blue-600 text-lg lg:text-base"

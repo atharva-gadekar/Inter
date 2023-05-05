@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRightFromBracket, faGear, faPen } from "@fortawesome/free-solid-svg-icons";
 export default function Searchbar() {
 	const [query, setQuery] = useState("");
 	const [result, setResult] = useState([]);
@@ -34,7 +35,8 @@ export default function Searchbar() {
 	
 
 	return (
-		<div className="flex items-center w-96">
+		<div className="flex space-x-3">
+			<div className="flex items-center w-96">
 			<input
 				className="bg-[#f5f5f5] rounded-xl w-full py-2 px-4 mr-2 leading-tight focus:outline-none focus:bg-gray-100"
 				type="text"
@@ -43,6 +45,11 @@ export default function Searchbar() {
 				onClick={handleSearchClick}
 				onChange={handleChange}
 			/>
+			</div>
+
+			
+			
 		</div>
+		
 	);
 }

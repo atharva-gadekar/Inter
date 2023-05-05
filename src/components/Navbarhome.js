@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import logo from '../assets/Frame 6 1.png';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRightFromBracket, faGear, faPen } from "@fortawesome/free-solid-svg-icons";
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from "react-router-dom";
 import Searchbar from "./Searchbar";
@@ -64,6 +66,11 @@ const[url,setUrl]=useState('');
         </div>
 
         <Search/>
+        <FontAwesomeIcon
+                          icon={faArrowRightFromBracket}
+                          className="ml-2"
+                          
+			/>
       </nav>
 
 

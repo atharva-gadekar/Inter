@@ -108,7 +108,7 @@ const Connections = () => {
 						</button>
 					))}
 			</div>
-			<div className="flex flex-wrap justify-evenly mb-5 gap-y-12">
+			<div className="flex flex-wrap justify-left mb-5 gap-y-12 gap-x-24">
 				{connections &&
 					connections.map((connection) => <UserProfile user={connection} />)}
 			</div>

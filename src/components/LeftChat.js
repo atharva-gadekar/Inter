@@ -237,7 +237,7 @@ export default function LeftChat(friends) {
           
           <div className="flex items-center justify-center ">
           
-          <label className="relative bg-[#f5f5f5] rounded-2xl py-1 px-2  leading-tight ">
+          {/* <label className="relative bg-[#f5f5f5] rounded-2xl py-1 px-2  leading-tight ">
             <input
               className="bg-[#f5f5f5] rounded-2xl py-2 px-4  leading-tight focus:outline-none text-sm text-slate-500 focus:bg-gray-100"
               type="text"
@@ -248,9 +248,9 @@ export default function LeftChat(friends) {
               size="lg"
               className="text-slate-500 bg-transparent cursor-pointer h-4 w-4 pr-4"
             />
-          </label>
+          </label> */}
         </div>
-        <div className="mt-6"></div>
+        {/* <div className="mt-2"></div> */}
         <div className="parent pb-2 h-[32rem] overflow-y-scroll ">
           {conversations.map((c) => (
             <div onClick={() => setCurrentChat(c)}>
