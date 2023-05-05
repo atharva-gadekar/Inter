@@ -104,24 +104,25 @@ const Sidebar = () => {
         
 
 
-        <li className={`flex items-center mb-6 ${isActiveLink("/Events")}`}>
-         
-        <FontAwesomeIcon
+        <li className={`flex items-center mb-6 ${isActiveLink("/events")}`}>
+         <FontAwesomeIcon
             icon={faCalendar}
-            className="text-[#a0a0a0] text-lg"
-            
-                        />
+            className="text-[#a0a0a0] text-lg"    />
         
-          <span className={`font-medium ml-[1.3rem] ${isActiveLink("/Events")}`}>
-            <Link to="/network">Events</Link>
+          <span className={`font-medium ml-[1.3rem] ${isActiveLink("/events")}`}>
+            <Link to="/events">Events</Link>
           </span>
         </li>
+
+
         <li className={`flex items-center mb-6 ml-[2px] ${isActiveLink("/profile")}`}>
           <FontAwesomeIcon icon={faUser} />
           <span className={`font-medium ml-5 ${isActiveLink("/profile")}`}>
             <Link to={`/profile/${userId}`}>Profile</Link>
           </span>
         </li>
+
+
       </ul>
     </div>
   );

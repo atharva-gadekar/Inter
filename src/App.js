@@ -139,7 +139,7 @@ function App() {
 				<Route
 					path="/events"
 					element={
-						!loggedIn ? <Navigate to="/" replace={true} /> : <EventsPage />
+						 <EventsPage />
 					}
 				/>
 				<Route path="/forgot" element={<Forgotpass />} />
