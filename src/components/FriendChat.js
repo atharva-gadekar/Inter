@@ -16,7 +16,7 @@ export default function FriendChat({ url, name, title, friendid }) {
     // const friendid = props.friendid;
     const handleNewConversation = () =>
     {
-        axios.post("https://inter-api-8q0x.onrender.com/conversations", { senderId: userId, receiverId: friendid }).then((response) => {
+        axios.post("http://localhost:3001/conversations", { senderId: userId, receiverId: friendid }).then((response) => {
             console.log("new conv", response.data);
 
         })

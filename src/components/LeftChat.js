@@ -114,7 +114,7 @@ export default function LeftChat(friends) {
         if (token) {
           const userId = localStorage.getItem("userId");
           const res = await axios.get(
-            `https://inter-api-8q0x.onrender.com/conversations/${userId}`,
+            `http://localhost:3001/conversations/${userId}`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
