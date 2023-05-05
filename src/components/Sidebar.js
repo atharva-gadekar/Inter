@@ -55,7 +55,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="bg-white rounded-2xl h-[18rem] lg:flex justify-center items-center mx-5 mt-[0.9rem] hidden ">
+    <div className="bg-white rounded-2xl lg:flex justify-center items-center mx-5 mt-[0.9rem] hidden pt-8 pb-8">
       <ul className="text-[#a0a0a0]  mt-7">
         <li className={`flex items-center mb-6 ${isActiveLink("/home")}`}>
           <FontAwesomeIcon icon={faHome} className="mr-2" />
