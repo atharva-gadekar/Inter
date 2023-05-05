@@ -9,7 +9,11 @@ import {
   faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRightFromBracket, faGear, faPen } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowRightFromBracket,
+  faGear,
+  faPen,
+} from "@fortawesome/free-solid-svg-icons";
 import Navbarhome from "./Navbarhome";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
@@ -20,11 +24,10 @@ import { PlusOutlined } from "@ant-design/icons";
 import { overflow } from "tailwindcss-classnames";
 import { useParams } from "react-router-dom";
 import DevtoCard from "./Skeleton_Profile";
-import BlogContextProvider from '../utils/context/BlogContext';
-import { BlogContext } from '../utils/context/BlogContext';
+import BlogContextProvider from "../utils/context/BlogContext";
+import { BlogContext } from "../utils/context/BlogContext";
 import { useContext } from "react";
-import BlogPage from '../components/BlogPage';
-
+import Post from "../components/Post";
 
 const { TextArea } = Input;
 
@@ -58,6 +61,28 @@ const Profile_Settings = ({ setLoggedIn }) => {
   const token = localStorage.getItem("token");
   const userr = localStorage.getItem("userId");
 
+  
+  useEffect(() => {
+    const getUserBlogs = async () => {
+      try {
+        // console.log(`Blog ID : ${blogID}`);
+        axios({
+          method: "get",
+          url: `https://inter-api-8q0x.onrender.com/user/${userr}/blogs`,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }).then((response) => {
+          setBlogs(response.data.blogs)
+        });
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    getUserBlogs();
+  }, []);
+
   useEffect(() => {
     if (userr === id) {
       setisUser(true);
@@ -68,52 +93,7 @@ const Profile_Settings = ({ setLoggedIn }) => {
 
   console.log(id);
   const navigate = useNavigate();
-  useEffect(() => {
-    const fetchUserName = async () => {
-      try {
-        if (token) {
-          axios({
-            method: "get",
-            url: `https://inter-api-8q0x.onrender.com/user/${id}`,
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }).then((response) => {
-            setUser(response.data);
-            setLoading(false);
-          });
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchUserName();
-  }, []);
- 
-  useEffect(() => {
-    const fetchUserBlog = async () => {
-      try {
-        if (token) {
-			axios({
-				method: "get",
-				maxBodyLength: Infinity,
-				url: `http://inter-api-8q0x.onrender.com/user/${id}/blogs`,
-			  headers: {
-				Authorization: `Bearer ${token}`,
-            },
-          }).then((response) => {
-            setUser(response.data);
-            setLoading(false);
-          });
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchUserBlog();
-  }, []);
+  
 
   const handleLogout = () => {
     if (localStorage.getItem("userId")) {
@@ -123,9 +103,6 @@ const Profile_Settings = ({ setLoggedIn }) => {
       localStorage.removeItem("tokenExpiration");
       navigate("/");
     }
-    // setTimeout(() => {
-
-    // }, 100);
   };
 
   const [visible, setVisible] = useState(false);
@@ -139,7 +116,6 @@ const Profile_Settings = ({ setLoggedIn }) => {
   };
 
   const handleCreate = () => {
-    // handle form submission here
     setVisible(false);
   };
 
@@ -179,29 +155,30 @@ const Profile_Settings = ({ setLoggedIn }) => {
       });
   };
 
- 
-
-  const fetchUserName = async () => {
-    try {
-      if (token) {
-        const userId = localStorage.getItem("userId");
-
-        axios({
-          method: "get",
-          url: `https://inter-api-8q0x.onrender.com/user/${userId}`,
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }).then((response) => {
-          setUser(response.data);
-        });
+  
+    const fetchUserName = async () => {
+      try {
+        if (token) {
+          axios({
+            method: "get",
+            url: `https://inter-api-8q0x.onrender.com/user/${id}`,
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }).then((response) => {
+            setUser(response.data);
+            setLoading(false);
+          });
+        }
+      } catch (error) {
+        console.error(error);
       }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-	
+    };
 
+  
+  useEffect(()=>{
+    fetchUserName();
+  },[]);
 
   const handleChange = (event) => {
     setChange({ ...change, [event.target.name]: event.target.value });
@@ -414,17 +391,18 @@ const Profile_Settings = ({ setLoggedIn }) => {
         </div>
       )}
 
-      {!loading && (
-        <div className=" mt-5 ml-3 mr-3 lg:mx-auto bg-white lg:w-[97.6%] py-6 px-8 rounded-2xl mb-5 h-[40%]">
-          <div className="ml-2 lg:text-left mt-3 mb-6">
-            <div className="flex justify-between">
-              <h3 className="text-3xl font-bold text-black ">My posts</h3>
-            </div>
+{!loading && (
+  <div className="mt-5 ml-3 mr-3 lg:mx-auto bg-white lg:w-[97.6%] py-6 px-8 rounded-2xl mb-5 h-[40%]">
+    <div className="ml-2 lg:text-left mt-3 mb-6">
+      <div className="flex justify-between">
+        <h3 className="text-3xl font-bold text-black ">My posts</h3>
+      </div>
 
-           {/* <BlogPage/> */}
-          </div>
-        </div>
-      )}
+      <Post/>
+    </div>
+  </div>
+)}
+
     </>
   );
 };
