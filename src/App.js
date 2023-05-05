@@ -22,33 +22,31 @@ import UserContextProvider from "./utils/context/UserContext";
 import ChatContextProvider from "./utils/context/ChatContext";
 
 function App() {
-	const [loggedIn, setLoggedIn] = useState(false);
-	const token = localStorage.getItem("token");
+  const [loggedIn, setLoggedIn] = useState(false);
+  const token = localStorage.getItem("token");
 
-	const checkTokenExpiration = () => {
-		const expiration = localStorage.getItem("tokenExpiration");
-		 if (expiration && moment(expiration).isBefore(moment())) {
-				setLoggedIn(false);
-				localStorage.removeItem("token");
-				localStorage.removeItem("userId");
-				localStorage.removeItem("tokenExpiration");
-			} 
-	}; 
+  const checkTokenExpiration = () => {
+    const expiration = localStorage.getItem("tokenExpiration");
+    if (expiration && moment(expiration).isBefore(moment())) {
+      setLoggedIn(false);
+      localStorage.removeItem("token");
+      localStorage.removeItem("userId");
+      localStorage.removeItem("tokenExpiration");
+    }
+  };
 
-	useEffect(() => {
-		const token = localStorage.getItem("token");
-		if (token) {
-			setLoggedIn(true);
-			const expiration = localStorage.getItem("tokenExpiration");
-			if (expiration) {
-				const expirationDate = new Date(expiration);
-				console.log(expirationDate);
-				checkTokenExpiration();
-			}
-			else setLoggedIn(false);
-		}
-
-	}, []);
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setLoggedIn(true);
+      const expiration = localStorage.getItem("tokenExpiration");
+      if (expiration) {
+        const expirationDate = new Date(expiration);
+        console.log(expirationDate);
+        checkTokenExpiration();
+      } else setLoggedIn(false);
+    }
+  }, []);
 
 	return (
 		<BrowserRouter>
@@ -98,100 +96,122 @@ function App() {
 						}
 					/>
 
+            <Route
+              path="/blog/:id"
+              element={<Blog setLoggedIn={setLoggedIn} />}
+            />
 
-				<Route
-					path="/blog/:id"
-					element={
-						 
-							<Blog setLoggedIn={setLoggedIn} />
-						
-					}
-				/>
-				<Route
-					path="/create/blog"
-					element={!loggedIn ? <Navigate to="/" replace={true} /> : <NewBlog />}
-				/>
-				<Route
-					path="/chat"
-					element={
-						!loggedIn ? <Navigate to="/" replace={true} /> : <ChatFinal />
-					}
-				/>
-				<Route
-					path="/chat"
-					element={
-						!loggedIn ? <Navigate to="/" replace={true} /> : <ChatFinal />
-					}
-				/>
-				<Route
-					path="/network"
-					element={
-						!loggedIn ? <Navigate to="/" replace={true} /> : <ConnectionsPage />
-					}
-				/>
-				<Route path="/reset/:id" element={<Resetpass />} />
-				<Route
-					path="/notifications"
-					element={
-						!loggedIn ? <Navigate to="/" replace={true} /> : <Notifications />
-					}
-				/>
-				<Route path="/forgot" element={<Forgotpass />} />
-				<Route path="/modal" element={<ModalComponent />} />
-			
+            <Route
+              path="/create/blog"
+              element={
+                !loggedIn ? <Navigate to="/" replace={true} /> : <NewBlog />
+              }
+            />
+            <Route
+              path="/chat"
+              element={
+                !loggedIn ? <Navigate to="/" replace={true} /> : <ChatFinal />
+              }
+            />
+            <Route
+              path="/chat"
+              element={
+                !loggedIn ? <Navigate to="/" replace={true} /> : <ChatFinal />
+              }
+            />
+            <Route
+              path="/network"
+              element={
+                !loggedIn ? (
+                  <Navigate to="/" replace={true} />
+                ) : (
+                  <ConnectionsPage />
+                )
+              }
+            />
+            <Route path="/reset/:id" element={<Resetpass />} />
+            <Route
+              path="/notifications"
+              element={
+                !loggedIn ? (
+                  <Navigate to="/" replace={true} />
+                ) : (
+                  <Notifications />
+                )
+              }
+            />
 
-					<Route
-						path="/blog/:id"
-						element={
-							!loggedIn ? (
-								<Navigate to="/" replace={true} />
-							) : (
-								<Blog setLoggedIn={setLoggedIn} />
-							)
-						}
-					/>
-					<Route
-						path="/create/blog"
-						element={
-							!loggedIn ? <Navigate to="/" replace={true} /> : <NewBlog />
-						}
-					/>
-					<Route
-						path="/chat"
-						element={
-							!loggedIn ? <Navigate to="/" replace={true} /> : <ChatFinal />
-						}
-					/>
-					<Route
-						path="/chat"
-						element={
-							!loggedIn ? <Navigate to="/" replace={true} /> : <ChatFinal />
-						}
-					/>
-					<Route
-						path="/network"
-						element={
-							!loggedIn ? (
-								<Navigate to="/" replace={true} />
-							) : (
-								<ConnectionsPage />
-							)
-						}
-					/>
-					<Route path="/reset/:id" element={<Resetpass />} />
-					<Route
-						path="/notifications"
-						element={
-							!loggedIn ? <Navigate to="/" replace={true} /> : <Notifications />
-						}
-					/>
-					<Route path="/forgot" element={<Forgotpass />} />
-				</Routes>
-				</ChatContextProvider>
-			</BlogContextProvider>
-			</UserContextProvider>
-		</BrowserRouter>
-	);
+            <Route path="/forgot" element={<Forgotpass />} />
+            <Route path="/modal" element={<ModalComponent />} />
+
+            <Route
+              path="/blog/:id"
+              element={
+                !loggedIn ? (
+                  <Navigate to="/" replace={true} />
+                ) : (
+                  <Blog setLoggedIn={setLoggedIn} />
+                )
+              }
+            />
+            <Route
+              path="/create/blog"
+              element={
+                !loggedIn ? <Navigate to="/" replace={true} /> : <NewBlog />
+              }
+            />
+            <Route
+              path="/chat"
+              element={
+                !loggedIn ? <Navigate to="/" replace={true} /> : <ChatFinal />
+              }
+            />
+            <Route
+              path="/chat"
+              element={
+                !loggedIn ? <Navigate to="/" replace={true} /> : <ChatFinal />
+              }
+            />
+            <Route
+              path="/network"
+              element={
+                !loggedIn ? (
+                  <Navigate to="/" replace={true} />
+                ) : (
+                  <ConnectionsPage />
+                )
+              }
+            />
+            <Route path="/reset/:id" element={<Resetpass />} />
+            <Route
+              path="/notifications"
+              element={
+                !loggedIn ? (
+                  <Navigate to="/" replace={true} />
+                ) : (
+                  <Notifications />
+                )
+              }
+            />
+
+            <Route
+              path="/events"
+              element={
+                !loggedIn ? (
+                  <Navigate to="/events" replace={true} />
+                ) : (
+                  <EventsPage />
+                )
+              }
+            />
+
+            <Route path="/forgot" element={<Forgotpass />} />
+          </Routes>
+		  </ChatContextProvider>
+        </BlogContextProvider>
+      </UserContextProvider>
+    </BrowserRouter>
+  );
 }
 
 export default App;

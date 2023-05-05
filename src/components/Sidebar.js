@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faHome,
+  faHome, faArrowRightFromBracket,
   faUserFriends,
   faBriefcase,
   faEnvelope,
@@ -9,10 +9,12 @@ import {
   faCog,
   faBuilding,
   faUser,
+  faCalendar,
 } from "@fortawesome/free-solid-svg-icons";
 import { Badge } from "antd";
 import { Link } from "react-router-dom";
 import axios from "axios";
+
 
 
 const Sidebar = () => {
@@ -53,7 +55,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="bg-white rounded-2xl h-[18rem] lg:flex justify-center items-center mx-5 mt-[0.9rem] hidden ">
+    <div className="bg-white rounded-2xl lg:flex justify-center items-center mx-5 mt-[0.9rem] hidden pt-8 pb-8">
       <ul className="text-[#a0a0a0]  mt-7">
         <li className={`flex items-center mb-6 ${isActiveLink("/home")}`}>
           <FontAwesomeIcon icon={faHome} className="mr-2" />
@@ -67,7 +69,7 @@ const Sidebar = () => {
          
             <FontAwesomeIcon icon={faUserFriends} />
         
-          <span className={`font-medium ml-3 ${isActiveLink("/network")}`}>
+          <span className={`font-medium ml-4 ${isActiveLink("/network")}`}>
             <Link to="/network">Network</Link>
           </span>
         </li>
@@ -99,12 +101,28 @@ const Sidebar = () => {
             <Link to="/notifications">Notifications</Link>
           </span>
         </li>
-        <li className={`flex items-center mb-6 ${isActiveLink("/profile")}`}>
-          <FontAwesomeIcon icon={faUser} />
-          <span className={`font-medium ml-5 ${isActiveLink("/profile")}`}>
-            <Link to={`/profile/${userId}`}>Settings</Link>
+        
+
+
+        <li className={`flex items-center mb-6 ${isActiveLink("/events")}`}>
+         <FontAwesomeIcon
+            icon={faCalendar}
+            className="text-[#a0a0a0] text-lg"    />
+        
+          <span className={`font-medium ml-[1.3rem] ${isActiveLink("/events")}`}>
+            <Link to="/events">Events</Link>
           </span>
         </li>
+
+
+        <li className={`flex items-center mb-6 ml-[2px] ${isActiveLink("/profile")}`}>
+          <FontAwesomeIcon icon={faUser} />
+          <span className={`font-medium ml-5 ${isActiveLink("/profile")}`}>
+            <Link to={`/profile/${userId}`}>Profile</Link>
+          </span>
+        </li>
+
+
       </ul>
     </div>
   );

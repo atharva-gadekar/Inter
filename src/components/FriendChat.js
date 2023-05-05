@@ -41,7 +41,7 @@ export default function FriendChat({ url, name, title, friendid }) {
             // props.onClick(props._id);
         };
   return (
-    <div className="flex pt-6 items-center space-x-4 justify-between cursor-pointer "
+    <div className="flex pt-6 items-center space-x-4 justify-between cursor-pointer  h-[42rem]"
       >
     <div className="flex items-center space-x-3">
       <img

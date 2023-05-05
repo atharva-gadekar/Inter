@@ -7,6 +7,27 @@ const ModalComponent = ({isModalVisible,setIsModalVisible}) => {
   const { user, setUser, token, isNewUser, setIsNewUser } = useContext(UserContext);
   const [tags, setTags] = useState([]);
   const[secondarytags,setSecondarytags]=useState([]);
+  const[selected,setSelected]=useState([]);
+
+  const updateUser = async (updatedData) => {
+    axios
+      .patch(
+      `https://inter-api-8q0x.onrender.com/user/update/${user.user._id}`,
+      updatedData,
+      {
+        headers: {
+        Authorization: `Bearer ${token}`,
+        },
+      }
+      )
+    //   .then((response) => {
+    // 	fetchUserName();
+    //   })
+      .catch((error) => {
+      console.error("Error updating user:", error);
+      });
+    };
+  
 
 
   //fetching all tags 
@@ -37,18 +58,29 @@ const handleSelectTag = (interestName) => {
   .then(response => {
     const newTags = response.data;
     setSecondarytags([...secondarytags, ...newTags]);
+  setSelected([...selected,interestName]);
   })
   .catch(error => {
     console.log(error);
   });
 };
 
+const handleSecondarySelectTag = (interestName) => {
+  setSelected([...selected,interestName]);
+  
+}
+
 
 
 
   const handleOk = () => {
     setIsNewUser(false);
+    
+    updateUser({interests: selected});
+    console.log({interests: selected});
     setIsModalVisible(false);
+   
+
   };
 
   const handleCancel = () => {
@@ -78,7 +110,7 @@ const handleSelectTag = (interestName) => {
     <Tag key={tag._id} name={tag.name} handleSelectTag={handleSelectTag} />
   ))}
   {Array.from(secondarytags).map(secondarytag => (
-    <Tag key={secondarytag} name={secondarytag} handleSelectTag={handleSelectTag} />
+    <Tag key={secondarytag} name={secondarytag} handleSelectTag={handleSecondarySelectTag} />
   ))}
 </div>
 
@@ -93,6 +125,7 @@ const Tag = ({ name, handleSelectTag }) => {
     setIsSelected(!isSelected);
     handleSelectTag(name);
   };
+  
 
   return (
     <div
