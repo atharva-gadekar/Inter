@@ -48,11 +48,16 @@ export default function Events() {
             <h3 className="text-3xl font-bold text-black ">Past Events</h3>
             <hr className='w-[700px] border-gray-300'/>
           </div>
+<<<<<<< HEAD
           <div className="bg-white rounded-3xl shadow-md w-[56rem]">
             {pastEvents.map(event => (
               <Event key={event.id} date={event.date} name={event.title} description={event.description} image={event.url} />
             ))}
           </div>
+=======
+        <Event></Event>
+        
+>>>>>>> 78a69e3750dcb3361bb7a9c9bc3c11640dc5aa0a
         </div>
       </div>
     </>

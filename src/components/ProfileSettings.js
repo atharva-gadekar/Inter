@@ -346,8 +346,25 @@ const Profile_Settings = ({ setLoggedIn }) => {
                         {user.user.collegeName}
                       </h2>
 
-                      <div className="mt-6 flex flex-row flex-wrap mr-11">
-                        {user.user.interests.map((interest, index) => (
+                      {/* <div className="flex justify-center space-x-3 mb-6 overflow-x-auto ml-2 mr-2 flex-wrap">
+  {user.user &&
+    user.user.interests.slice(0, 10).map((interest, index) => (
+      <button
+        key={index}
+        className="bg-blue-100 py-2 px-3 text-blue-600 font-medium rounded-3xl text-sm"
+      >
+        {interest}
+      </button>
+    ))}
+  {user.user && user.user.interests.length > 10 && (
+    <button className="bg-blue-100 py-2 px-3 text-blue-600 font-medium rounded-3xl text-sm">
+      +{user.user.interests.length - 10} more
+    </button>
+  )}
+</div> */}
+
+                      <div className="mt-6 flex flex-wrap justify-right w-60 mr-6">
+                        {user.user.interests.slice(0,3).map((interest, index) => (
                           <span
                             key={index}
                             className="bg-gray-200 text-gray-700 px-3 py-3 rounded-xl text-sm mr-2 mb-2"
@@ -355,6 +372,14 @@ const Profile_Settings = ({ setLoggedIn }) => {
                             #{interest}
                           </span>
                         ))}
+                        {user.user.interests.length > 3 && (
+    <span className="bg-gray-200 text-gray-700 px-3 py-3 rounded-xl text-sm mr-2 mb-2">
+      +{user.user.interests.length - 3} more
+    </span>
+                        )}
+                        
+
+                        
                       </div>
                     </div>
                   </div>
