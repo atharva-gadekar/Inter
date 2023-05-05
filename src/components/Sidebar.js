@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faHome,
+  faHome, faArrowRightFromBracket,
   faUserFriends,
   faBriefcase,
   faEnvelope,
@@ -9,10 +9,12 @@ import {
   faCog,
   faBuilding,
   faUser,
+  faCalendar,
 } from "@fortawesome/free-solid-svg-icons";
 import { Badge } from "antd";
 import { Link } from "react-router-dom";
 import axios from "axios";
+
 
 
 const Sidebar = () => {
@@ -67,7 +69,7 @@ const Sidebar = () => {
          
             <FontAwesomeIcon icon={faUserFriends} />
         
-          <span className={`font-medium ml-3 ${isActiveLink("/network")}`}>
+          <span className={`font-medium ml-4 ${isActiveLink("/network")}`}>
             <Link to="/network">Network</Link>
           </span>
         </li>
@@ -99,10 +101,25 @@ const Sidebar = () => {
             <Link to="/notifications">Notifications</Link>
           </span>
         </li>
-        <li className={`flex items-center mb-6 ${isActiveLink("/profile")}`}>
+        
+
+
+        <li className={`flex items-center mb-6 ${isActiveLink("/Events")}`}>
+         
+        <FontAwesomeIcon
+            icon={faCalendar}
+            className="text-[#a0a0a0] text-lg"
+            
+                        />
+        
+          <span className={`font-medium ml-[1.3rem] ${isActiveLink("/Events")}`}>
+            <Link to="/network">Events</Link>
+          </span>
+        </li>
+        <li className={`flex items-center mb-6 ml-[2px] ${isActiveLink("/profile")}`}>
           <FontAwesomeIcon icon={faUser} />
           <span className={`font-medium ml-5 ${isActiveLink("/profile")}`}>
-            <Link to={`/profile/${userId}`}>Settings</Link>
+            <Link to={`/profile/${userId}`}>Profile</Link>
           </span>
         </li>
       </ul>

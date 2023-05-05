@@ -78,7 +78,7 @@ const MessageList=()=> {
       <div className="bg-white rounded-2xl p-6  h-full hidden lg:block ">
       <h1 className="font-bold text-sm">Friend List</h1>
               {connections && connections.map((connections) => (
-         
+                
                 <FriendChat url={connections.url} name={connections.name} title={connections.title} friendid={connections._id}/>
           
       ))}

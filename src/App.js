@@ -105,7 +105,8 @@ function App() {
 							<Blog setLoggedIn={setLoggedIn} />
 						
 					}
-				/>
+						/>
+						
 				<Route
 					path="/create/blog"
 					element={!loggedIn ? <Navigate to="/" replace={true} /> : <NewBlog />}
@@ -133,6 +134,12 @@ function App() {
 					path="/notifications"
 					element={
 						!loggedIn ? <Navigate to="/" replace={true} /> : <Notifications />
+					}
+						/>
+				<Route
+					path="/events"
+					element={
+						!loggedIn ? <Navigate to="/" replace={true} /> : <EventsPage />
 					}
 				/>
 				<Route path="/forgot" element={<Forgotpass />} />
