@@ -18,8 +18,7 @@ export default function Events() {
             <hr className='w-[700px] border-gray-300'/>
           </div>
         <Event></Event>
-        <Event></Event>
-        <Event></Event>
+        
         </div>
         
       </div>
