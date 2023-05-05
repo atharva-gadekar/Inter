@@ -136,12 +136,12 @@ function App() {
 						!loggedIn ? <Navigate to="/" replace={true} /> : <Notifications />
 					}
 						/>
-				{/* <Route
-					path="/events"
-					element={
-						 <EventsPage />
-					}
-				/> */}
+				
+					
+
+				<Route path="/events" element={<EventsPage/>} />
+
+				
 				<Route path="/forgot" element={<Forgotpass />} />
 				<Route path="/modal" element={<ModalComponent />} />
 			
