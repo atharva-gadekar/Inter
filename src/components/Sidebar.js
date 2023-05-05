@@ -104,7 +104,7 @@ const Sidebar = () => {
         
 
 
-        <li className={`flex items-center mb-6 ${isActiveLink("/Events")}`}>
+        <li className={`flex items-center mb-6 ${isActiveLink("/events")}`}>
          
         <FontAwesomeIcon
             icon={faCalendar}
@@ -112,7 +112,7 @@ const Sidebar = () => {
             
                         />
         
-          <span className={`font-medium ml-[1.3rem] ${isActiveLink("/Events")}`}>
+          <span className={`font-medium ml-[1.3rem] ${isActiveLink("/events")}`}>
             <Link to="/network">Events</Link>
           </span>
         </li>

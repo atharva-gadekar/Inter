@@ -136,12 +136,12 @@ function App() {
 						!loggedIn ? <Navigate to="/" replace={true} /> : <Notifications />
 					}
 						/>
-				<Route
+				{/* <Route
 					path="/events"
 					element={
 						!loggedIn ? <Navigate to="/" replace={true} /> : <EventsPage />
 					}
-				/>
+				/> */}
 				<Route path="/forgot" element={<Forgotpass />} />
 				<Route path="/modal" element={<ModalComponent />} />
 			
@@ -190,7 +190,13 @@ function App() {
 						element={
 							!loggedIn ? <Navigate to="/" replace={true} /> : <Notifications />
 						}
-					/>
+						/>
+						{/* <Route
+						path="/events"
+						element={
+							!loggedIn ? <Navigate to="/" replace={true} /> : <EventsPage />
+						}
+					/> */}
 					<Route path="/forgot" element={<Forgotpass />} />
 				</Routes>
 			</BlogContextProvider>
