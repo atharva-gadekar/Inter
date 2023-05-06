@@ -17,11 +17,12 @@ import { io } from "socket.io-client";
 import { message } from "antd";
 import MessageList from "./MessageList";
 import Friend from "./Friend";
+import { ChatContext } from "../utils/context/ChatContext";
 
 export default function LeftChat(friends) {
 
-  const [conversations, setConversations] = useState([]);
-  const [currentChat, setCurrentChat] = useState(null);
+  const {conversations,setConversations ,currentChat,setCurrentChat, showMessageList, setShowMessageList} = useContext(ChatContext);
+  
   const [messages, setMessages] = useState([]);
   // const [socket, setSocket] =useState(null);
   const [newMessage, setNewMessage] = useState("");
@@ -32,7 +33,6 @@ export default function LeftChat(friends) {
   const [input, setInput] = useState("");
   const socket = useRef(io("ws://localhost:8900"));
   const scrollRef = useRef();
-  console.log(socket);
   const [user, setUser] = useState({
 		user: {
 			_id: "",
@@ -67,7 +67,6 @@ export default function LeftChat(friends) {
 						},
 					}).then((response) => {
 						setUser(response.data);
-            console.log(response.data);
            
 					});
 
@@ -82,18 +81,16 @@ export default function LeftChat(friends) {
 
   useEffect(()=>{
     socket.current=io("ws://localhost:8900");
-    socket.current.on("getMessage", data =>{
-      console.log(data)
+    socket.current.on("getMessage", (data) =>{
       setArrivalMessage(
         {
           sender: data.senderId,
           text:data.text,
-          createdAt:Date.now,
+          createdAt:Date.now(),
         }
       );
     });
   }, []);
-  console.log(arrivalMessage);
 
   useEffect(() => {
     arrivalMessage &&
@@ -104,7 +101,6 @@ export default function LeftChat(friends) {
   useEffect(() => {
     socket.current.emit("addUser", userId);
     socket.current.on("getUsers", (users) => {
-      console.log(users);
     });
   }, [userId]);
 
@@ -114,7 +110,7 @@ export default function LeftChat(friends) {
         if (token) {
           const userId = localStorage.getItem("userId");
           const res = await axios.get(
-            `https://inter-api-8q0x.onrender.com/conversations/${userId}`,
+            `http://localhost:3001/conversations/${userId}`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -122,7 +118,6 @@ export default function LeftChat(friends) {
             }
           );
           setConversations(res.data);
-          console.log(res.data);
           if (!res.ok) {
             throw new Error("Error fetching user details");
           }
@@ -149,18 +144,16 @@ export default function LeftChat(friends) {
     };
     getMessages();
   }, [currentChat]);
-  console.log(currentChat);
 
   const handleKeypress = (e) => {
     //it triggers by pressing the enter key
     if (e.key === "Enter" || e.key === "Return") {
-      console.log("Button click");
       handleSubmit();
     }
   };
 
 
-  const [showMessageList, setShowMessageList] = useState(false);
+ 
 
     // Add an event listener to toggle the message list component
     function handleFapentosquareClick() {
@@ -181,31 +174,31 @@ export default function LeftChat(friends) {
       };
 
       const receiverId = currentChat.members.find((m) => m !== userId);
-      console.log(receiverId);
+      
       socket.current.emit("sendMessage", {
         senderId: userId,
-        receiverId,
+        recieverId:receiverId,
         text: input,
       });
 
       try {
         const res = await axios.post(
-          "https://inter-api-8q0x.onrender.com/messages",
+          "http://localhost:3001/messages",
           message
         );
+        setMessages([...messages, res.data.savedMessage]);
         setInput("");
-        setMessages([...messages, res.data]);
+        console.log("This is the message sent by the user : ", res.data.savedMessage)
+        // setMessages([...messages, res.data]);
       } catch (err) {
         console.log(err);
       }
     }
   };
-  console.log(messages)
   // const lastMessage = messages.length > 0 ? messages[messages.length - 1].text : null;
   const lasttime = messages.length > 0 ? messages[messages.length - 1].createdAt : null;
 
   // useEffect(()=>{})
-  console.log(user.user.name)
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);

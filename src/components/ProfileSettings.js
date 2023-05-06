@@ -36,6 +36,7 @@ const Profile_Settings = ({ setLoggedIn }) => {
   const { blogs, setBlogs } = useContext(BlogContext);
   const [isUser, setisUser] = useState(true);
   const [loading, setLoading] = useState(true);
+  const [show, setShow] = useState(false);
 
   const [change, setChange] = useState({});
   const [user, setUser] = useState({
@@ -61,7 +62,10 @@ const Profile_Settings = ({ setLoggedIn }) => {
   const token = localStorage.getItem("token");
   const userr = localStorage.getItem("userId");
 
-  
+  const handleInterests = () =>{
+    setShow(!show);
+  }
+
   useEffect(() => {
     const getUserBlogs = async () => {
       try {
@@ -346,7 +350,7 @@ const Profile_Settings = ({ setLoggedIn }) => {
 												{user.user.collegeName}
 											</h2>
 
-											<div className="mt-6 flex flex-row flex-wrap justify-end">
+											{show && <div className="mt-6 flex flex-row flex-wrap justify-end" onClick={handleInterests}>
 												{user.user.interests.map((interest, index) => (
 													<span
 														key={index}
@@ -355,27 +359,46 @@ const Profile_Settings = ({ setLoggedIn }) => {
 														#{interest}
 													</span>
 												))}
-											</div>
-										</div>
-									</div>
-								</div>
-								{isUser ? (
-									" "
-								) : (
-									<div className="buttons -ml-1 mt-6 flex flex-row mb-8">
-										<button className="ml-0 px-6 py-3 rounded-xl text-sm font-medium text-white bg-blue-500 hover:bg-blue-400 ">
-											Connect
-										</button>
-										<button className="ml-4 px-9 py-3 rounded-xl text-sm font-medium text-white bg-blue-500 hover:bg-blue-400  ">
-											Chat
-										</button>
-									</div>
-								)}
-							</div>
-						</div>
-					</div>
-				</div>
-			)}
+											</div>}
+
+                      {!show && <div className="mt-6 flex flex-row flex-wrap justify-end" onClick={handleInterests}>
+                        {user.user.interests.slice(0,3).map((interest, index) => (
+                          <span
+                            key={index}
+                            className="bg-gray-200 text-gray-700 px-3 py-3 rounded-xl text-sm mr-2 mb-2"
+                          >
+                            #{interest}
+                          </span>
+                        ))}
+                        {user.user.interests.length > 3 && (
+    <span className="bg-gray-200 text-gray-700 px-3 py-3 rounded-xl text-sm mr-2 mb-2">
+      +{user.user.interests.length - 3} more
+    </span>
+                        )}
+                        
+
+                        
+                      </div>}
+                    </div>
+                  </div>
+                </div>
+                {isUser ? (
+                  " "
+                ) : (
+                  <div className="buttons -ml-1 mt-6 flex flex-row mb-8">
+                    <button className="ml-0 px-6 py-3 rounded-xl text-sm font-medium text-white bg-blue-500 hover:bg-blue-400 ">
+                      Connect
+                    </button>
+                    <button className="ml-4 px-9 py-3 rounded-xl text-sm font-medium text-white bg-blue-500 hover:bg-blue-400  ">
+                      Chat
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
 			{!loading && (
 				<div className=" mt-5 ml-3 mr-3 lg:mx-auto bg-white lg:w-[97.6%] py-6 px-8 rounded-2xl mb-5 h-[40%]">
