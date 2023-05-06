@@ -85,11 +85,11 @@ const Connections = () => {
 		}, []);
 
   return (
-		<div className="bg-white p-8 rounded-3xl">
+		<div className="bg-white p-8 rounded-3xl max-w-[69rem]">
 			<h1 className="my-4 font-bold text-3xl text-blue-600">Interests</h1>
-			<div className="flex justify-left space-x-3 items-center  mb-12">
+			<div className="flex justify-left space-x-3 items-center  mb-12 overflow-x-scroll pb-2">
 				<button
-					className="px-5 py-2 border border-blue-100 rounded-3xl text-blue-700 bg-blue-50 font-medium focus:bg-blue-300"
+					className="px-5 py-1 border border-blue-100 rounded-2xl text-blue-700 bg-blue-50 font-medium focus:bg-blue-300 text-sm"
 					onClick={() => {
 						getConnectionsAll();
 					}}
@@ -99,7 +99,7 @@ const Connections = () => {
 				{userInterests &&
 					userInterests.map((interest) => (
 						<button
-							className="px-5 py-2 border border-blue-100 rounded-3xl text-blue-700 bg-blue-50 font-medium focus:bg-blue-300"
+							className="px-5 py-1 border border-blue-100 rounded-2xl text-blue-700 bg-blue-50 font-medium focus:bg-blue-300 text-sm"
 							onClick={() => {
 								getConnections(interest);
 							}}
@@ -108,7 +108,7 @@ const Connections = () => {
 						</button>
 					))}
 			</div>
-			<div className="flex flex-wrap justify-left mb-5 gap-y-12 gap-x-24">
+			<div className="flex flex-wrap justify-left mb-5 gap-y-12 gap-x-[2rem]">
 				{connections &&
 					connections.map((connection) => <UserProfile user={connection} />)}
 			</div>
