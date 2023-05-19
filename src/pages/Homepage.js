@@ -22,7 +22,7 @@ import ModalComponent from '../components/Modal';
 
 
 
-const Homepage = () => {
+const Homepage = ({setLoggedIn}) => {
 	const navigate=useNavigate();
 	const { user, setUser, token,isNewUser,setIsNewUser  } = useContext(UserContext);
 	const [isModalVisible, setIsModalVisible] = useState(isNewUser);
@@ -72,44 +72,45 @@ const Homepage = () => {
 		 
 
   return (
-	<div>
-	
-	 <ModalComponent isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} />
+		<div>
+			<ModalComponent
+				isModalVisible={isModalVisible}
+				setIsModalVisible={setIsModalVisible}
+			/>
 
-		<div className="flex flex-col min-h-screen">
-			<Navbarhome />
+			<div className="flex flex-col min-h-screen">
+				<Navbarhome setLoggedIn={setLoggedIn} />
 
-			<div className="flex justify-evenly pr-16">
-				<div className="lg:w-1/5">
-					<div className="sticky top-4">
-						<Sidebar />
-						<ProfileSidebar />
-					</div>
-				</div>
-				<div className="w-[60%] pr-4 mt-4 ">
-					<CreatePost
-						banner={banner}
-						setBanner={setBanner}
-						blog={blog}
-						setBlog={setBlog}
-					/>
-					{loading ? (
-						<div className="text-center">
-							<DoorDashFavorite />
+				<div className="flex justify-evenly pr-16">
+					<div className="lg:w-1/5">
+						<div className="sticky top-4">
+							<Sidebar />
+							<ProfileSidebar />
 						</div>
-					)
-						:
-						<Post/>
-					}
-				</div>
-				<div className="lg:w-1/6 mt-[0.9rem]">
-					<div className="sticky top-4 ">
-						<Connect />
+					</div>
+					<div className="w-[60%] pr-4 mt-4 ">
+						<CreatePost
+							banner={banner}
+							setBanner={setBanner}
+							blog={blog}
+							setBlog={setBlog}
+						/>
+						{loading ? (
+							<div className="text-center">
+								<DoorDashFavorite />
+							</div>
+						) : (
+							<Post />
+						)}
+					</div>
+					<div className="lg:w-1/6 mt-[0.9rem]">
+						<div className="sticky top-4 ">
+							<Connect />
+						</div>
 					</div>
 				</div>
+				<NavigationHome />
 			</div>
-			<NavigationHome />
-		</div>
 		</div>
 	);
 };
