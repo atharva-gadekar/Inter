@@ -28,7 +28,7 @@ const Connections = () => {
 				Authorization: `Bearer ${token}`,
 			},
 		}).then((response) => {
-			console.log(response.data);
+			// console.log(response.data);
 			setConnections(response.data);
 		});
 	}
@@ -41,7 +41,7 @@ const Connections = () => {
 				Authorization: `Bearer ${token}`,
 			},
 		}).then((response) => {
-			console.log(response.data);
+			// console.log(response.data);
 			setConnections(response.data);
 		});
 	}
@@ -58,7 +58,7 @@ const Connections = () => {
 								Authorization: `Bearer ${token}`,
 							},
 						}).then((response) => {
-							console.log(response.data);
+							// console.log(response.data);
 							setUserInterests(response.data.user.interests);
 						});
 					}

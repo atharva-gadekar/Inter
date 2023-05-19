@@ -115,7 +115,8 @@ export default function Blog() {
           },
         }
       );
-      console.log(response.data.comment);
+    
+      
 
       setComments([...comments, response.data.comment]);
       setNewComment("");
