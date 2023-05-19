@@ -33,7 +33,7 @@ const Connect = () => {
             },
           }).then((response) => {
             setconnections(response.data.connections);
-            console.log(response.data.connections);
+            // console.log(response.data.connections);
           });
         }
       } catch (error) {

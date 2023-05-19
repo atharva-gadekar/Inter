@@ -14,6 +14,7 @@ import axios from "axios";
 import { set } from "react-hook-form";
 import Message from "./Message";
 import { io } from "socket.io-client";
+import VueSocketIO from "vue-socket.io";
 import { message } from "antd";
 import MessageList from "./MessageList";
 import Friend from "./Friend";
@@ -31,7 +32,13 @@ export default function LeftChat(friends) {
   const token = localStorage.getItem("token");
   const userId = localStorage.getItem("userId");
   const [input, setInput] = useState("");
-  const socket = useRef(io("ws://localhost:8900"));
+  const socket = useRef(io("ws://localhost:8900", {
+    // transports: ["websocket", "polling", "flashsocket"],
+    // withCredentials: true,
+    // extraHeaders: {
+    //   "my-custom-header": "abcd"
+    // }
+  }));
   const scrollRef = useRef();
   const [user, setUser] = useState({
 		user: {
@@ -79,17 +86,31 @@ export default function LeftChat(friends) {
     fetchUserName();
   }, [currentChat]);;
 
-  useEffect(()=>{
-    socket.current=io("ws://localhost:8900");
-    socket.current.on("getMessage", (data) =>{
-      setArrivalMessage(
-        {
+  // Vue.use(new VueSocketIO({
+  //   debug: true,
+  //   connection: socket('http://localhost:8900'),
+  //   vuex: {
+  //   store,
+  //   actionPrefix: 'SOCKET_',
+  //   mutationPrefix: 'SOCKET_'
+  //   },
+  //   extraHeaders: {
+  //   'Access-Control-Allow-Credentials':true
+  //   },
+  //   allowEIO3:true
+  //   }))
+  useEffect(() => {
+    socket.current = io("ws://localhost:8900");
+  
+    if (socket.current) {
+      socket.current.on("getMessage", (data) =>{
+        setArrivalMessage({
           sender: data.senderId,
-          text:data.text,
-          createdAt:Date.now(),
-        }
-      );
-    });
+          text: data.text,
+          createdAt: Date.now(),
+        });
+      });
+    }
   }, []);
 
   useEffect(() => {

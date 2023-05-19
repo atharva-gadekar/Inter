@@ -401,7 +401,7 @@ const Profile_Settings = ({ setLoggedIn }) => {
       )}
 
 			{!loading && (
-				<div className=" mt-5 ml-3 mr-3 lg:mx-auto bg-white lg:w-[97.6%] py-6 px-8 rounded-2xl mb-5 h-[40%]">
+				<div className=" mt-5 ml-3 mr-3 lg:mx-auto bg-white lg:w-[97.6%] py-6 px-8 rounded-2xl mb-5">
 					<div className="ml-2 lg:text-left mt-3 mb-6">
 						<div className="flex justify-between">
 							<h3 className="text-3xl font-bold text-black ">About</h3>
@@ -415,13 +415,14 @@ const Profile_Settings = ({ setLoggedIn }) => {
 			)}
 
 			{!loading && (
-				<div className="mt-5 ml-3 mr-3 lg:mx-auto bg-white lg:w-[97.6%] py-6 px-8 rounded-2xl mb-5 h-[40%]">
+				<div className="mt-5 ml-3 mr-3 lg:mx-auto  lg:w-[97.6%] py-6 px-8 rounded-2xl mb-5 h-[40%]">
 					<div className="ml-2 lg:text-left mt-3 mb-6">
 						<div className="flex justify-between">
 							<h3 className="text-3xl font-bold text-black ">My posts</h3>
 						</div>
 
 						<Post />
+            <div className="mb-4"></div>
 					</div>
 				</div>
 			)}
