@@ -15,7 +15,7 @@ import { faShareNodes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Navbarhome from "./Navbarhome";
 import { Link, useParams } from "react-router-dom";
-import { message } from "antd";
+import { Divider, message } from "antd";
 import ArticleLoader from "./Skeleton_Blog";
 import moment from "moment";
 import { UserContext } from "../utils/context/UserContext";
@@ -156,9 +156,11 @@ export default function Blog() {
               <h2 className="font-extrabold text-2xl lg:text-5xl text-slate-800 lg:leading-[1.25] mr-12 lg:mr-auto">
                 {blog.blog.title}
               </h2>
-              <p className="text-slate-600 mt-4 mr-12 lg:mr-auto mb-10">
+              <p className="text-slate-600 italic mt-4 mr-12 lg:mr-auto mb-2">
                 {blog.blog.brief}
               </p>
+
+              <Divider></Divider>
 
               <div
                 className="content mb-10"
