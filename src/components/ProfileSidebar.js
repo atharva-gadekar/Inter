@@ -61,9 +61,9 @@ export default function ProfileSidebar() {
           <p className="text-center text-slate-500 mt-3 mb-0 text-base px-12">
           {user.user && user.user.collegeName}
         </p>
-        <p className="text-center text-slate-500 mt-0 mb-0 text-base px-12">
+        {/* <p className="text-center text-slate-500 mt-0 mb-0 text-base px-12">
           {user.user && user.user.year} year
-        </p>
+        </p> */}
         <p className="text-center text-slate-500 mt-0 mb-20 text-base px-12">
           {user.user && user.user.branch}
         </p>
