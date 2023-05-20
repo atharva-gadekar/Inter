@@ -61,7 +61,14 @@ export default function Conversation({conversation, currentUser,  time}) {
     }
     getUser();
   },[conversation, currentUser]);
-
+  var currentTime;
+  if (timestamp && !isNaN(Date.parse(timestamp))) {
+    currentTime = timestamp;
+  }
+  else{
+    currentTime =  new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  }
+ 
 console.log(conversation.lastMessage)
   return (
     <div className="message cursor-pointer">
@@ -73,7 +80,9 @@ console.log(conversation.lastMessage)
               <div className="flex flex-row justify-between items-center mr-4">
                       <h1 className="text-sm font-medium ">{user.user.name }</h1>
                 <p className="ml-4 text-xs font-medium text-slate-500  mr-4">
-                  {timestamp}
+                  
+                  {/* {} */}
+                  {currentTime}
                 </p>
               </div>
               <p className="text-xs text-slate-400 mr-4">

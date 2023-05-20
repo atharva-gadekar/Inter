@@ -33,11 +33,7 @@ export default function LeftChat(friends) {
   const userId = localStorage.getItem("userId");
   const [input, setInput] = useState("");
   const socket = useRef(io("ws://localhost:8900", {
-    // transports: ["websocket", "polling", "flashsocket"],
-    // withCredentials: true,
-    // extraHeaders: {
-    //   "my-custom-header": "abcd"
-    // }
+  
   }));
   const scrollRef = useRef();
   const [user, setUser] = useState({
@@ -131,7 +127,7 @@ export default function LeftChat(friends) {
         if (token) {
           const userId = localStorage.getItem("userId");
           const res = await axios.get(
-            `http://localhost:3001/conversations/${userId}`,
+            `https://inter-api-8q0x.onrender.com/conversations/${userId}`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -204,7 +200,7 @@ export default function LeftChat(friends) {
 
       try {
         const res = await axios.post(
-          "http://localhost:3001/messages",
+          "https://inter-api-8q0x.onrender.com/messages",
           message
         );
         setMessages([...messages, res.data.savedMessage]);
