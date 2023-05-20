@@ -32,7 +32,7 @@ export default function LeftChat(friends) {
   const token = localStorage.getItem("token");
   const userId = localStorage.getItem("userId");
   const [input, setInput] = useState("");
-  const socket = useRef(io("ws://localhost:8900", {
+  const socket = useRef(io("ws://localhost:4001", {
   
   }));
   const scrollRef = useRef();
