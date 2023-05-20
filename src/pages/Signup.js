@@ -50,7 +50,7 @@ function Signup() {
       for (let key in data) {
         formData.append(key, data[key]);
       }
-
+      console.log(formData);
       const response = await axios.post(
         "https://inter-api-8q0x.onrender.com/auth/register",
         formData
